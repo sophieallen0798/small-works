@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Small Works Boise for a free quote on your home renovation project. Reach out for kitchen remodels, home additions, and full house renovations.">
+    <meta name="keywords" content="contact Small Works Boise, renovation quote, Boise contractor contact, free estimate">
+    <title>Contact Us | Small Works Boise</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">Small Works <span>Boise</span></a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="projects.html">Our Work</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Contact Us</h1>
+            <p>Get in touch for a free consultation and quote</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <div class="container">
+            <div class="contact-wrapper">
+                <!-- Contact Information -->
+                <div class="contact-info">
+                    <h2>Let's Discuss Your Project</h2>
+                    <p>Ready to transform your home? Fill out the form or reach out directly. We offer free consultations and detailed estimates for all projects.</p>
+                    
+                    <ul class="contact-details">
+                        <li>
+                            <div class="contact-icon">📍</div>
+                            <div class="contact-text">
+                                <strong>Location</strong>
+                                <span>Serving Boise, Idaho and surrounding areas</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="contact-icon">📧</div>
+                            <div class="contact-text">
+                                <strong>Email</strong>
+                                <span>We'll respond within 24 hours</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="contact-icon">⏰</div>
+                            <div class="contact-text">
+                                <strong>Response Time</strong>
+                                <span>Usually within 1 business day</span>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div style="margin-top: 2rem; padding: 1.5rem; background-color: var(--white); border-radius: 8px; box-shadow: var(--shadow);">
+                        <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">What to Expect</h4>
+                        <p style="color: var(--text-light); font-size: 0.95rem; margin: 0;">
+                            After you submit the form, we'll review your project details and reach out to schedule a consultation. We'll discuss your vision, timeline, and provide a detailed estimate.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form">
+                    <h3>Send Us a Message</h3>
+                    <!-- 
+                        FORMSPREE SETUP INSTRUCTIONS:
+                        1. Go to https://formspree.io and create a free account
+                        2. Create a new form and get your form endpoint
+                        3. Replace "YOUR_FORMSPREE_ENDPOINT" below with your actual endpoint
+                        Example: https://formspree.io/f/xabcdefg
+                    -->
+                    <form action="https://formspree.io/f/YOUR_FORMSPREE_ENDPOINT" method="POST">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required placeholder="Your full name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="(208) 555-0000">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="project-type">Project Type *</label>
+                            <select id="project-type" name="project-type" required>
+                                <option value="">Select a project type</option>
+                                <option value="full-renovation">Full House Renovation</option>
+                                <option value="kitchen">Kitchen Remodel</option>
+                                <option value="bathroom">Bathroom Renovation</option>
+                                <option value="addition">Home Addition</option>
+                                <option value="basement">Basement Finishing</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="timeline">Desired Timeline</label>
+                            <select id="timeline" name="timeline">
+                                <option value="">When would you like to start?</option>
+                                <option value="asap">As soon as possible</option>
+                                <option value="1-3-months">1-3 months</option>
+                                <option value="3-6-months">3-6 months</option>
+                                <option value="6-12-months">6-12 months</option>
+                                <option value="planning">Just planning / Getting quotes</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Project Details *</label>
+                            <textarea id="message" name="message" required placeholder="Tell us about your project. What are you looking to accomplish? Any specific features or requirements?"></textarea>
+                        </div>
+
+                        <!-- Hidden field for spam protection -->
+                        <input type="text" name="_gotcha" style="display:none">
+                        
+                        <!-- Redirect after submission (optional - remove if you want default Formspree page) -->
+                        <input type="hidden" name="_next" value="thank-you.html">
+                        
+                        <!-- Subject line for emails -->
+                        <input type="hidden" name="_subject" value="New Project Inquiry - Small Works Boise">
+                        
+                        <button type="submit" class="btn-submit">Send Message</button>
+                    </form>
+                    
+                    <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--text-light); text-align: center;">
+                        * Required fields. We respect your privacy and will never share your information.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section style="background-color: var(--white);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Common questions about working with us</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Do you offer free estimates?</h3>
+                    <p>Yes! We provide free consultations and detailed estimates for all projects. Contact us to schedule yours.</p>
+                </div>
+                <div class="service-card">
+                    <h3>What areas do you serve?</h3>
+                    <p>We serve Boise, Idaho and the surrounding Treasure Valley area, including Meridian, Eagle, Nampa, and more.</p>
+                </div>
+                <div class="service-card">
+                    <h3>How long does a typical renovation take?</h3>
+                    <p>Timeline varies by project scope. A bathroom may take 2-3 weeks, a kitchen 4-8 weeks, and full renovations 2-6 months.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Are you licensed and insured?</h3>
+                    <p>Yes, we are fully licensed and insured for your protection and peace of mind.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Small Works Boise</h4>
+                    <p>Professional home renovations and remodeling services in Boise, Idaho. Quality craftsmanship for every project.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="projects.html">Our Work</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="services.html">Full House Renovations</a></li>
+                        <li><a href="services.html">Kitchen Remodeling</a></li>
+                        <li><a href="services.html">Home Additions</a></li>
+                        <li><a href="services.html">Bathroom Renovations</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Boise, Idaho</p>
+                    <p><a href="contact.html">Send us a message</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Small Works Boise. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
