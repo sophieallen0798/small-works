@@ -240,10 +240,34 @@
                 track.appendChild(im);
             });
 
+            // zoom/enlarge button (magnifying glass with plus)
+            var zoom = document.createElement('button');
+            zoom.className = 'zoom-btn';
+            zoom.setAttribute('aria-label', 'Enlarge images');
+            zoom.innerHTML = '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">'
+                + '<circle cx="10" cy="10" r="6" stroke="currentColor" stroke-width="1.6" fill="none"/>'
+                + '<line x1="10" y1="7" x2="10" y2="13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>'
+                + '<line x1="7" y1="10" x2="13" y2="10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>'
+                + '<line x1="15" y1="15" x2="21" y2="21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>'
+                + '</svg>';
+
+            // click handler: collect full image URLs and open shared lightbox
+            zoom.addEventListener('click', function(e){
+                e.preventDefault();
+                var imgs = images.map(function(i){ return dir + '/' + i; });
+                if(window.openLightbox) {
+                    window.openLightbox(imgs, 0);
+                } else {
+                    // if lightbox not loaded yet, stash for later
+                    window._pendingLightbox = { imgs: imgs, index: 0 };
+                }
+            });
+
             carousel.appendChild(btnPrev);
             carousel.appendChild(track);
             carousel.appendChild(btnNext);
             article.appendChild(carousel);
+            article.appendChild(zoom);
             return article;
         }
 
