@@ -188,11 +188,14 @@ window.nextImage = nextImage;
 window.prevImage = prevImage;
 
 // --- Service tile carousel functionality ---
-document.addEventListener('DOMContentLoaded', function() {
+function initServiceCarousels() {
     const carousels = document.querySelectorAll('.service-carousel');
 
     carousels.forEach(carousel => {
+        // avoid double-init
+        if (carousel.dataset.carouselInitialized === 'true') return;
         const track = carousel.querySelector('.carousel-track');
+        if (!track) return;
         const slides = track.querySelectorAll('img');
         const prevBtn = carousel.querySelector('.carousel-btn.prev');
         const nextBtn = carousel.querySelector('.carousel-btn.next');
@@ -203,12 +206,12 @@ document.addEventListener('DOMContentLoaded', function() {
             track.style.transform = `translateX(${ -index * 100 }%)`;
         }
 
-        prevBtn.addEventListener('click', function(e) {
+        if (prevBtn) prevBtn.addEventListener('click', function(e) {
             e.stopPropagation();
             showIndex(index - 1);
         });
 
-        nextBtn.addEventListener('click', function(e) {
+        if (nextBtn) nextBtn.addEventListener('click', function(e) {
             e.stopPropagation();
             showIndex(index + 1);
         });
@@ -231,7 +234,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Click on image opens lightbox for this tile's gallery
         slides.forEach((img, i) => {
             img.addEventListener('click', function(e) {
-                const imgs = Array.from(slides).map(s => ({ src: s.src, caption: s.alt || '' }));
+                const imgs = Array.from(slides).map(s => ({ src: s.src, caption: s.getAttribute('data-caption') || s.alt || '' }));
                 if (typeof openLightbox === 'function') openLightbox(imgs, i);
             });
         });
@@ -239,5 +242,11 @@ document.addEventListener('DOMContentLoaded', function() {
         // initialize: respect optional starting index set on the carousel element
         const startIndex = parseInt(carousel.getAttribute('data-index')) || 0;
         showIndex(startIndex);
+
+        carousel.dataset.carouselInitialized = 'true';
     });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    initServiceCarousels();
 });

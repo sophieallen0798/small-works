@@ -12,21 +12,11 @@
         .gallery-set-card h2 { color: var(--primary-color); margin-bottom: 1rem; font-size: 1.2rem; }
         .gallery-set-card img { width: 100%; max-width: 320px; height: 180px; object-fit: cover; border-radius: 6px; margin-bottom: 1rem; cursor: pointer; box-shadow: var(--shadow); }
         .gallery-set-card button { margin-top: 1rem; }
-        .gallery-lightbox { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.95); z-index: 9999; align-items: center; justify-content: center; flex-direction: column; }
-        .gallery-lightbox.active { display: flex; }
-        .gallery-lightbox img { max-width: 90vw; max-height: 80vh; border-radius: 8px; box-shadow: var(--shadow-hover); }
-        .gallery-lightbox .close { position: absolute; top: 30px; right: 40px; font-size: 2.5rem; color: var(--white); cursor: pointer; }
-        .gallery-lightbox .nav { position: absolute; top: 50%; font-size: 3rem; color: var(--white); cursor: pointer; padding: 1rem; user-select: none; }
-        .gallery-lightbox .prev { left: 30px; }
-        .gallery-lightbox .next { right: 30px; }
-        .gallery-lightbox .caption { color: var(--white); margin-top: 1rem; font-size: 1.1rem; text-align: center; }
-        .gallery-lightbox .counter { color: #ccc; font-size: 0.9rem; margin-top: 0.5rem; }
         @media (max-width: 600px) { .gallery-set-list { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
-    <!-- Header (injected by JS) -->
-    <header><!-- Header loading... --></header>
+    <header></header>
 
     <section class="page-header">
         <div class="container">
@@ -39,16 +29,8 @@
             <div class="gallery-set-list" id="gallerySetList"></div>
         </div>
     </section>
-    <div class="gallery-lightbox" id="galleryLightbox">
-        <span class="close" onclick="closeGalleryLightbox()">&times;</span>
-        <span class="nav prev" onclick="prevGalleryImage()">&#10094;</span>
-        <span class="nav next" onclick="nextGalleryImage()">&#10095;</span>
-        <img id="galleryLightboxImg" src="" alt="Gallery Image">
-        <div class="caption" id="galleryLightboxCaption"></div>
-        <div class="counter" id="galleryLightboxCounter"></div>
-    </div>
-    <!-- Footer (injected by JS) -->
-    <footer><!-- Footer loading... --></footer>
+    <!-- Using shared lightbox from js/main.js; per-set lightbox removed -->
+    <footer></footer>
     <script src="js/main.js"></script>
     <script>
     // Gallery sets config
@@ -84,62 +66,31 @@
             images: ["image-1.jpg","image-2.jpg","image-3.jpg","image-4.jpg","image-5.jpg","image-6.jpg","image-7.jpg","image-8.jpg","image-9.jpg","image-10.jpg","image-11.jpg","image-12.jpg","image-13.jpg","image-14.jpg","image-15.jpg","image-16.jpg","image-17.jpg","image-18.jpg","image-19.jpg","image-20.jpg","image-21.jpg","image-22.jpg","image-23.jpg","image-24.jpg","image-25.jpg","image-26.jpg","image-27.jpg","image-28.jpg","image-29.jpg","image-30.jpg","image-31.jpg","image-32.jpg","image-33.jpg","image-34.jpg","image-35.jpg","image-36.jpg","image-37.jpg","image-38.jpg","image-39.jpg","image-40.jpg","image-41.jpg","image-42.jpg","image-43.jpg","image-44.jpg","image-45.jpg","image-46.jpg","image-47.jpg","image-48.jpg","image-49.jpg","image-50.jpg"],
         },
     ];
-    let currentSet = null;
-    let currentIndex = 0;
     function renderGallerySets() {
         const list = document.getElementById('gallerySetList');
         list.innerHTML = '';
         gallerySets.forEach((set, i) => {
-            const thumb = set.images[0];
-            const card = document.createElement('div');
-            card.className = 'gallery-set-card';
-            card.innerHTML = `<img src="${set.dir}/${thumb}" alt="${set.title} Thumbnail" onclick="openGallerySet(${i},0)">
-                <h2>${set.title}</h2>
-                <button onclick="openGallerySet(${i},0)" class="btn btn-primary">View Gallery</button>`;
+            const card = document.createElement('article');
+            card.className = 'gallery-set-card service-card service-tile';
+            // build carousel track markup
+            const imgsHtml = set.images.map(name => `<img loading="lazy" src="${set.dir}/${name}" alt="${set.title}">`).join('');
+            card.innerHTML = `
+                <div class="service-carousel" data-index="0">
+                    <button class="carousel-btn prev" aria-label="Previous">&#10094;</button>
+                    <div class="carousel-track">
+                        ${imgsHtml}
+                    </div>
+                    <button class="carousel-btn next" aria-label="Next">&#10095;</button>
+                </div>
+                <div class="service-content">
+                    <h3>${set.title}</h3>
+                </div>
+            `;
             list.appendChild(card);
         });
+        // initialize carousels on the dynamically created gallery cards
+        if (typeof initServiceCarousels === 'function') initServiceCarousels();
     }
-    function openGallerySet(setIdx, imgIdx) {
-        currentSet = gallerySets[setIdx];
-        currentIndex = imgIdx;
-        showGalleryLightbox();
-    }
-    function showGalleryLightbox() {
-        const lightbox = document.getElementById('galleryLightbox');
-        const img = document.getElementById('galleryLightboxImg');
-        const caption = document.getElementById('galleryLightboxCaption');
-        const counter = document.getElementById('galleryLightboxCounter');
-        if (!currentSet) return;
-        img.src = `${currentSet.dir}/${currentSet.images[currentIndex]}`;
-        img.alt = currentSet.title + ' Image';
-        caption.textContent = currentSet.title;
-        counter.textContent = `${currentIndex+1} / ${currentSet.images.length}`;
-        lightbox.classList.add('active');
-    }
-    function closeGalleryLightbox() {
-        document.getElementById('galleryLightbox').classList.remove('active');
-    }
-    function nextGalleryImage() {
-        if (!currentSet) return;
-        currentIndex = (currentIndex + 1) % currentSet.images.length;
-        showGalleryLightbox();
-    }
-    function prevGalleryImage() {
-        if (!currentSet) return;
-        currentIndex = (currentIndex - 1 + currentSet.images.length) % currentSet.images.length;
-        showGalleryLightbox();
-    }
-    window.openGallerySet = openGallerySet;
-    window.closeGalleryLightbox = closeGalleryLightbox;
-    window.nextGalleryImage = nextGalleryImage;
-    window.prevGalleryImage = prevGalleryImage;
-    document.addEventListener('keydown', function(e) {
-        const lb = document.getElementById('galleryLightbox');
-        if (!lb.classList.contains('active')) return;
-        if (e.key === 'Escape') closeGalleryLightbox();
-        if (e.key === 'ArrowLeft') prevGalleryImage();
-        if (e.key === 'ArrowRight') nextGalleryImage();
-    });
     renderGallerySets();
     </script>
 </body>
