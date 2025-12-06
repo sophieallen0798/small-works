@@ -1,36 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- Primary SEO Meta Tags -->
     <title>Home Renovation Services in Boise, Idaho | Kitchen, Bathroom, Additions | Small Works Boise</title>
-    <meta name="description" content="Comprehensive home renovation services in Boise, Idaho. Kitchen remodeling, bathroom renovations, home additions, basement finishing, historic restorations, interior design, and structural work. Licensed & insured contractors. Free estimates!">
-    <meta name="keywords" content="kitchen remodeling Boise, bathroom renovation Boise Idaho, home additions Boise, basement finishing Boise ID, historic home restoration Idaho, interior design services Boise, structural repairs Boise, general contractor services, custom cabinetry Boise, flooring installation Idaho, home improvement services Boise">
+    <meta name="description"
+        content="Comprehensive home renovation services in Boise, Idaho. Kitchen remodeling, bathroom renovations, home additions, basement finishing, historic restorations, interior design, and structural work. Licensed & insured contractors. Free estimates!">
+    <meta name="keywords"
+        content="kitchen remodeling Boise, bathroom renovation Boise Idaho, home additions Boise, basement finishing Boise ID, historic home restoration Idaho, interior design services Boise, structural repairs Boise, general contractor services, custom cabinetry Boise, flooring installation Idaho, home improvement services Boise">
     <meta name="author" content="Small Works Boise">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://smallworksboise.com/services.html">
-    
+
     <!-- Geographic SEO -->
     <meta name="geo.region" content="US-ID">
     <meta name="geo.placename" content="Boise, Idaho">
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://smallworksboise.com/services.html">
     <meta property="og:title" content="Home Renovation Services in Boise, Idaho | Small Works Boise">
-    <meta property="og:description" content="Full-service home renovation company in Boise. Kitchen remodels, bathroom renovations, home additions, and more. Quality craftsmanship guaranteed.">
+    <meta property="og:description"
+        content="Full-service home renovation company in Boise. Kitchen remodels, bathroom renovations, home additions, and more. Quality craftsmanship guaranteed.">
     <meta property="og:image" content="https://smallworksboise.com/images/services-og.jpg">
     <meta property="og:site_name" content="Small Works Boise">
-    
+
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Home Renovation Services | Small Works Boise">
-    <meta name="twitter:description" content="Kitchen remodels, bathroom renovations, home additions, and more in Boise, Idaho.">
-    
+    <meta name="twitter:description"
+        content="Kitchen remodels, bathroom renovations, home additions, and more in Boise, Idaho.">
+
     <link rel="stylesheet" href="css/styles.css">
-    
+
     <!-- Structured Data - Service -->
     <script type="application/ld+json">
     {
@@ -88,6 +93,7 @@
     }
     </script>
 </head>
+
 <body>
     <header></header>
 
@@ -101,9 +107,56 @@
     <section class="services">
         <div class="container">
             <div class="accordion" id="servicesAccordion">
+
+                <!-- New Builds -->
+                <div class="accordion-item" id="new-builds">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="new-builds-panel"
+                        id="new-builds-header">
+                        New Builds
+                        <span class="accordion-summary">Luxury bathrooms with custom tile and fixtures.</span>
+                    </button>
+                    <div class="accordion-panel" id="new-builds-panel" role="region"
+                        aria-labelledby="new-builds-header">
+                        <div class="section-title">
+                            <h2>New Builds</h2>
+                        </div>
+
+                        <div class="services-grid" id="new-builds-grid">
+                            <!-- New Builds carousel tiles will be injected here by script -->
+                        </div>
+
+                        <div style="margin-top:1rem;">
+                            <a href="#" class="btn btn-secondary" onclick="openGalleryForSection('new-builds'); return false;">View Gallery</a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Full Home -->
+                <div class="accordion-item" id="full-home">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="full-home-panel"
+                        id="full-home-header">
+                        Full Home Renovations
+                        <span class="accordion-summary">Complete home transformations from top to bottom.</span>
+                    </button>
+                    <div class="accordion-panel" id="full-home-panel" role="region" aria-labelledby="full-home-header">
+                        <div class="section-title">
+                            <h2>Full Home</h2>
+                        </div>
+                        <div class="services-grid" id="full-home-grid">
+                            <!-- Full Home carousel tiles will be injected here -->
+                        </div>
+                        <div style="margin-top:1rem;">
+                            <a href="#" class="btn btn-secondary"
+                                onclick="openGalleryForSection('full-home'); return false;">View Gallery</a>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Kitchens (expanded by default) -->
                 <div class="accordion-item" id="kitchens">
-                    <button class="accordion-header" aria-expanded="false" aria-controls="kitchens-panel" id="kitchens-header">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="kitchens-panel"
+                        id="kitchens-header">
                         Kitchens
                         <span class="accordion-summary">Modern, unique, beautiful.</span>
                     </button>
@@ -111,204 +164,37 @@
                         <div class="section-title">
                             <h2>Kitchens</h2>
                         </div>
-                        <div class="services-grid">
-                            <article class="service-card service-tile">
-                                <div class="service-carousel" data-index="0">
-                                    <button class="carousel-btn prev" aria-label="Previous">&#10094;</button>
-                                    <div class="carousel-track">
-                                        <img loading="lazy" src="zillow_images/zillow_images_1812/image-12.jpg" alt="Kitchen">
-                                        <img loading="lazy" src="zillow_images/zillow_images_1812/image-11.jpg" alt="Kitchen">
-                                        <img loading="lazy" src="zillow_images/zillow_images_1812/image-10.jpg" alt="Kitchen">
-                                        <img loading="lazy" src="zillow_images/zillow_images_1812/image-9.jpg" alt="Kitchen">
-                                    </div>
-                                    <button class="carousel-btn next" aria-label="Next">&#10095;</button>
-                                </div>
-                            </article>
-
-                            <article class="service-card service-tile">
-                                <div class="service-carousel" data-index="1">
-                                    <button class="carousel-btn prev" aria-label="Previous">&#10094;</button>
-                                    <div class="carousel-track">
-                                        <img loading="lazy" src="zillow_images/zillow_images_2412/image-4.jpg" alt="Kitchen">
-                                        <img loading="lazy" src="zillow_images/zillow_images_2412/image-5.jpg" alt="Kitchen">
-                                        <img loading="lazy" src="zillow_images/zillow_images_2412/image-6.jpg" alt="Kitchen">
-                                        <img loading="lazy" src="zillow_images/zillow_images_2412/image-7.jpg" alt="Kitchen">
-                                        <img loading="lazy" src="zillow_images/zillow_images_2412/image-8.jpg" alt="Kitchen">
-                                        <img loading="lazy" src="zillow_images/zillow_images_2412/image-9.jpg" alt="Kitchen">
-                                        <img loading="lazy" src="zillow_images/zillow_images_2412/image-10.jpg" alt="Kitchen">
-                                        <img loading="lazy" src="zillow_images/zillow_images_2412/image-11.jpg" alt="Kitchen">
-                                    </div>
-                                    <button class="carousel-btn next" aria-label="Next">&#10095;</button>
-                                </div>
-                            </article>
-
-                            <article class="service-card service-tile">
-                                <div class="service-carousel" data-index="0">
-                                    <button class="carousel-btn prev" aria-label="Previous">&#10094;</button>
-                                    <div class="carousel-track">
-                                        <img loading="lazy" src="zillow_images/zillow_images_1523/image-9.jpg" alt="Kitchen - 1">
-                                        <img loading="lazy" src="zillow_images/zillow_images_1523/image-3.jpg" alt="Kitchen - 2">
-                                        <img loading="lazy" src="zillow_images/zillow_images_1523/image-4.jpg" alt="Kitchen - 3">
-                                        <img loading="lazy" src="zillow_images/zillow_images_1523/image-5.jpg" alt="Kitchen - 4">
-                                        <img loading="lazy" src="zillow_images/zillow_images_1523/image-6.jpg" alt="Kitchen - 5">
-                                        <img loading="lazy" src="zillow_images/zillow_images_1523/image-7.jpg" alt="Kitchen - 6">
-                                        <img loading="lazy" src="zillow_images/zillow_images_1523/image-8.jpg" alt="Kitchen - 7">
-                                    </div>
-                                    <button class="carousel-btn next" aria-label="Next">&#10095;</button>
-                                </div>
-                            </article>
-
-                            <article class="service-card service-tile">
-                                <div class="service-carousel" data-index="0">
-                                    <button class="carousel-btn prev" aria-label="Previous">&#10094;</button>
-                                    <div class="carousel-track">
-                                        <img loading="lazy" src="zillow_images/zillow_images_1435/image-15.jpg" alt="Additions - 1">
-                                        <img loading="lazy" src="zillow_images/zillow_images_1435/image-16.jpg" alt="Additions - 2">
-                                        <img loading="lazy" src="zillow_images/zillow_images_1435/image-14.jpg" alt="Additions - 3">
-                                        <img loading="lazy" src="zillow_images/zillow_images_1435/image-13.jpg" alt="Additions - 3">
-                                        <img loading="lazy" src="zillow_images/zillow_images_1435/image-12.jpg" alt="Additions - 3">
-                                    </div>
-                                    <button class="carousel-btn next" aria-label="Next">&#10095;</button>
-                                </div>
-                            </article>
-
-                            <article class="service-card service-tile">
-                                <div class="service-carousel" data-index="0">
-                                    <button class="carousel-btn prev" aria-label="Previous">&#10094;</button>
-                                    <div class="carousel-track">
-                                        <img loading="lazy" src="zillow_images/zillow_images_1202-2/image-8.jpg" alt="Structural - 1">
-                                        <img loading="lazy" src="zillow_images/zillow_images_1202-2/image-6.jpg" alt="Structural - 2">
-                                        <img loading="lazy" src="zillow_images/zillow_images_1202-2/image-7.jpg" alt="Structural - 3">
-                                        <img loading="lazy" src="zillow_images/zillow_images_1202-2/image-10.jpg" alt="Structural - 3">
-                                    </div>
-                                    <button class="carousel-btn next" aria-label="Next">&#10095;</button>
-                                </div>
-                            </article>
-
-                            <article class="service-card service-tile">
-                                <div class="service-carousel" data-index="0">
-                                    <button class="carousel-btn prev" aria-label="Previous">&#10094;</button>
-                                    <div class="carousel-track">
-                                        <img loading="lazy" src="zillow_images/zillow_images_801/image-11.jpg" alt="Finishing - 1">
-                                        <img loading="lazy" src="zillow_images/zillow_images_801/image-8.jpg" alt="Finishing - 2">
-                                        <img loading="lazy" src="zillow_images/zillow_images_801/image-9.jpg" alt="Finishing - 3">
-                                        <img loading="lazy" src="zillow_images/zillow_images_801/image-10.jpg" alt="Finishing - 3">
-                                        <img loading="lazy" src="zillow_images/zillow_images_801/image-7.jpg" alt="Finishing - 3">
-                                        <img loading="lazy" src="zillow_images/zillow_images_801/image-12.jpg" alt="Finishing - 3">
-                                        <img loading="lazy" src="zillow_images/zillow_images_801/image-14.jpg" alt="Finishing - 3">
-                                    </div>
-                                    <button class="carousel-btn next" aria-label="Next">&#10095;</button>
-                                </div>
-                            </article>
+                        <div class="services-grid" id="kitchens-grid">
+                            <!-- Kitchens carousel tiles will be injected here -->
                         </div>
                         <div style="margin-top:1rem;">
-                            <a href="#" class="btn btn-secondary" onclick="openGalleryForSection('kitchens'); return false;">View Gallery</a>
+                            <a href="#" class="btn btn-secondary"
+                                onclick="openGalleryForSection('kitchens'); return false;">View Gallery</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Bathrooms (placeholder) -->
+                <!-- Bathrooms -->
                 <div class="accordion-item" id="bathrooms">
-                    <button class="accordion-header" aria-expanded="false" aria-controls="bathrooms-panel" id="bathrooms-header">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="bathrooms-panel"
+                        id="bathrooms-header">
                         Bathrooms
                         <span class="accordion-summary">Luxury bathrooms with custom tile and fixtures.</span>
                     </button>
                     <div class="accordion-panel" id="bathrooms-panel" role="region" aria-labelledby="bathrooms-header">
-                        <div class="section-title"><h2>Bathrooms</h2></div>
-                        <div class="services-grid">
-                            <article class="service-card service-tile">
-                                <div class="service-carousel" data-index="0">
-                                    <button class="carousel-btn prev" aria-label="Previous">&#10094;</button>
-                                    <div class="carousel-track">
-                                        <img loading="lazy" src="zillow_images/zillow_images_801/image-16.jpg" alt="Bathroom">
-                                        <img loading="lazy" src="zillow_images/zillow_images_801/image-24.jpg" alt="Bathroom">
-                                        <img loading="lazy" src="zillow_images/zillow_images_801/image-25.jpg" alt="Bathroom">
-                                        <img loading="lazy" src="zillow_images/zillow_images_801/image-26.jpg" alt="Bathroom">
-                                        <img loading="lazy" src="zillow_images/zillow_images_801/image-31.jpg" alt="Bathroom">
-                                        <img loading="lazy" src="zillow_images/zillow_images_801/image-32.jpg" alt="Bathroom">                                        
-                                        <img loading="lazy" src="zillow_images/zillow_images_801/image-33.jpg" alt="Bathroom">
-                                    </div>
-                                    <button class="carousel-btn next" aria-label="Next">&#10095;</button>
-                                </div>
-                            </article>
-
-                                                        <article class="service-card service-tile">
-                                <div class="service-carousel" data-index="0">
-                                    <button class="carousel-btn prev" aria-label="Previous">&#10094;</button>
-                                    <div class="carousel-track">
-                                        <img loading="lazy" src="zillow_images/zillow_images_801/image-16.jpg" alt="Bathroom">
-                                        <img loading="lazy" src="zillow_images/zillow_images_801/image-24.jpg" alt="Bathroom">
-                                        <img loading="lazy" src="zillow_images/zillow_images_801/image-25.jpg" alt="Bathroom">
-                                        <img loading="lazy" src="zillow_images/zillow_images_801/image-26.jpg" alt="Bathroom">
-                                        <img loading="lazy" src="zillow_images/zillow_images_801/image-31.jpg" alt="Bathroom">
-                                        <img loading="lazy" src="zillow_images/zillow_images_801/image-32.jpg" alt="Bathroom">                                        
-                                        <img loading="lazy" src="zillow_images/zillow_images_801/image-33.jpg" alt="Bathroom">
-                                    </div>
-                                    <button class="carousel-btn next" aria-label="Next">&#10095;</button>
-                                </div>
-                            </article>
-                            <article class="service-card service-tile">
-                                <div class="service-carousel" data-index="0">
-                                    <button class="carousel-btn prev" aria-label="Previous">&#10094;</button>
-                                    <div class="carousel-track">
-                                        <img loading="lazy" src="zillow_images/zillow_images_1435/image-16.jpg" alt="Bathroom">
-                                        <img loading="lazy" src="zillow_images/zillow_images_1435/image-25.jpg" alt="Bathroom">
-                                        <img loading="lazy" src="zillow_images/zillow_images_1435/image-26.jpg" alt="Bathroom">
-                                        <img loading="lazy" src="zillow_images/zillow_images_1435/image-27.jpg" alt="Bathroom">
-                                        <img loading="lazy" src="zillow_images/zillow_images_1435/image-30.jpg" alt="Bathroom">
-                                        <img loading="lazy" src="zillow_images/zillow_images_1435/image-31.jpg" alt="Bathroom">
-                                    </div>
-                                    <button class="carousel-btn next" aria-label="Next">&#10095;</button>
-                                </div>
-                            </article>
-                            
-                            <article class="service-card service-tile">
-                                <div class="service-carousel" data-index="0">
-                                    <button class="carousel-btn prev" aria-label="Previous">&#10094;</button>
-                                    <div class="carousel-track">
-                                        <img loading="lazy" src="zillow_images/zillow_images_1812/image-17.jpg" alt="Bathroom">
-                                        <img loading="lazy" src="zillow_images/zillow_images_1812/image-18.jpg" alt="Bathroom">
-                                        <img loading="lazy" src="zillow_images/zillow_images_1812/image-19.jpg" alt="Bathroom">
-                                        <img loading="lazy" src="zillow_images/zillow_images_1812/image-27.jpg" alt="Bathroom">
-                                        <img loading="lazy" src="zillow_images/zillow_images_1812/image-30.jpg" alt="Bathroom">
-                                    </div>
-                                    <button class="carousel-btn next" aria-label="Next">&#10095;</button>
-                                </div>
-                            </article>
-
-
+                        <div class="section-title">
+                            <h2>Bathrooms</h2>
+                        </div>
+                        <div class="services-grid" id="bathrooms-grid">
+                            <!-- Bathrooms carousel tiles will be injected here -->
                         </div>
                         <div style="margin-top:1rem;">
-                            <a href="#" class="btn btn-secondary" onclick="openGalleryForSection('bathrooms'); return false;">View Gallery</a>
+                            <a href="#" class="btn btn-secondary"
+                                onclick="openGalleryForSection('bathrooms'); return false;">View Gallery</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Full Home (placeholder) -->
-                <div class="accordion-item" id="full-home">
-                    <button class="accordion-header" aria-expanded="false" aria-controls="full-home-panel" id="full-home-header">
-                        Full Home Renovations
-                        <span class="accordion-summary">Complete home transformations from top to bottom.</span>
-                    </button>
-                    <div class="accordion-panel" id="full-home-panel" role="region" aria-labelledby="full-home-header">
-                        <div class="section-title"><h2>Full Home</h2></div>
-                        <div class="services-grid">
-                            <article class="service-card service-tile">
-                                <div class="service-carousel" data-index="0">
-                                    <button class="carousel-btn prev" aria-label="Previous">&#10094;</button>
-                                    <div class="carousel-track">
-                                        <img loading="lazy" src="zillow_images/zillow_images_1202/image-1.jpg" alt="Full Home">
-                                        <img loading="lazy" src="zillow_images/zillow_images_1202/image-2.jpg" alt="Full Home">
-                                    </div>
-                                    <button class="carousel-btn next" aria-label="Next">&#10095;</button>
-                                </div>
-                            </article>
-                        </div>
-                        <div style="margin-top:1rem;">
-                            <a href="#" class="btn btn-secondary" onclick="openGalleryForSection('full-home'); return false;">View Gallery</a>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -317,12 +203,123 @@
     <section class="cta">
         <div class="container">
             <h2>Ready to Get Started?</h2>
-            <p>Contact us today for a free consultation. Let's discuss your project and how we can bring your vision to life.</p>
+            <p>Contact us today for a free consultation. Let's discuss your project and how we can bring your vision to
+                life.</p>
             <a href="contact.html" class="btn btn-primary">Request a Quote</a>
         </div>
     </section>
 
+    <script>
+    (function(){
+        function createCarouselElement(dir, images, startIndex, altBase){
+            var article = document.createElement('article');
+            article.className = 'service-card service-tile';
+
+            var carousel = document.createElement('div');
+            carousel.className = 'service-carousel';
+            carousel.setAttribute('data-index', startIndex || 0);
+
+            var btnPrev = document.createElement('button');
+            btnPrev.className = 'carousel-btn prev';
+            btnPrev.setAttribute('aria-label','Previous');
+            btnPrev.innerHTML = '&#10094;';
+
+            var btnNext = document.createElement('button');
+            btnNext.className = 'carousel-btn next';
+            btnNext.setAttribute('aria-label','Next');
+            btnNext.innerHTML = '&#10095;';
+
+            var track = document.createElement('div');
+            track.className = 'carousel-track';
+
+            images.forEach(function(img){
+                var im = document.createElement('img');
+                im.loading = 'lazy';
+                im.src = dir + '/' + img;
+                im.alt = altBase ? (altBase + ' — ' + img) : '';
+                track.appendChild(im);
+            });
+
+            carousel.appendChild(btnPrev);
+            carousel.appendChild(track);
+            carousel.appendChild(btnNext);
+            article.appendChild(carousel);
+            return article;
+        }
+
+        // Data sets for each section (keeps same images as before)
+        var kitchensSets = [
+            { dir: 'zillow_images/zillow_images_1812', images: ['image-12.jpg','image-11.jpg','image-10.jpg','image-9.jpg'], title: 'Kitchen 1812' },
+            { dir: 'zillow_images/zillow_images_2412', images: ['image-4.jpg','image-5.jpg','image-6.jpg','image-7.jpg','image-8.jpg','image-9.jpg','image-10.jpg','image-11.jpg'], title: 'Kitchen 2412' },
+            { dir: 'zillow_images/zillow_images_1523', images: ['image-9.jpg','image-3.jpg','image-4.jpg','image-5.jpg','image-6.jpg','image-7.jpg','image-8.jpg'], title: 'Kitchen 1523' },
+            { dir: 'zillow_images/zillow_images_1435', images: ['image-15.jpg','image-16.jpg','image-14.jpg','image-13.jpg','image-12.jpg'], title: 'Kitchen 1435' },
+            { dir: 'zillow_images/zillow_images_1202-2', images: ['image-8.jpg','image-6.jpg','image-7.jpg','image-10.jpg'], title: 'Kitchen 1202-2' },
+            { dir: 'zillow_images/zillow_images_801', images: ['image-11.jpg','image-8.jpg','image-9.jpg','image-10.jpg','image-7.jpg','image-12.jpg','image-14.jpg'], title: 'Kitchen 801' }
+        ];
+
+        var bathroomsSets = [
+            { dir: 'zillow_images/zillow_images_801', images: ['image-16.jpg','image-24.jpg','image-25.jpg','image-26.jpg','image-31.jpg','image-32.jpg','image-33.jpg'], title: 'Bathroom 801 A' },
+            { dir: 'zillow_images/zillow_images_801', images: ['image-16.jpg','image-24.jpg','image-25.jpg','image-26.jpg','image-31.jpg','image-32.jpg','image-33.jpg'], title: 'Bathroom 801 B' },
+            { dir: 'zillow_images/zillow_images_1435', images: ['image-16.jpg','image-25.jpg','image-26.jpg','image-27.jpg','image-30.jpg','image-31.jpg'], title: 'Bathroom 1435' },
+            { dir: 'zillow_images/zillow_images_1812', images: ['image-17.jpg','image-18.jpg','image-19.jpg','image-27.jpg','image-30.jpg'], title: 'Bathroom 1812' }
+        ];
+
+        var fullHomeSets = [
+            { title: "North End | 1890", dir: "zillow_images/zillow_images_1202",
+            images: ["image-1.jpg","image-2.jpg","image-3.jpg","image-4.jpg","image-5.jpg","image-6.jpg","image-7.jpg","image-8.jpg","image-9.jpg","image-10.jpg","image-11.jpg","image-12.jpg","image-13.jpg","image-14.jpg","image-15.jpg","image-16.jpg","image-17.jpg","image-18.jpg","image-19.jpg"],
+        },
+        {
+            title: "Pleasanton | 1920",
+            dir: "zillow_images/zillow_images_801",
+            images: ["image-1.jpg","image-2.jpg","image-3.jpg","image-4.jpg","image-5.jpg","image-6.jpg","image-7.jpg","image-8.jpg","image-9.jpg","image-10.jpg","image-11.jpg","image-12.jpg","image-13.jpg","image-14.jpg","image-15.jpg","image-16.jpg","image-17.jpg","image-18.jpg","image-19.jpg","image-20.jpg","image-21.jpg","image-22.jpg","image-23.jpg","image-24.jpg","image-25.jpg","image-26.jpg","image-27.jpg","image-28.jpg","image-29.jpg","image-30.jpg","image-31.jpg","image-32.jpg","image-33.jpg","image-34.jpg","image-35.jpg","image-36.jpg","image-37.jpg","image-38.jpg","image-39.jpg","image-40.jpg","image-41.jpg","image-42.jpg","image-43.jpg","image-44.jpg","image-45.jpg","image-46.jpg","image-47.jpg","image-48.jpg","image-49.jpg","image-50.jpg"],
+        },
+        ];
+
+        // existing New Builds data
+        var newBuildSets = [
+            {
+                title: "North End | 2019 - New Build",
+                dir: "zillow_images/zillow_images_1812",
+                images: ["image-1.jpg","image-2.jpg","image-3.jpg","image-4.jpg","image-5.jpg","image-6.jpg","image-7.jpg","image-8.jpg","image-9.jpg","image-10.jpg","image-11.jpg","image-12.jpg","image-13.jpg","image-14.jpg","image-15.jpg","image-16.jpg","image-17.jpg","image-18.jpg","image-19.jpg","image-20.jpg","image-21.jpg","image-22.jpg","image-23.jpg","image-24.jpg","image-25.jpg","image-26.jpg","image-27.jpg","image-28.jpg","image-29.jpg","image-30.jpg","image-31.jpg","image-32.jpg","image-33.jpg","image-34.jpg","image-35.jpg","image-36.jpg","image-37.jpg","image-38.jpg","image-39.jpg","image-40.jpg","image-41.jpg","image-42.jpg","image-43.jpg","image-44.jpg","image-45.jpg","image-46.jpg","image-47.jpg","image-48.jpg","image-49.jpg","image-50.jpg"]
+            },
+            {
+                title: "Garden | 2025 - New Build",
+                dir: "zillow_images/zillow_images_1435",
+                images: ["image-1.jpg","image-2.jpg","image-3.jpg","image-4.jpg","image-5.jpg","image-6.jpg","image-7.jpg","image-8.jpg","image-9.jpg","image-10.jpg","image-11.jpg","image-12.jpg","image-13.jpg","image-14.jpg","image-15.jpg","image-16.jpg","image-17.jpg","image-18.jpg","image-19.jpg","image-20.jpg","image-21.jpg","image-22.jpg","image-23.jpg","image-24.jpg","image-25.jpg","image-26.jpg","image-27.jpg","image-28.jpg","image-29.jpg","image-30.jpg","image-31.jpg","image-32.jpg","image-33.jpg","image-34.jpg","image-35.jpg","image-36.jpg","image-37.jpg","image-38.jpg","image-39.jpg","image-40.jpg","image-41.jpg","image-42.jpg"]
+            },
+            {
+                title: "Garden | 2022 - New Build",
+                dir: "zillow_images/zillow_images_1523",
+                images: ["image-1.jpg","image-2.jpg","image-3.jpg","image-4.jpg","image-5.jpg","image-6.jpg","image-7.jpg","image-8.jpg","image-9.jpg","image-10.jpg","image-11.jpg","image-12.jpg","image-13.jpg","image-14.jpg","image-15.jpg","image-16.jpg","image-17.jpg","image-18.jpg","image-19.jpg","image-20.jpg","image-21.jpg","image-22.jpg","image-23.jpg","image-24.jpg","image-25.jpg","image-26.jpg","image-27.jpg"]
+            },
+            {
+                title: "Vetrans Park | 2022 - New Build",
+                dir: "zillow_images/zillow_images_2412",
+                images: ["image-1.jpg","image-2.jpg","image-3.jpg","image-4.jpg","image-5.jpg","image-6.jpg","image-7.jpg","image-8.jpg","image-9.jpg","image-10.jpg","image-11.jpg","image-12.jpg","image-13.jpg","image-14.jpg","image-15.jpg","image-16.jpg","image-17.jpg","image-18.jpg","image-19.jpg","image-20.jpg","image-21.jpg","image-22.jpg","image-23.jpg","image-24.jpg","image-25.jpg","image-26.jpg","image-27.jpg","image-28.jpg","image-29.jpg","image-30.jpg","image-31.jpg","image-32.jpg","image-33.jpg","image-34.jpg","image-35.jpg","image-36.jpg","image-37.jpg"]
+            }
+        ];
+
+        function injectSets(gridId, sets){
+            var gridEl = document.getElementById(gridId);
+            if(!gridEl) return;
+            sets.forEach(function(set){
+                var el = createCarouselElement(set.dir, set.images, 0, set.title || '');
+                gridEl.appendChild(el);
+            });
+        }
+
+        injectSets('new-builds-grid', newBuildSets);
+        injectSets('kitchens-grid', kitchensSets);
+        injectSets('bathrooms-grid', bathroomsSets);
+        injectSets('full-home-grid', fullHomeSets);
+
+        // initialize carousels that were injected (main.js init is idempotent)
+        if(window.initServiceCarousels) window.initServiceCarousels();
+    })();
+    </script>
+
     <footer></footer>
     <script src="js/main.js"></script>
 </body>
+
 </html>
