@@ -342,6 +342,37 @@
     })();
     </script>
 
+    <script>
+    // Inject a rotatable inline SVG chevron into each accordion header (left side)
+    (function(){
+        var headers = document.querySelectorAll('.accordion-header');
+        if(!headers || !headers.length) return;
+        var svgNS = 'http://www.w3.org/2000/svg';
+        headers.forEach(function(h){
+            if(h.querySelector('.chev')) return; // already injected
+            var svg = document.createElementNS(svgNS, 'svg');
+            svg.setAttribute('viewBox','0 0 24 24');
+            svg.setAttribute('class','chev');
+            svg.setAttribute('aria-hidden','true');
+            svg.setAttribute('focusable','false');
+            svg.setAttribute('width','18');
+            svg.setAttribute('height','18');
+
+            var path = document.createElementNS(svgNS, 'path');
+            path.setAttribute('d','M8 5l8 7-8 7');
+            path.setAttribute('stroke','currentColor');
+            path.setAttribute('stroke-width','1.8');
+            path.setAttribute('fill','none');
+            path.setAttribute('stroke-linecap','round');
+            path.setAttribute('stroke-linejoin','round');
+
+            svg.appendChild(path);
+            // insert as first child so it sits visually on the left; CSS positions absolutely
+            h.insertBefore(svg, h.firstChild);
+        });
+    })();
+    </script>
+
     <footer></footer>
     <script src="js/main.js"></script>
 </body>

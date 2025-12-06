@@ -274,6 +274,29 @@ nav {
 .accordion-panel.open { max-height: 2000px; padding-top: 1rem; }
 .accordion-panel .services-grid { margin-top: 0.5rem; }
 
+/* Accordion header indicator: use inline SVG chevron injected into the header */
+.accordion-header {
+    position: relative; /* for indicator */
+    padding-left: 2.25rem; /* leave room on the left for the icon */
+}
+
+/* SVG chevron placed inside the header (injected via script) */
+.accordion-header .chev {
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%) rotate(0deg);
+    width: 18px;
+    height: 18px;
+    color: var(--text-light);
+    transition: transform 220ms ease, color 220ms ease;
+    pointer-events: none;
+}
+.accordion-header[aria-expanded="true"] .chev {
+    transform: translateY(-50%) rotate(90deg);
+    color: var(--primary-color);
+}
+
 @media (min-width: 900px) {
     .accordion-header { font-size: 1.5rem; }
 }
