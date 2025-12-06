@@ -1,15 +1,17 @@
 /* CSS Variables for consistent theming */
 :root {
-    --primary-color: #2c5530;
-    --primary-dark: #1e3a21;
-    --secondary-color: #d4a857;
+    --primary-color: #B46E3A;
+    --primary-dark: #ab5c21;
+    --secondary-color: #B46E3A;
     --text-color: #333333;
     --text-light: #666666;
-    --background-color: #f8f9fa;
+    --background-color: #fdfaf6df;
+    --charcoal-color: #2d2d2d;
     --white: #ffffff;
-    --border-color: #e0e0e0;
+    --border-color: #f4efe4;
     --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     --shadow-hover: 0 4px 20px rgba(0, 0, 0, 0.15);
+    --color-backup: #2c5530; 
 }
 
 /* Reset and Base Styles */
@@ -263,13 +265,13 @@ section {
 .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
+    gap: 1rem;
 }
 
 /* Force two larger tiles per row on the Services page for better image visibility */
 .services .services-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 2.5rem;
+    gap: 1rem;
 }
 
 @media (max-width: 900px) {
@@ -287,9 +289,9 @@ section {
 .service-carousel {
     position: relative;
     width: 100%;
-    height: 340px; /* increased for larger preview */
+    height: 340px; 
     overflow: hidden;
-    border-radius: 8px 8px 0 0;
+    border-radius: 0;
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
 }
 
@@ -328,8 +330,8 @@ section {
 
 .service-content {
     padding: 1rem;
-    background: var(--white);
-    border-radius: 0 0 8px 8px;
+    background: var(--charcoal-color);
+    border-radius: 0; 
     box-shadow: var(--shadow);
     flex: 1 1 auto;
 }
@@ -344,12 +346,17 @@ section {
 
 
 .service-card {
-    background-color: var(--white);
+    background-color: var(--charcoal-color);
     border-radius: 8px;
     padding: 2rem;
     box-shadow: var(--shadow);
     text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.service-card.service-tile {
+    padding: 1rem;
+    overflow: hidden;
 }
 
 .service-card:hover {
@@ -373,7 +380,6 @@ section {
     font-size: 0.95rem;
 }
 
-/* About Section */
 .about-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1233,11 +1239,13 @@ footer {
 .page-header h1 {
     font-size: 2.5rem;
     margin-bottom: 0.5rem;
+    animation: fadeInUp 0.8s ease 0.4s both;
 }
 
 .page-header p {
     opacity: 0.9;
     font-size: 1.1rem;
+    animation: fadeInUp 0.8s ease 0.4s both;
 }
 
 /* Animations */

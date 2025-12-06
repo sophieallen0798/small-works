@@ -52,7 +52,6 @@ Edit `projects.html` to add your actual Zillow property links:
 small-works/
 ├── index.html          # Home page
 ├── services.html       # Services page
-├── projects.html       # Portfolio/Our Work page
 ├── contact.html        # Contact page with form
 ├── thank-you.html      # Form submission confirmation
 ├── css/
