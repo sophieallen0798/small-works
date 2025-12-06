@@ -81,6 +81,29 @@ body.home .hamburger span {
     background-color: var(--white);
 }
 
+/* Gallery: make header overlay the hero like the homepage */
+body.gallery header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: transparent;
+    box-shadow: none;
+    z-index: 1000;
+}
+
+body.gallery .logo {
+    color: var(--white);
+}
+
+body.gallery .nav-links a {
+    color: rgba(255,255,255,0.95);
+}
+
+body.gallery .hamburger span {
+    background-color: var(--white);
+}
+
 nav {
     display: flex;
     justify-content: space-between;
@@ -160,12 +183,37 @@ nav {
     pointer-events: none;
 }
 
+.full-house-photo-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../zillow_images/zillow_images_2412/image-1.jpg');
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
+    z-index: 0;
+    pointer-events: none;
+}
+
 /* On very narrow screens show full image (may letterbox) so top isn't cropped */
 @media (max-width: 600px) {
     .home-photo-background {
         background-position: center top;
         background-size: contain;
         background-color: #000; /* fallback behind letterbox */
+    }
+}
+
+/* Gallery page: make the header photo taller */
+.gallery .hero {
+    min-height: 120vh;
+}
+
+@media (max-width: 900px) {
+    .gallery .hero {
+        min-height: 60vh;
     }
 }
 
@@ -221,7 +269,7 @@ nav {
 
 .btn-primary {
     background-color: var(--secondary-color);
-    color: var(--primary-dark);
+    color: var(--white);
 }
 
 .btn-primary:hover {
@@ -513,23 +561,6 @@ section {
     color: var(--secondary-color);
 }
 
-.zillow-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background-color: #006aff;
-    color: var(--white);
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    font-size: 0.875rem;
-    font-weight: 600;
-    transition: background-color 0.3s;
-}
-
-.zillow-badge:hover {
-    background-color: #0052cc;
-}
-
 /* Coming Soon Badge */
 .coming-soon-badge {
     display: inline-block;
@@ -754,73 +785,6 @@ section {
     }
 }
 
-/* Featured Property Section */
-.featured-property {
-    padding: 4rem 0;
-    background-color: var(--white);
-}
-
-.featured-property-card {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    background-color: var(--background-color);
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: var(--shadow-hover);
-}
-
-.featured-property-images {
-    position: relative;
-}
-
-.featured-main-image {
-    height: 100%;
-    min-height: 500px;
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-
-.property-badge {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    background-color: var(--secondary-color);
-    color: var(--primary-dark);
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    font-weight: 600;
-    font-size: 0.875rem;
-    z-index: 10;
-}
-
-.property-image-placeholder {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    color: var(--white);
-}
-
-.property-image-placeholder span {
-    font-size: 5rem;
-}
-
-.property-image-placeholder small {
-    font-size: 1rem;
-    opacity: 0.9;
-}
-
-.featured-property-details {
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
 .property-location {
     display: flex;
     align-items: center;
@@ -912,37 +876,6 @@ section {
     font-size: 1.25rem;
     font-weight: 700;
     color: var(--primary-color);
-}
-
-.featured-zillow {
-    padding: 1rem 2rem;
-    font-size: 1rem;
-    justify-content: center;
-    margin-top: auto;
-}
-
-/* Featured Property Responsive */
-@media (max-width: 900px) {
-    .featured-property-card {
-        grid-template-columns: 1fr;
-    }
-    
-    .featured-main-image {
-        min-height: 300px;
-    }
-    
-    .property-stats {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .property-features ul {
-        grid-template-columns: 1fr;
-    }
-    
-    .property-value {
-        flex-direction: column;
-        gap: 1rem;
-    }
 }
 
 /* Contact Section */
@@ -1071,93 +1004,6 @@ section {
 
 .btn-submit:hover {
     background-color: var(--primary-dark);
-}
-
-/* Featured Project Teaser */
-.featured-teaser {
-    padding: 4rem 0;
-    background-color: var(--white);
-    border-top: 1px solid var(--border-color);
-}
-
-.teaser-content {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 3rem;
-    align-items: center;
-}
-
-.teaser-label {
-    display: inline-block;
-    background-color: var(--secondary-color);
-    color: var(--primary-dark);
-    padding: 0.25rem 0.75rem;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 0.75rem;
-}
-
-.teaser-text h2 {
-    color: var(--primary-color);
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
-
-.teaser-text p {
-    color: var(--text-light);
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
-    max-width: 500px;
-}
-
-.teaser-stats {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-    padding: 2rem;
-    background-color: var(--background-color);
-    border-radius: 8px;
-    border-left: 4px solid var(--secondary-color);
-}
-
-.teaser-stat {
-    text-align: center;
-}
-
-.teaser-stat-value {
-    display: block;
-    font-size: 1.75rem;
-    font-weight: 700;
-    color: var(--primary-color);
-}
-
-.teaser-stat-label {
-    display: block;
-    font-size: 0.75rem;
-    color: var(--text-light);
-    margin-top: 0.25rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-@media (max-width: 768px) {
-    .teaser-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-    
-    .teaser-text p {
-        max-width: none;
-    }
-    
-    .teaser-stats {
-        justify-self: center;
-        border-left: none;
-        border-top: 4px solid var(--secondary-color);
-    }
 }
 
 /* CTA Section */

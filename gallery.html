@@ -6,89 +6,110 @@
     <title>Gallery | Small Works Boise</title>
     <meta name="description" content="Browse renovation project galleries from Small Works Boise. Click through image sets for each home renovation.">
     <link rel="stylesheet" href="css/styles.css">
-    <style>
-        .gallery-set-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin: 3rem 0; }
-        .gallery-set-card { background: var(--white); border-radius: 8px; box-shadow: var(--shadow); padding: 1.5rem; display: flex; flex-direction: column; align-items: center; }
-        .gallery-set-card h2 { color: var(--primary-color); margin-bottom: 1rem; font-size: 1.2rem; }
-        .gallery-set-card img { width: 100%; max-width: 320px; height: 180px; object-fit: cover; border-radius: 6px; margin-bottom: 1rem; cursor: pointer; box-shadow: var(--shadow); }
-        .gallery-set-card button { margin-top: 1rem; }
-        @media (max-width: 600px) { .gallery-set-list { grid-template-columns: 1fr; } }
-    </style>
-</head>
-<body>
+    <!-- gallery uses shared services styles; no page-specific overrides -->
+    </head>
+<body class="gallery">
     <header></header>
 
-    <section class="page-header">
+    <section class="hero" style="position:relative; overflow:hidden;">
+        <div class="full-house-photo-background"></div>
         <div class="container">
-            <h1>Project Gallery</h1>
-            <p>Click any project to view its full image set.</p>
+            <h1>Full Home Renovations</h1>
+            <p>With historic </p>
         </div>
     </section>
-    <section>
+    <section class="services">
         <div class="container">
-            <div class="gallery-set-list" id="gallerySetList"></div>
+            <div class="services-grid" id="gallerySetList"></div>
         </div>
     </section>
-    <!-- Using shared lightbox from js/main.js; per-set lightbox removed -->
     <footer></footer>
     <script src="js/main.js"></script>
     <script>
     // Gallery sets config
     const gallerySets = [
         {
-            title: "1202 N 16th St",
+            title: "North End | 1890",
             dir: "zillow_images/zillow_images_1202",
             images: ["image-1.jpg","image-2.jpg","image-3.jpg","image-4.jpg","image-5.jpg","image-6.jpg","image-7.jpg","image-8.jpg","image-9.jpg","image-10.jpg","image-11.jpg","image-12.jpg","image-13.jpg","image-14.jpg","image-15.jpg","image-16.jpg","image-17.jpg","image-18.jpg","image-19.jpg"],
         },
         {
-            title: "1812",
+            title: "Pleasanton | 1920",
+            dir: "zillow_images/zillow_images_801",
+            images: ["image-1.jpg","image-2.jpg","image-3.jpg","image-4.jpg","image-5.jpg","image-6.jpg","image-7.jpg","image-8.jpg","image-9.jpg","image-10.jpg","image-11.jpg","image-12.jpg","image-13.jpg","image-14.jpg","image-15.jpg","image-16.jpg","image-17.jpg","image-18.jpg","image-19.jpg","image-20.jpg","image-21.jpg","image-22.jpg","image-23.jpg","image-24.jpg","image-25.jpg","image-26.jpg","image-27.jpg","image-28.jpg","image-29.jpg","image-30.jpg","image-31.jpg","image-32.jpg","image-33.jpg","image-34.jpg","image-35.jpg","image-36.jpg","image-37.jpg","image-38.jpg","image-39.jpg","image-40.jpg","image-41.jpg","image-42.jpg","image-43.jpg","image-44.jpg","image-45.jpg","image-46.jpg","image-47.jpg","image-48.jpg","image-49.jpg","image-50.jpg"],
+        },
+        {
+            title: "North End | 2019 - New Build",
             dir: "zillow_images/zillow_images_1812",
             images: ["image-1.jpg","image-2.jpg","image-3.jpg","image-4.jpg","image-5.jpg","image-6.jpg","image-7.jpg","image-8.jpg","image-9.jpg","image-10.jpg","image-11.jpg","image-12.jpg","image-13.jpg","image-14.jpg","image-15.jpg","image-16.jpg","image-17.jpg","image-18.jpg","image-19.jpg","image-20.jpg","image-21.jpg","image-22.jpg","image-23.jpg","image-24.jpg","image-25.jpg","image-26.jpg","image-27.jpg","image-28.jpg","image-29.jpg","image-30.jpg","image-31.jpg","image-32.jpg","image-33.jpg","image-34.jpg","image-35.jpg","image-36.jpg","image-37.jpg","image-38.jpg","image-39.jpg","image-40.jpg","image-41.jpg","image-42.jpg","image-43.jpg","image-44.jpg","image-45.jpg","image-46.jpg","image-47.jpg","image-48.jpg","image-49.jpg","image-50.jpg"],
         },
         {
-            title: "1435 N 15th St",
+            title: "Garden | 2025 - New Build",
             dir: "zillow_images/zillow_images_1435",
             images: ["image-1.jpg","image-2.jpg","image-3.jpg","image-4.jpg","image-5.jpg","image-6.jpg","image-7.jpg","image-8.jpg","image-9.jpg","image-10.jpg","image-11.jpg","image-12.jpg","image-13.jpg","image-14.jpg","image-15.jpg","image-16.jpg","image-17.jpg","image-18.jpg","image-19.jpg","image-20.jpg","image-21.jpg","image-22.jpg","image-23.jpg","image-24.jpg","image-25.jpg","image-26.jpg","image-27.jpg","image-28.jpg","image-29.jpg","image-30.jpg","image-31.jpg","image-32.jpg","image-33.jpg","image-34.jpg","image-35.jpg","image-36.jpg","image-37.jpg","image-38.jpg","image-39.jpg","image-40.jpg","image-41.jpg","image-42.jpg"],
         },
         {
-            title: "1523 N 13th St",
+            title: "Garden | 2022 - New Build",
             dir: "zillow_images/zillow_images_1523",
             images: ["image-1.jpg","image-2.jpg","image-3.jpg","image-4.jpg","image-5.jpg","image-6.jpg","image-7.jpg","image-8.jpg","image-9.jpg","image-10.jpg","image-11.jpg","image-12.jpg","image-13.jpg","image-14.jpg","image-15.jpg","image-16.jpg","image-17.jpg","image-18.jpg","image-19.jpg","image-20.jpg","image-21.jpg","image-22.jpg","image-23.jpg","image-24.jpg","image-25.jpg","image-26.jpg","image-27.jpg"],
         },
         {
-            title: "2412 N 17th St",
+            title: "Vetrans Park | 2022 - New Build",
             dir: "zillow_images/zillow_images_2412",
             images: ["image-1.jpg","image-2.jpg","image-3.jpg","image-4.jpg","image-5.jpg","image-6.jpg","image-7.jpg","image-8.jpg","image-9.jpg","image-10.jpg","image-11.jpg","image-12.jpg","image-13.jpg","image-14.jpg","image-15.jpg","image-16.jpg","image-17.jpg","image-18.jpg","image-19.jpg","image-20.jpg","image-21.jpg","image-22.jpg","image-23.jpg","image-24.jpg","image-25.jpg","image-26.jpg","image-27.jpg","image-28.jpg","image-29.jpg","image-30.jpg","image-31.jpg","image-32.jpg","image-33.jpg","image-34.jpg","image-35.jpg","image-36.jpg","image-37.jpg"],
         },
-        {
-            title: "801 N 8th St",
-            dir: "zillow_images/zillow_images_801",
-            images: ["image-1.jpg","image-2.jpg","image-3.jpg","image-4.jpg","image-5.jpg","image-6.jpg","image-7.jpg","image-8.jpg","image-9.jpg","image-10.jpg","image-11.jpg","image-12.jpg","image-13.jpg","image-14.jpg","image-15.jpg","image-16.jpg","image-17.jpg","image-18.jpg","image-19.jpg","image-20.jpg","image-21.jpg","image-22.jpg","image-23.jpg","image-24.jpg","image-25.jpg","image-26.jpg","image-27.jpg","image-28.jpg","image-29.jpg","image-30.jpg","image-31.jpg","image-32.jpg","image-33.jpg","image-34.jpg","image-35.jpg","image-36.jpg","image-37.jpg","image-38.jpg","image-39.jpg","image-40.jpg","image-41.jpg","image-42.jpg","image-43.jpg","image-44.jpg","image-45.jpg","image-46.jpg","image-47.jpg","image-48.jpg","image-49.jpg","image-50.jpg"],
-        },
     ];
     function renderGallerySets() {
-        const list = document.getElementById('gallerySetList');
-        list.innerHTML = '';
-        gallerySets.forEach((set, i) => {
-            const card = document.createElement('article');
-            card.className = 'gallery-set-card service-card service-tile';
-            // build carousel track markup
-            const imgsHtml = set.images.map(name => `<img loading="lazy" src="${set.dir}/${name}" alt="${set.title}">`).join('');
-            card.innerHTML = `
-                <div class="service-carousel" data-index="0">
-                    <button class="carousel-btn prev" aria-label="Previous">&#10094;</button>
-                    <div class="carousel-track">
-                        ${imgsHtml}
+        const placeholder = document.getElementById('gallerySetList');
+        const containerParent = placeholder.parentElement;
+        // remove placeholder; we'll insert two full sections instead
+        containerParent.removeChild(placeholder);
+
+        function buildSection(title, sets) {
+            const section = document.createElement('section');
+            section.className = 'services';
+            const container = document.createElement('div');
+            container.className = 'container';
+            const titleDiv = document.createElement('div');
+            titleDiv.className = 'section-title';
+            titleDiv.innerHTML = `<h2>${title}</h2>`;
+            container.appendChild(titleDiv);
+            const grid = document.createElement('div');
+            grid.className = 'services-grid';
+
+            sets.forEach((set) => {
+                const card = document.createElement('article');
+                card.className = 'service-card service-tile';
+                const imgsHtml = set.images.map(name => `<img loading="lazy" src="${set.dir}/${name}" alt="${set.title}">`).join('');
+                card.innerHTML = `
+                    <div class="service-carousel" data-index="0">
+                        <button class="carousel-btn prev" aria-label="Previous">&#10094;</button>
+                        <div class="carousel-track">
+                            ${imgsHtml}
+                        </div>
+                        <button class="carousel-btn next" aria-label="Next">&#10095;</button>
                     </div>
-                    <button class="carousel-btn next" aria-label="Next">&#10095;</button>
-                </div>
-                <div class="service-content">
-                    <h3>${set.title}</h3>
-                </div>
-            `;
-            list.appendChild(card);
-        });
-        // initialize carousels on the dynamically created gallery cards
+                    <div class="service-content">
+                        <h3>${set.title}</h3>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+
+            container.appendChild(grid);
+            section.appendChild(container);
+            return section;
+        }
+
+        // Historic: first 2
+        const historicSets = gallerySets.slice(0, 2);
+        // New Builds: next 4 (or up to available)
+        const newBuildSets = gallerySets.slice(2, 6);
+
+        if (historicSets.length) containerParent.appendChild(buildSection('Historic Home Renovations', historicSets));
+        if (newBuildSets.length) containerParent.appendChild(buildSection('New Builds', newBuildSets));
+
+        // initialize carousels inside the newly created sections
         if (typeof initServiceCarousels === 'function') initServiceCarousels();
     }
     renderGallerySets();
