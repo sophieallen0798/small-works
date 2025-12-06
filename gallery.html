@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | Small Works Boise</title>
+    <meta name="description" content="Browse renovation project galleries from Small Works Boise. Click through image sets for each home renovation.">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .gallery-set-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin: 3rem 0; }
+        .gallery-set-card { background: var(--white); border-radius: 8px; box-shadow: var(--shadow); padding: 1.5rem; display: flex; flex-direction: column; align-items: center; }
+        .gallery-set-card h2 { color: var(--primary-color); margin-bottom: 1rem; font-size: 1.2rem; }
+        .gallery-set-card img { width: 100%; max-width: 320px; height: 180px; object-fit: cover; border-radius: 6px; margin-bottom: 1rem; cursor: pointer; box-shadow: var(--shadow); }
+        .gallery-set-card button { margin-top: 1rem; }
+        .gallery-lightbox { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.95); z-index: 9999; align-items: center; justify-content: center; flex-direction: column; }
+        .gallery-lightbox.active { display: flex; }
+        .gallery-lightbox img { max-width: 90vw; max-height: 80vh; border-radius: 8px; box-shadow: var(--shadow-hover); }
+        .gallery-lightbox .close { position: absolute; top: 30px; right: 40px; font-size: 2.5rem; color: var(--white); cursor: pointer; }
+        .gallery-lightbox .nav { position: absolute; top: 50%; font-size: 3rem; color: var(--white); cursor: pointer; padding: 1rem; user-select: none; }
+        .gallery-lightbox .prev { left: 30px; }
+        .gallery-lightbox .next { right: 30px; }
+        .gallery-lightbox .caption { color: var(--white); margin-top: 1rem; font-size: 1.1rem; text-align: center; }
+        .gallery-lightbox .counter { color: #ccc; font-size: 0.9rem; margin-top: 0.5rem; }
+        @media (max-width: 600px) { .gallery-set-list { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <!-- Header (injected by JS) -->
+    <header><!-- Header loading... --></header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Project Gallery</h1>
+            <p>Click any project to view its full image set.</p>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <div class="gallery-set-list" id="gallerySetList"></div>
+        </div>
+    </section>
+    <div class="gallery-lightbox" id="galleryLightbox">
+        <span class="close" onclick="closeGalleryLightbox()">&times;</span>
+        <span class="nav prev" onclick="prevGalleryImage()">&#10094;</span>
+        <span class="nav next" onclick="nextGalleryImage()">&#10095;</span>
+        <img id="galleryLightboxImg" src="" alt="Gallery Image">
+        <div class="caption" id="galleryLightboxCaption"></div>
+        <div class="counter" id="galleryLightboxCounter"></div>
+    </div>
+    <!-- Footer (injected by JS) -->
+    <footer><!-- Footer loading... --></footer>
+    <script src="js/main.js"></script>
+    <script>
+    // Gallery sets config
+    const gallerySets = [
+        {
+            title: "1202 N 16th St",
+            dir: "zillow_images/zillow_images_1202",
+            images: ["image-1.jpg","image-2.jpg","image-3.jpg","image-4.jpg","image-5.jpg","image-6.jpg","image-7.jpg","image-8.jpg","image-9.jpg","image-10.jpg","image-11.jpg","image-12.jpg","image-13.jpg","image-14.jpg","image-15.jpg","image-16.jpg","image-17.jpg","image-18.jpg","image-19.jpg"],
+        },
+        {
+            title: "1812",
+            dir: "zillow_images/zillow_images_1812",
+            images: ["image-1.jpg","image-2.jpg","image-3.jpg","image-4.jpg","image-5.jpg","image-6.jpg","image-7.jpg","image-8.jpg","image-9.jpg","image-10.jpg","image-11.jpg","image-12.jpg","image-13.jpg","image-14.jpg","image-15.jpg","image-16.jpg","image-17.jpg","image-18.jpg","image-19.jpg","image-20.jpg","image-21.jpg","image-22.jpg","image-23.jpg","image-24.jpg","image-25.jpg","image-26.jpg","image-27.jpg","image-28.jpg","image-29.jpg","image-30.jpg","image-31.jpg","image-32.jpg","image-33.jpg","image-34.jpg","image-35.jpg","image-36.jpg","image-37.jpg","image-38.jpg","image-39.jpg","image-40.jpg","image-41.jpg","image-42.jpg","image-43.jpg","image-44.jpg","image-45.jpg","image-46.jpg","image-47.jpg","image-48.jpg","image-49.jpg","image-50.jpg"],
+        },
+        {
+            title: "1435 N 15th St",
+            dir: "zillow_images/zillow_images_1435",
+            images: ["image-1.jpg","image-2.jpg","image-3.jpg","image-4.jpg","image-5.jpg","image-6.jpg","image-7.jpg","image-8.jpg","image-9.jpg","image-10.jpg","image-11.jpg","image-12.jpg","image-13.jpg","image-14.jpg","image-15.jpg","image-16.jpg","image-17.jpg","image-18.jpg","image-19.jpg","image-20.jpg","image-21.jpg","image-22.jpg","image-23.jpg","image-24.jpg","image-25.jpg","image-26.jpg","image-27.jpg","image-28.jpg","image-29.jpg","image-30.jpg","image-31.jpg","image-32.jpg","image-33.jpg","image-34.jpg","image-35.jpg","image-36.jpg","image-37.jpg","image-38.jpg","image-39.jpg","image-40.jpg","image-41.jpg","image-42.jpg"],
+        },
+        {
+            title: "1523 N 13th St",
+            dir: "zillow_images/zillow_images_1523",
+            images: ["image-1.jpg","image-2.jpg","image-3.jpg","image-4.jpg","image-5.jpg","image-6.jpg","image-7.jpg","image-8.jpg","image-9.jpg","image-10.jpg","image-11.jpg","image-12.jpg","image-13.jpg","image-14.jpg","image-15.jpg","image-16.jpg","image-17.jpg","image-18.jpg","image-19.jpg","image-20.jpg","image-21.jpg","image-22.jpg","image-23.jpg","image-24.jpg","image-25.jpg","image-26.jpg","image-27.jpg"],
+        },
+        {
+            title: "2412 N 17th St",
+            dir: "zillow_images/zillow_images_2412",
+            images: ["image-1.jpg","image-2.jpg","image-3.jpg","image-4.jpg","image-5.jpg","image-6.jpg","image-7.jpg","image-8.jpg","image-9.jpg","image-10.jpg","image-11.jpg","image-12.jpg","image-13.jpg","image-14.jpg","image-15.jpg","image-16.jpg","image-17.jpg","image-18.jpg","image-19.jpg","image-20.jpg","image-21.jpg","image-22.jpg","image-23.jpg","image-24.jpg","image-25.jpg","image-26.jpg","image-27.jpg","image-28.jpg","image-29.jpg","image-30.jpg","image-31.jpg","image-32.jpg","image-33.jpg","image-34.jpg","image-35.jpg","image-36.jpg","image-37.jpg"],
+        },
+        {
+            title: "801 N 8th St",
+            dir: "zillow_images/zillow_images_801",
+            images: ["image-1.jpg","image-2.jpg","image-3.jpg","image-4.jpg","image-5.jpg","image-6.jpg","image-7.jpg","image-8.jpg","image-9.jpg","image-10.jpg","image-11.jpg","image-12.jpg","image-13.jpg","image-14.jpg","image-15.jpg","image-16.jpg","image-17.jpg","image-18.jpg","image-19.jpg","image-20.jpg","image-21.jpg","image-22.jpg","image-23.jpg","image-24.jpg","image-25.jpg","image-26.jpg","image-27.jpg","image-28.jpg","image-29.jpg","image-30.jpg","image-31.jpg","image-32.jpg","image-33.jpg","image-34.jpg","image-35.jpg","image-36.jpg","image-37.jpg","image-38.jpg","image-39.jpg","image-40.jpg","image-41.jpg","image-42.jpg","image-43.jpg","image-44.jpg","image-45.jpg","image-46.jpg","image-47.jpg","image-48.jpg","image-49.jpg","image-50.jpg"],
+        },
+    ];
+    let currentSet = null;
+    let currentIndex = 0;
+    function renderGallerySets() {
+        const list = document.getElementById('gallerySetList');
+        list.innerHTML = '';
+        gallerySets.forEach((set, i) => {
+            const thumb = set.images[0];
+            const card = document.createElement('div');
+            card.className = 'gallery-set-card';
+            card.innerHTML = `<img src="${set.dir}/${thumb}" alt="${set.title} Thumbnail" onclick="openGallerySet(${i},0)">
+                <h2>${set.title}</h2>
+                <button onclick="openGallerySet(${i},0)" class="btn btn-primary">View Gallery</button>`;
+            list.appendChild(card);
+        });
+    }
+    function openGallerySet(setIdx, imgIdx) {
+        currentSet = gallerySets[setIdx];
+        currentIndex = imgIdx;
+        showGalleryLightbox();
+    }
+    function showGalleryLightbox() {
+        const lightbox = document.getElementById('galleryLightbox');
+        const img = document.getElementById('galleryLightboxImg');
+        const caption = document.getElementById('galleryLightboxCaption');
+        const counter = document.getElementById('galleryLightboxCounter');
+        if (!currentSet) return;
+        img.src = `${currentSet.dir}/${currentSet.images[currentIndex]}`;
+        img.alt = currentSet.title + ' Image';
+        caption.textContent = currentSet.title;
+        counter.textContent = `${currentIndex+1} / ${currentSet.images.length}`;
+        lightbox.classList.add('active');
+    }
+    function closeGalleryLightbox() {
+        document.getElementById('galleryLightbox').classList.remove('active');
+    }
+    function nextGalleryImage() {
+        if (!currentSet) return;
+        currentIndex = (currentIndex + 1) % currentSet.images.length;
+        showGalleryLightbox();
+    }
+    function prevGalleryImage() {
+        if (!currentSet) return;
+        currentIndex = (currentIndex - 1 + currentSet.images.length) % currentSet.images.length;
+        showGalleryLightbox();
+    }
+    window.openGallerySet = openGallerySet;
+    window.closeGalleryLightbox = closeGalleryLightbox;
+    window.nextGalleryImage = nextGalleryImage;
+    window.prevGalleryImage = prevGalleryImage;
+    document.addEventListener('keydown', function(e) {
+        const lb = document.getElementById('galleryLightbox');
+        if (!lb.classList.contains('active')) return;
+        if (e.key === 'Escape') closeGalleryLightbox();
+        if (e.key === 'ArrowLeft') prevGalleryImage();
+        if (e.key === 'ArrowRight') nextGalleryImage();
+    });
+    renderGallerySets();
+    </script>
+</body>
+</html>

@@ -3,31 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="View our completed renovation projects. See examples of our full house renovations, kitchen remodels, and home additions in Boise, Idaho.">
-    <meta name="keywords" content="renovation examples, Boise home projects, before after renovation, kitchen remodel photos">
-    <title>Our Work | Small Works Boise</title>
+    
+    <!-- Primary SEO Meta Tags -->
+    <title>Our Renovation Projects in Boise | Before & After Photos | Small Works Boise</title>
+    <meta name="description" content="Browse our completed home renovation projects in Boise, Idaho. See stunning before & after transformations including kitchen remodels, bathroom renovations, historic home restorations, and full house renovations. View our craftsmanship!">
+    <meta name="keywords" content="home renovation photos Boise, before after renovation Idaho, kitchen remodel gallery, bathroom renovation pictures, historic home restoration Boise, renovation portfolio Idaho, home transformation photos, construction project gallery Boise ID">
+    <meta name="author" content="Small Works Boise">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://smallworksboise.com/projects.html">
+    
+    <!-- Geographic SEO -->
+    <meta name="geo.region" content="US-ID">
+    <meta name="geo.placename" content="Boise, Idaho">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://smallworksboise.com/projects.html">
+    <meta property="og:title" content="Home Renovation Projects & Gallery | Small Works Boise">
+    <meta property="og:description" content="See our completed home renovations in Boise, Idaho. Browse kitchen remodels, bathroom renovations, and full house transformations.">
+    <meta property="og:image" content="https://smallworksboise.com/images/projects-og.jpg">
+    <meta property="og:site_name" content="Small Works Boise">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Our Renovation Projects | Small Works Boise">
+    <meta name="twitter:description" content="Browse stunning home renovation projects in Boise, Idaho.">
+    
     <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Structured Data - Image Gallery -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Home Renovation Projects Gallery",
+        "description": "Portfolio of completed home renovation projects by Small Works Boise",
+        "url": "https://smallworksboise.com/projects.html",
+        "mainEntity": {
+            "@type": "ItemList",
+            "name": "Renovation Projects",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "item": {
+                        "@type": "RealEstateListing",
+                        "name": "Historic North End Renovation - 1202 N 16th St",
+                        "description": "Beautiful 1890 historic home renovation in Boise's North End. 4 bed, 2.5 bath, 2,608 sq ft.",
+                        "address": {
+                            "@type": "PostalAddress",
+                            "streetAddress": "1202 N 16th St",
+                            "addressLocality": "Boise",
+                            "addressRegion": "ID",
+                            "postalCode": "83702"
+                        }
+                    }
+                }
+            ]
+        }
+    }
+    </script>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <nav>
-                <a href="index.html" class="logo">Small Works <span>Boise</span></a>
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="projects.html" class="active">Our Work</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </nav>
-        </div>
-    </header>
+    <!-- Header (injected by JS) -->
+    <header><!-- Header loading... --></header>
 
     <!-- Page Header -->
     <section class="page-header">
@@ -37,12 +76,156 @@
         </div>
     </section>
 
-    <!-- Projects Introduction -->
+    <!-- Featured Property Section -->
+    <section class="featured-property">
+        <div class="container">
+            <div class="section-title">
+                <h2>Featured Project</h2>
+                <p>Check out this stunning historic renovation in Boise's North End</p>
+            </div>
+            
+            <!-- Photo Gallery -->
+            <div class="photo-gallery-section">
+                <h3 class="gallery-title">📷 Project Photos</h3>
+                <p class="gallery-subtitle">Click any photo to enlarge · <a href="https://www.zillow.com/homedetails/1202-N-16th-St-Boise-ID-83702/79619543_zpid/" target="_blank" rel="noopener noreferrer">View all 19 photos on Zillow →</a></p>
+                
+                <div class="photo-gallery">
+                    <!-- Photo placeholders - Replace src with actual images when you download them from Zillow -->
+                    <div class="gallery-item" onclick="openLightbox(0)">
+                        <div class="gallery-placeholder">
+                            <span>🏠</span>
+                            <small>Front Exterior</small>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox(1)">
+                        <div class="gallery-placeholder">
+                            <span>🚪</span>
+                            <small>Entry</small>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox(2)">
+                        <div class="gallery-placeholder">
+                            <span>🛋️</span>
+                            <small>Living Room</small>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox(3)">
+                        <div class="gallery-placeholder">
+                            <span>🍳</span>
+                            <small>Kitchen</small>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox(4)">
+                        <div class="gallery-placeholder">
+                            <span>🍽️</span>
+                            <small>Dining Area</small>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox(5)">
+                        <div class="gallery-placeholder">
+                            <span>🛏️</span>
+                            <small>Master Bedroom</small>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox(6)">
+                        <div class="gallery-placeholder">
+                            <span>🛁</span>
+                            <small>Master Bath</small>
+                        </div>
+                    </div>
+                    <div class="gallery-item gallery-more" onclick="window.open('https://www.zillow.com/homedetails/1202-N-16th-St-Boise-ID-83702/79619543_zpid/', '_blank')">
+                        <div class="gallery-placeholder more">
+                            <span>+12</span>
+                            <small>View More on Zillow</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-cta">
+                    <a href="https://www.zillow.com/homedetails/1202-N-16th-St-Boise-ID-83702/79619543_zpid/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                        View All Photos on Zillow
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Property Details Card -->
+            <div class="featured-property-card">
+                <div class="featured-property-images">
+                    <div class="featured-main-image">
+                        <div class="property-badge">Historic Home · Built 1890</div>
+                        <div class="property-image-placeholder">
+                            <span>🏠</span>
+                            <small>1202 N 16th St, Boise</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="featured-property-details">
+                    <div class="property-location">
+                        <span class="location-icon">📍</span>
+                        <span>North End, Boise, ID 83702</span>
+                    </div>
+                    <h3>1202 N 16th St, Boise, ID 83702</h3>
+                    <p class="property-description">This 2,608 square foot single family home features 4 bedrooms and 2.5 bathrooms, beautifully situated in Boise's desirable North End neighborhood. Built in 1890, this historic gem combines timeless character with modern updates.</p>
+                    
+                    <div class="property-stats">
+                        <div class="stat">
+                            <span class="stat-value">4</span>
+                            <span class="stat-label">Bedrooms</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">2.5</span>
+                            <span class="stat-label">Bathrooms</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">2,608</span>
+                            <span class="stat-label">Sq Ft</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">6,098</span>
+                            <span class="stat-label">Lot Sq Ft</span>
+                        </div>
+                    </div>
+                    
+                    <div class="property-features">
+                        <h4>Key Features</h4>
+                        <ul>
+                            <li>✓ Finished Basement</li>
+                            <li>✓ Detached Garage</li>
+                            <li>✓ Forced Air & Radiant Heat</li>
+                            <li>✓ Central A/C</li>
+                            <li>✓ Territorial Views</li>
+                            <li>✓ Walk Score: 86/100</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="property-value">
+                        <div class="value-item">
+                            <span class="value-label">Zestimate®</span>
+                            <span class="value-amount">$1,013,400</span>
+                        </div>
+                        <div class="value-item">
+                            <span class="value-label">Est. Rent</span>
+                            <span class="value-amount">$2,899/mo</span>
+                        </div>
+                    </div>
+                    
+                    <a href="https://www.zillow.com/homedetails/1202-N-16th-St-Boise-ID-83702/79619543_zpid/" class="zillow-badge featured-zillow" target="_blank" rel="noopener noreferrer">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.18l7.5 3.75v7.14L12 18.82l-7.5-3.75V7.93L12 4.18z"/>
+                        </svg>
+                        View Full Details on Zillow
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- More Projects Section -->
     <section style="padding: 3rem 0 0;">
         <div class="container">
             <div class="section-title">
-                <h2>Featured Projects</h2>
-                <p>Explore some of our completed renovations. Click on any project to view more details on Zillow.</p>
+                <h2>More Projects</h2>
+                <p>Explore additional renovations from our portfolio</p>
             </div>
         </div>
     </section>
@@ -51,7 +234,7 @@
     <section class="projects" style="padding-top: 2rem;">
         <div class="container">
             <div class="projects-grid">
-                <!-- Project Card 1 - Placeholder for Zillow link -->
+                <!-- Project Card 1 -->
                 <div class="project-card">
                     <div class="project-image">
                         <div class="project-image-placeholder">
@@ -62,16 +245,11 @@
                     <div class="project-content">
                         <h3>Complete Home Transformation</h3>
                         <p>A comprehensive whole-house renovation featuring updated kitchen, bathrooms, flooring, and modern finishes throughout.</p>
-                        <a href="#" class="zillow-badge" target="_blank" rel="noopener noreferrer">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.18l7.5 3.75v7.14L12 18.82l-7.5-3.75V7.93L12 4.18z"/>
-                            </svg>
-                            View on Zillow
-                        </a>
+                        <span class="coming-soon-badge">Photos Coming Soon</span>
                     </div>
                 </div>
 
-                <!-- Project Card 2 - Placeholder for Zillow link -->
+                <!-- Project Card 2 -->
                 <div class="project-card">
                     <div class="project-image">
                         <div class="project-image-placeholder">
@@ -82,16 +260,11 @@
                     <div class="project-content">
                         <h3>Modern Kitchen Renovation</h3>
                         <p>Complete kitchen transformation with custom cabinetry, quartz countertops, new appliances, and updated lighting.</p>
-                        <a href="#" class="zillow-badge" target="_blank" rel="noopener noreferrer">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.18l7.5 3.75v7.14L12 18.82l-7.5-3.75V7.93L12 4.18z"/>
-                            </svg>
-                            View on Zillow
-                        </a>
+                        <span class="coming-soon-badge">Photos Coming Soon</span>
                     </div>
                 </div>
 
-                <!-- Project Card 3 - Placeholder for Zillow link -->
+                <!-- Project Card 3 -->
                 <div class="project-card">
                     <div class="project-image">
                         <div class="project-image-placeholder">
@@ -102,16 +275,11 @@
                     <div class="project-content">
                         <h3>Master Suite Addition</h3>
                         <p>New master bedroom and bathroom addition seamlessly integrated with the existing home architecture.</p>
-                        <a href="#" class="zillow-badge" target="_blank" rel="noopener noreferrer">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.18l7.5 3.75v7.14L12 18.82l-7.5-3.75V7.93L12 4.18z"/>
-                            </svg>
-                            View on Zillow
-                        </a>
+                        <span class="coming-soon-badge">Photos Coming Soon</span>
                     </div>
                 </div>
 
-                <!-- Project Card 4 - Placeholder for Zillow link -->
+                <!-- Project Card 4 -->
                 <div class="project-card">
                     <div class="project-image">
                         <div class="project-image-placeholder">
@@ -122,16 +290,11 @@
                     <div class="project-content">
                         <h3>Spa-Inspired Bathroom</h3>
                         <p>Luxury bathroom renovation featuring custom tile work, walk-in shower, freestanding tub, and elegant fixtures.</p>
-                        <a href="#" class="zillow-badge" target="_blank" rel="noopener noreferrer">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.18l7.5 3.75v7.14L12 18.82l-7.5-3.75V7.93L12 4.18z"/>
-                            </svg>
-                            View on Zillow
-                        </a>
+                        <span class="coming-soon-badge">Photos Coming Soon</span>
                     </div>
                 </div>
 
-                <!-- Project Card 5 - Placeholder for Zillow link -->
+                <!-- Project Card 5 -->
                 <div class="project-card">
                     <div class="project-image">
                         <div class="project-image-placeholder">
@@ -142,32 +305,22 @@
                     <div class="project-content">
                         <h3>Finished Basement Living Space</h3>
                         <p>Transformed an unfinished basement into a fully functional living area with bedroom, bathroom, and entertainment space.</p>
-                        <a href="#" class="zillow-badge" target="_blank" rel="noopener noreferrer">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.18l7.5 3.75v7.14L12 18.82l-7.5-3.75V7.93L12 4.18z"/>
-                            </svg>
-                            View on Zillow
-                        </a>
+                        <span class="coming-soon-badge">Photos Coming Soon</span>
                     </div>
                 </div>
 
-                <!-- Project Card 6 - Placeholder for Zillow link -->
+                <!-- Project Card 6 -->
                 <div class="project-card">
                     <div class="project-image">
                         <div class="project-image-placeholder">
-                            <span>🏠</span>
-                            <small>Historic Renovation</small>
+                            <span>🎨</span>
+                            <small>Interior Remodel</small>
                         </div>
                     </div>
                     <div class="project-content">
-                        <h3>Historic Home Update</h3>
-                        <p>Careful renovation of a historic Boise home, preserving character while adding modern amenities and systems.</p>
-                        <a href="#" class="zillow-badge" target="_blank" rel="noopener noreferrer">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.18l7.5 3.75v7.14L12 18.82l-7.5-3.75V7.93L12 4.18z"/>
-                            </svg>
-                            View on Zillow
-                        </a>
+                        <h3>Open Concept Living</h3>
+                        <p>Transformed a traditional floor plan into a modern open concept living space with exposed beams and custom finishes.</p>
+                        <span class="coming-soon-badge">Photos Coming Soon</span>
                     </div>
                 </div>
             </div>
@@ -195,44 +348,8 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>Small Works Boise</h4>
-                    <p>Professional home renovations and remodeling services in Boise, Idaho. Quality craftsmanship for every project.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="projects.html">Our Work</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Services</h4>
-                    <ul class="footer-links">
-                        <li><a href="services.html">Full House Renovations</a></li>
-                        <li><a href="services.html">Kitchen Remodeling</a></li>
-                        <li><a href="services.html">Home Additions</a></li>
-                        <li><a href="services.html">Bathroom Renovations</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Contact</h4>
-                    <p>Boise, Idaho</p>
-                    <p><a href="contact.html">Send us a message</a></p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Small Works Boise. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
+    <!-- Footer (injected by JS) -->
+    <footer><!-- Footer loading... --></footer>
     <script src="js/main.js"></script>
 </body>
 </html>
