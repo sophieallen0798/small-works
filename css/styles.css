@@ -127,6 +127,25 @@ nav {
     gap: 2rem;
 }
 
+/* Dropdown menu for desktop */
+.nav-links li { position: relative; }
+.nav-links .dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    background: var(--white);
+    box-shadow: var(--shadow);
+    border-radius: 6px;
+    padding: 0.25rem 0;
+    min-width: 180px;
+    z-index: 1100;
+}
+.nav-links .dropdown li { list-style: none; }
+.nav-links .dropdown a { display: block; padding: 0.5rem 1rem; color: var(--text-color); }
+.nav-links li.has-dropdown:hover > .dropdown { display: block; }
+.nav-links li.has-dropdown > a::after { content: '▾'; margin-left: 0.4rem; font-size: 0.8rem; }
+
 .nav-links a {
     font-weight: 500;
     padding: 0.5rem 1rem;
@@ -226,11 +245,59 @@ nav {
     height: 100%;
     background: rgba(30, 58, 33, 0.3);
     z-index: 1;
+    opacity: 0; /* start transparent, fade in on scroll */
+    transition: opacity 320ms ease, backdrop-filter 320ms ease;
 }
 
 .hero > .container {
     position: relative;
     z-index: 2;
+}
+
+/* Accordion styles for Services page */
+.accordion { display: block; }
+.accordion-item { border-bottom: 1px solid rgba(0,0,0,0.05); padding: 0.5rem 0; }
+.accordion-header {
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border: none;
+    font-size: 1.25rem;
+    padding: 0.75rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+.accordion-header .accordion-summary { font-size: 0.95rem; color: var(--text-light); margin-left: 1rem; }
+.accordion-panel { overflow: hidden; max-height: 0; transition: max-height 320ms ease, padding 320ms ease; padding-top: 0; }
+.accordion-panel.open { max-height: 2000px; padding-top: 1rem; }
+.accordion-panel .services-grid { margin-top: 0.5rem; }
+
+@media (min-width: 900px) {
+    .accordion-header { font-size: 1.5rem; }
+}
+
+/* Fade hero image and pull the about section up when scrolling on the homepage */
+.home.scrolled .home-photo-background::after {
+    opacity: 1;
+}
+
+.home .home-photo-background {
+    transition: filter 320ms ease;
+}
+
+.home.scrolled .home-photo-background {
+    filter: brightness(0.6) saturate(0.9);
+}
+
+/* Bring the about section closer when scrolled */
+.home .about {
+    transition: padding-top 320ms ease, transform 320ms ease;
+}
+
+.home.scrolled .about {
+    padding-top: 2rem; /* reduced spacing when header has faded */
 }
 
 .hero h1 {
@@ -1145,6 +1212,23 @@ footer {
         transform: translateY(0);
         opacity: 1;
         visibility: visible;
+    }
+
+    /* Mobile: show dropdowns within the expanded nav panel */
+    .nav-links .dropdown {
+        position: static;
+        display: none;
+        box-shadow: none;
+        background: transparent;
+        padding: 0;
+    }
+
+    .nav-links.active li.has-dropdown .dropdown {
+        display: block;
+    }
+
+    .nav-links .dropdown a {
+        padding-left: 2rem;
     }
     
     .hero h1 {

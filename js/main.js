@@ -250,3 +250,90 @@ function initServiceCarousels() {
 document.addEventListener('DOMContentLoaded', function() {
     initServiceCarousels();
 });
+
+// Accordion behavior for Services page
+function initServiceAccordion() {
+    const accordion = document.getElementById('servicesAccordion');
+    if (!accordion) return;
+
+    const headers = accordion.querySelectorAll('.accordion-header');
+    headers.forEach(header => {
+        header.addEventListener('click', function() {
+            const expanded = this.getAttribute('aria-expanded') === 'true';
+            const panelId = this.getAttribute('aria-controls');
+            const panel = document.getElementById(panelId);
+            if (!panel) return;
+
+            if (expanded) {
+                this.setAttribute('aria-expanded', 'false');
+                panel.classList.remove('open');
+            } else {
+                // close any other open panels (optional: single-open behavior)
+                accordion.querySelectorAll('.accordion-header[aria-expanded="true"]').forEach(h => {
+                    h.setAttribute('aria-expanded', 'false');
+                    const pid = h.getAttribute('aria-controls');
+                    const p = document.getElementById(pid);
+                    if (p) p.classList.remove('open');
+                });
+
+                this.setAttribute('aria-expanded', 'true');
+                panel.classList.add('open');
+                // initialize any carousels inside the opened panel
+                if (typeof initServiceCarousels === 'function') initServiceCarousels();
+            }
+        });
+
+        // keyboard support
+        header.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                this.click();
+            }
+        });
+    });
+
+    // Open panel if URL hash matches
+    const hash = window.location.hash.replace('#','');
+    if (hash) {
+        const targetHeader = document.querySelector('#' + CSS.escape(hash) + ' .accordion-header') || document.getElementById(hash + '-header');
+        if (targetHeader) targetHeader.click();
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    initServiceAccordion();
+});
+
+// Homepage scroll effects: fade hero and pull up about section
+document.addEventListener('DOMContentLoaded', function() {
+    if (!document.body.classList.contains('home')) return;
+
+    const SCROLL_THRESHOLD = 40; // px scrolled before effect
+    let ticking = false;
+
+    function onScroll() {
+        if (ticking) return;
+        window.requestAnimationFrame(() => {
+            const scrolled = window.scrollY > SCROLL_THRESHOLD;
+            document.body.classList.toggle('scrolled', scrolled);
+            ticking = false;
+        });
+        ticking = true;
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    // Run once to set initial state (in case page was opened scrolled)
+    onScroll();
+});
+
+// Open shared lightbox for all carousels within a section (by id)
+function openGalleryForSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    if (!section) return;
+    // collect images from all service-carousels inside the section
+    const imgs = Array.from(section.querySelectorAll('.service-carousel .carousel-track img'))
+        .map(img => ({ src: img.src, caption: img.getAttribute('data-caption') || img.alt || '' }));
+    if (imgs.length && typeof openLightbox === 'function') openLightbox(imgs, 0);
+}
+
+window.openGalleryForSection = openGalleryForSection;

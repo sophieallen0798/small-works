@@ -100,99 +100,215 @@
 
     <section class="services">
         <div class="container">
-            <div class="section-title">
-                <h2>Kitchens</h2>
-                <p>Modern, unique, beautiful.</p>
-            </div>
-            <div class="services-grid">
-                <article class="service-card service-tile">
-                    <div class="service-carousel" data-index="0">
-                        <button class="carousel-btn prev" aria-label="Previous">&#10094;</button>
-                        <div class="carousel-track">
-                            <img loading="lazy" src="zillow_images/zillow_images_1812/image-12.jpg" alt="Kitchen">
-                            <img loading="lazy" src="zillow_images/zillow_images_1812/image-11.jpg" alt="Kitchen">
-                            <img loading="lazy" src="zillow_images/zillow_images_1812/image-10.jpg" alt="Kitchen">
-                            <img loading="lazy" src="zillow_images/zillow_images_1812/image-9.jpg" alt="Kitchen">
+            <div class="accordion" id="servicesAccordion">
+                <!-- Kitchens (expanded by default) -->
+                <div class="accordion-item" id="kitchens">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="kitchens-panel" id="kitchens-header">
+                        Kitchens
+                        <span class="accordion-summary">Modern, unique, beautiful.</span>
+                    </button>
+                    <div class="accordion-panel" id="kitchens-panel" role="region" aria-labelledby="kitchens-header">
+                        <div class="section-title">
+                            <h2>Kitchens</h2>
                         </div>
-                        <button class="carousel-btn next" aria-label="Next">&#10095;</button>
-                    </div>
-                </article>
+                        <div class="services-grid">
+                            <article class="service-card service-tile">
+                                <div class="service-carousel" data-index="0">
+                                    <button class="carousel-btn prev" aria-label="Previous">&#10094;</button>
+                                    <div class="carousel-track">
+                                        <img loading="lazy" src="zillow_images/zillow_images_1812/image-12.jpg" alt="Kitchen">
+                                        <img loading="lazy" src="zillow_images/zillow_images_1812/image-11.jpg" alt="Kitchen">
+                                        <img loading="lazy" src="zillow_images/zillow_images_1812/image-10.jpg" alt="Kitchen">
+                                        <img loading="lazy" src="zillow_images/zillow_images_1812/image-9.jpg" alt="Kitchen">
+                                    </div>
+                                    <button class="carousel-btn next" aria-label="Next">&#10095;</button>
+                                </div>
+                            </article>
 
-                <article class="service-card service-tile">
-                    <div class="service-carousel" data-index="1">
-                        <button class="carousel-btn prev" aria-label="Previous">&#10094;</button>
-                        <div class="carousel-track">
-                            <img loading="lazy" src="zillow_images/zillow_images_2412/image-4.jpg" alt="Kitchen">
-                            <img loading="lazy" src="zillow_images/zillow_images_2412/image-5.jpg" alt="Kitchen">
-                            <img loading="lazy" src="zillow_images/zillow_images_2412/image-6.jpg" alt="Kitchen">
-                            <img loading="lazy" src="zillow_images/zillow_images_2412/image-7.jpg" alt="Kitchen">
-                            <img loading="lazy" src="zillow_images/zillow_images_2412/image-8.jpg" alt="Kitchen">
-                            <img loading="lazy" src="zillow_images/zillow_images_2412/image-9.jpg" alt="Kitchen">
-                            <img loading="lazy" src="zillow_images/zillow_images_2412/image-10.jpg" alt="Kitchen">
-                            <img loading="lazy" src="zillow_images/zillow_images_2412/image-11.jpg" alt="Kitchen">
-                        </div>
-                        <button class="carousel-btn next" aria-label="Next">&#10095;</button>
-                    </div>
-                </article>
+                            <article class="service-card service-tile">
+                                <div class="service-carousel" data-index="1">
+                                    <button class="carousel-btn prev" aria-label="Previous">&#10094;</button>
+                                    <div class="carousel-track">
+                                        <img loading="lazy" src="zillow_images/zillow_images_2412/image-4.jpg" alt="Kitchen">
+                                        <img loading="lazy" src="zillow_images/zillow_images_2412/image-5.jpg" alt="Kitchen">
+                                        <img loading="lazy" src="zillow_images/zillow_images_2412/image-6.jpg" alt="Kitchen">
+                                        <img loading="lazy" src="zillow_images/zillow_images_2412/image-7.jpg" alt="Kitchen">
+                                        <img loading="lazy" src="zillow_images/zillow_images_2412/image-8.jpg" alt="Kitchen">
+                                        <img loading="lazy" src="zillow_images/zillow_images_2412/image-9.jpg" alt="Kitchen">
+                                        <img loading="lazy" src="zillow_images/zillow_images_2412/image-10.jpg" alt="Kitchen">
+                                        <img loading="lazy" src="zillow_images/zillow_images_2412/image-11.jpg" alt="Kitchen">
+                                    </div>
+                                    <button class="carousel-btn next" aria-label="Next">&#10095;</button>
+                                </div>
+                            </article>
 
-                <article class="service-card service-tile">
-                    <div class="service-carousel" data-index="0">
-                        <button class="carousel-btn prev" aria-label="Previous">&#10094;</button>
-                        <div class="carousel-track">
-                            <img loading="lazy" src="zillow_images/zillow_images_1523/image-9.jpg" alt="Kitchen - 1">
-                            <img loading="lazy" src="zillow_images/zillow_images_1523/image-3.jpg" alt="Kitchen - 2">
-                            <img loading="lazy" src="zillow_images/zillow_images_1523/image-4.jpg" alt="Kitchen - 3">
-                            <img loading="lazy" src="zillow_images/zillow_images_1523/image-5.jpg" alt="Kitchen - 4">
-                            <img loading="lazy" src="zillow_images/zillow_images_1523/image-6.jpg" alt="Kitchen - 5">
-                            <img loading="lazy" src="zillow_images/zillow_images_1523/image-7.jpg" alt="Kitchen - 6">
-                            <img loading="lazy" src="zillow_images/zillow_images_1523/image-8.jpg" alt="Kitchen - 7">
-                        </div>
-                        <button class="carousel-btn next" aria-label="Next">&#10095;</button>
-                    </div>
-                </article>
+                            <article class="service-card service-tile">
+                                <div class="service-carousel" data-index="0">
+                                    <button class="carousel-btn prev" aria-label="Previous">&#10094;</button>
+                                    <div class="carousel-track">
+                                        <img loading="lazy" src="zillow_images/zillow_images_1523/image-9.jpg" alt="Kitchen - 1">
+                                        <img loading="lazy" src="zillow_images/zillow_images_1523/image-3.jpg" alt="Kitchen - 2">
+                                        <img loading="lazy" src="zillow_images/zillow_images_1523/image-4.jpg" alt="Kitchen - 3">
+                                        <img loading="lazy" src="zillow_images/zillow_images_1523/image-5.jpg" alt="Kitchen - 4">
+                                        <img loading="lazy" src="zillow_images/zillow_images_1523/image-6.jpg" alt="Kitchen - 5">
+                                        <img loading="lazy" src="zillow_images/zillow_images_1523/image-7.jpg" alt="Kitchen - 6">
+                                        <img loading="lazy" src="zillow_images/zillow_images_1523/image-8.jpg" alt="Kitchen - 7">
+                                    </div>
+                                    <button class="carousel-btn next" aria-label="Next">&#10095;</button>
+                                </div>
+                            </article>
 
-                <article class="service-card service-tile">
-                    <div class="service-carousel" data-index="0">
-                        <button class="carousel-btn prev" aria-label="Previous">&#10094;</button>
-                        <div class="carousel-track">
-                            <img loading="lazy" src="zillow_images/zillow_images_1435/image-15.jpg" alt="Additions - 1">
-                            <img loading="lazy" src="zillow_images/zillow_images_1435/image-16.jpg" alt="Additions - 2">
-                            <img loading="lazy" src="zillow_images/zillow_images_1435/image-14.jpg" alt="Additions - 3">
-                            <img loading="lazy" src="zillow_images/zillow_images_1435/image-13.jpg" alt="Additions - 3">
-                            <img loading="lazy" src="zillow_images/zillow_images_1435/image-12.jpg" alt="Additions - 3">
-                        </div>
-                        <button class="carousel-btn next" aria-label="Next">&#10095;</button>
-                    </div>
-                </article>
+                            <article class="service-card service-tile">
+                                <div class="service-carousel" data-index="0">
+                                    <button class="carousel-btn prev" aria-label="Previous">&#10094;</button>
+                                    <div class="carousel-track">
+                                        <img loading="lazy" src="zillow_images/zillow_images_1435/image-15.jpg" alt="Additions - 1">
+                                        <img loading="lazy" src="zillow_images/zillow_images_1435/image-16.jpg" alt="Additions - 2">
+                                        <img loading="lazy" src="zillow_images/zillow_images_1435/image-14.jpg" alt="Additions - 3">
+                                        <img loading="lazy" src="zillow_images/zillow_images_1435/image-13.jpg" alt="Additions - 3">
+                                        <img loading="lazy" src="zillow_images/zillow_images_1435/image-12.jpg" alt="Additions - 3">
+                                    </div>
+                                    <button class="carousel-btn next" aria-label="Next">&#10095;</button>
+                                </div>
+                            </article>
 
-                <article class="service-card service-tile">
-                    <div class="service-carousel" data-index="0">
-                        <button class="carousel-btn prev" aria-label="Previous">&#10094;</button>
-                        <div class="carousel-track">
-                            <img loading="lazy" src="zillow_images/zillow_images_1202-2/image-8.jpg" alt="Structural - 1">
-                            <img loading="lazy" src="zillow_images/zillow_images_1202-2/image-6.jpg" alt="Structural - 2">
-                            <img loading="lazy" src="zillow_images/zillow_images_1202-2/image-7.jpg" alt="Structural - 3">
-                            <img loading="lazy" src="zillow_images/zillow_images_1202-2/image-10.jpg" alt="Structural - 3">
-                        </div>
-                        <button class="carousel-btn next" aria-label="Next">&#10095;</button>
-                    </div>
-                </article>
+                            <article class="service-card service-tile">
+                                <div class="service-carousel" data-index="0">
+                                    <button class="carousel-btn prev" aria-label="Previous">&#10094;</button>
+                                    <div class="carousel-track">
+                                        <img loading="lazy" src="zillow_images/zillow_images_1202-2/image-8.jpg" alt="Structural - 1">
+                                        <img loading="lazy" src="zillow_images/zillow_images_1202-2/image-6.jpg" alt="Structural - 2">
+                                        <img loading="lazy" src="zillow_images/zillow_images_1202-2/image-7.jpg" alt="Structural - 3">
+                                        <img loading="lazy" src="zillow_images/zillow_images_1202-2/image-10.jpg" alt="Structural - 3">
+                                    </div>
+                                    <button class="carousel-btn next" aria-label="Next">&#10095;</button>
+                                </div>
+                            </article>
 
-                <article class="service-card service-tile">
-                    <div class="service-carousel" data-index="0">
-                        <button class="carousel-btn prev" aria-label="Previous">&#10094;</button>
-                        <div class="carousel-track">
-                            <img loading="lazy" src="zillow_images/zillow_images_801/image-11.jpg" alt="Finishing - 1">
-                            <img loading="lazy" src="zillow_images/zillow_images_801/image-8.jpg" alt="Finishing - 2">
-                            <img loading="lazy" src="zillow_images/zillow_images_801/image-9.jpg" alt="Finishing - 3">
-                            <img loading="lazy" src="zillow_images/zillow_images_801/image-10.jpg" alt="Finishing - 3">
-                            <img loading="lazy" src="zillow_images/zillow_images_801/image-7.jpg" alt="Finishing - 3">
-                            <img loading="lazy" src="zillow_images/zillow_images_801/image-12.jpg" alt="Finishing - 3">
-                            <img loading="lazy" src="zillow_images/zillow_images_801/image-14.jpg" alt="Finishing - 3">
+                            <article class="service-card service-tile">
+                                <div class="service-carousel" data-index="0">
+                                    <button class="carousel-btn prev" aria-label="Previous">&#10094;</button>
+                                    <div class="carousel-track">
+                                        <img loading="lazy" src="zillow_images/zillow_images_801/image-11.jpg" alt="Finishing - 1">
+                                        <img loading="lazy" src="zillow_images/zillow_images_801/image-8.jpg" alt="Finishing - 2">
+                                        <img loading="lazy" src="zillow_images/zillow_images_801/image-9.jpg" alt="Finishing - 3">
+                                        <img loading="lazy" src="zillow_images/zillow_images_801/image-10.jpg" alt="Finishing - 3">
+                                        <img loading="lazy" src="zillow_images/zillow_images_801/image-7.jpg" alt="Finishing - 3">
+                                        <img loading="lazy" src="zillow_images/zillow_images_801/image-12.jpg" alt="Finishing - 3">
+                                        <img loading="lazy" src="zillow_images/zillow_images_801/image-14.jpg" alt="Finishing - 3">
+                                    </div>
+                                    <button class="carousel-btn next" aria-label="Next">&#10095;</button>
+                                </div>
+                            </article>
                         </div>
-                        <button class="carousel-btn next" aria-label="Next">&#10095;</button>
+                        <div style="margin-top:1rem;">
+                            <a href="#" class="btn btn-secondary" onclick="openGalleryForSection('kitchens'); return false;">View Gallery</a>
+                        </div>
                     </div>
-                </article>
+                </div>
+
+                <!-- Bathrooms (placeholder) -->
+                <div class="accordion-item" id="bathrooms">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="bathrooms-panel" id="bathrooms-header">
+                        Bathrooms
+                        <span class="accordion-summary">Luxury bathrooms with custom tile and fixtures.</span>
+                    </button>
+                    <div class="accordion-panel" id="bathrooms-panel" role="region" aria-labelledby="bathrooms-header">
+                        <div class="section-title"><h2>Bathrooms</h2></div>
+                        <div class="services-grid">
+                            <article class="service-card service-tile">
+                                <div class="service-carousel" data-index="0">
+                                    <button class="carousel-btn prev" aria-label="Previous">&#10094;</button>
+                                    <div class="carousel-track">
+                                        <img loading="lazy" src="zillow_images/zillow_images_801/image-16.jpg" alt="Bathroom">
+                                        <img loading="lazy" src="zillow_images/zillow_images_801/image-24.jpg" alt="Bathroom">
+                                        <img loading="lazy" src="zillow_images/zillow_images_801/image-25.jpg" alt="Bathroom">
+                                        <img loading="lazy" src="zillow_images/zillow_images_801/image-26.jpg" alt="Bathroom">
+                                        <img loading="lazy" src="zillow_images/zillow_images_801/image-31.jpg" alt="Bathroom">
+                                        <img loading="lazy" src="zillow_images/zillow_images_801/image-32.jpg" alt="Bathroom">                                        
+                                        <img loading="lazy" src="zillow_images/zillow_images_801/image-33.jpg" alt="Bathroom">
+                                    </div>
+                                    <button class="carousel-btn next" aria-label="Next">&#10095;</button>
+                                </div>
+                            </article>
+
+                                                        <article class="service-card service-tile">
+                                <div class="service-carousel" data-index="0">
+                                    <button class="carousel-btn prev" aria-label="Previous">&#10094;</button>
+                                    <div class="carousel-track">
+                                        <img loading="lazy" src="zillow_images/zillow_images_801/image-16.jpg" alt="Bathroom">
+                                        <img loading="lazy" src="zillow_images/zillow_images_801/image-24.jpg" alt="Bathroom">
+                                        <img loading="lazy" src="zillow_images/zillow_images_801/image-25.jpg" alt="Bathroom">
+                                        <img loading="lazy" src="zillow_images/zillow_images_801/image-26.jpg" alt="Bathroom">
+                                        <img loading="lazy" src="zillow_images/zillow_images_801/image-31.jpg" alt="Bathroom">
+                                        <img loading="lazy" src="zillow_images/zillow_images_801/image-32.jpg" alt="Bathroom">                                        
+                                        <img loading="lazy" src="zillow_images/zillow_images_801/image-33.jpg" alt="Bathroom">
+                                    </div>
+                                    <button class="carousel-btn next" aria-label="Next">&#10095;</button>
+                                </div>
+                            </article>
+                            <article class="service-card service-tile">
+                                <div class="service-carousel" data-index="0">
+                                    <button class="carousel-btn prev" aria-label="Previous">&#10094;</button>
+                                    <div class="carousel-track">
+                                        <img loading="lazy" src="zillow_images/zillow_images_1435/image-16.jpg" alt="Bathroom">
+                                        <img loading="lazy" src="zillow_images/zillow_images_1435/image-25.jpg" alt="Bathroom">
+                                        <img loading="lazy" src="zillow_images/zillow_images_1435/image-26.jpg" alt="Bathroom">
+                                        <img loading="lazy" src="zillow_images/zillow_images_1435/image-27.jpg" alt="Bathroom">
+                                        <img loading="lazy" src="zillow_images/zillow_images_1435/image-30.jpg" alt="Bathroom">
+                                        <img loading="lazy" src="zillow_images/zillow_images_1435/image-31.jpg" alt="Bathroom">
+                                    </div>
+                                    <button class="carousel-btn next" aria-label="Next">&#10095;</button>
+                                </div>
+                            </article>
+                            
+                            <article class="service-card service-tile">
+                                <div class="service-carousel" data-index="0">
+                                    <button class="carousel-btn prev" aria-label="Previous">&#10094;</button>
+                                    <div class="carousel-track">
+                                        <img loading="lazy" src="zillow_images/zillow_images_1812/image-17.jpg" alt="Bathroom">
+                                        <img loading="lazy" src="zillow_images/zillow_images_1812/image-18.jpg" alt="Bathroom">
+                                        <img loading="lazy" src="zillow_images/zillow_images_1812/image-19.jpg" alt="Bathroom">
+                                        <img loading="lazy" src="zillow_images/zillow_images_1812/image-27.jpg" alt="Bathroom">
+                                        <img loading="lazy" src="zillow_images/zillow_images_1812/image-30.jpg" alt="Bathroom">
+                                    </div>
+                                    <button class="carousel-btn next" aria-label="Next">&#10095;</button>
+                                </div>
+                            </article>
+
+
+                        </div>
+                        <div style="margin-top:1rem;">
+                            <a href="#" class="btn btn-secondary" onclick="openGalleryForSection('bathrooms'); return false;">View Gallery</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Full Home (placeholder) -->
+                <div class="accordion-item" id="full-home">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="full-home-panel" id="full-home-header">
+                        Full Home Renovations
+                        <span class="accordion-summary">Complete home transformations from top to bottom.</span>
+                    </button>
+                    <div class="accordion-panel" id="full-home-panel" role="region" aria-labelledby="full-home-header">
+                        <div class="section-title"><h2>Full Home</h2></div>
+                        <div class="services-grid">
+                            <article class="service-card service-tile">
+                                <div class="service-carousel" data-index="0">
+                                    <button class="carousel-btn prev" aria-label="Previous">&#10094;</button>
+                                    <div class="carousel-track">
+                                        <img loading="lazy" src="zillow_images/zillow_images_1202/image-1.jpg" alt="Full Home">
+                                        <img loading="lazy" src="zillow_images/zillow_images_1202/image-2.jpg" alt="Full Home">
+                                    </div>
+                                    <button class="carousel-btn next" aria-label="Next">&#10095;</button>
+                                </div>
+                            </article>
+                        </div>
+                        <div style="margin-top:1rem;">
+                            <a href="#" class="btn btn-secondary" onclick="openGalleryForSection('full-home'); return false;">View Gallery</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
