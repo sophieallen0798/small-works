@@ -622,6 +622,40 @@ section {
 .accordion-panel.open .section-title h2 {
     color: var(--primary-color);
 }
+.service-tabs { margin-top: 1rem; }
+.tabs-bar {
+    display: flex;
+    gap: 0.5rem;
+    background: var(--white);
+    padding: 0.5rem 0.5rem 0;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    margin-bottom: 1rem;
+}
+.tab-btn {
+    background: transparent;
+    border: none;
+    padding: 1rem;
+    border-radius: 8px 8px 0 0;
+    font-weight: 700;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: background 180ms ease, color 180ms ease, transform 120ms ease;
+}
+.tab-btn:hover { transform: translateY(-2px); }
+.tab-btn.active,
+.tab-btn[aria-selected="true"] {
+    background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
+    color: var(--white);
+}
+.tabs-panels { background: transparent; }
+.tab-panel { display: block; }
+.tab-panel[hidden] { display: none; }
+
+@media (max-width: 700px) {
+    .tabs-bar { flex-wrap: wrap; }
+    .tab-btn { flex: 1 1 calc(50% - 8px); }
+}
 .accordion-panel.open .section-title p,
 .accordion-panel.open p,
 .accordion-panel.open .service-card {
@@ -659,8 +693,6 @@ section {
 /* Force two larger tiles per row on the Services page for better image visibility */
 .services .services-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-    padding: 2rem;
 }
 
 @media (max-width: 900px) {
