@@ -2,18 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://smallworksboise.com/</loc>
-        <lastmod>2025-11-30</lastmod>
+        <lastmod>2025-12-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
         <loc>https://smallworksboise.com/services.html</loc>
-        <lastmod>2025-11-30</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://smallworksboise.com/gallery.html</loc>
         <lastmod>2025-12-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>

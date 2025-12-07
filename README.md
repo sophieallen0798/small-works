@@ -96,4 +96,4 @@ The color scheme can be customized in `css/styles.css` by modifying the CSS vari
 
 ## License
 
-© 2024 SmallWorks Boise. All rights reserved.
+© 2025 SmallWorks Boise. All rights reserved.

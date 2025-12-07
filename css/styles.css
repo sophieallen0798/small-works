@@ -1,18 +1,37 @@
 /* CSS Variables for consistent theming */
 :root {
-    --primary-color: #B46E3A;
-    --primary-dark: #ab5c21;
-    --secondary-color: #B46E3A;
-    --accent: #F28C28; /* services/header accent color */
-    --text-color: #333333;
-    --text-light: #666666;
-    --background-color: #fdfaf6df;
-    --charcoal-color: #2d2d2d;
-    --white: #ffffff;
-    --border-color: #f4efe4;
-    --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    --shadow-hover: 0 4px 20px rgba(0, 0, 0, 0.15);
-    --color-backup: #2c5530; 
+    /* Primary colors */
+    --primary-color: #1F4B4B;    /* deep teal */
+    --primary-dark: #133737;    /* darker teal for hover/accents */
+
+    /* Secondary / supporting colors */
+    --secondary-color: #C77D2E; /* warm amber */
+    --secondary-dark: #9A5B20;  /* darker warm shade */
+
+    /* Accent */
+    --accent: #E07A5F; /* soft coral accent */
+
+    /* Text / surface */
+    --text-color: #0F1722; /* primary text */
+    --text-light: #6B7280; /* secondary text */
+    --background-color: #FFFFFF; /* page background (alias) */
+    --surface: #F7F4EF; /* subtle off-white surface for sections/cards */
+    --white: #FFFFFF;
+
+    /* Borders and shadows */
+    --border-color: #ECE8E1;
+    --shadow: 0 2px 10px rgba(16,24,40,0.06);
+    --shadow-hover: 0 6px 30px rgba(16, 24, 40, 0.08);
+    /* overlay colors for hero/header overlays */
+    --overlay-white-95: rgba(255,255,255,0.95);
+    --overlay-white-85: rgba(255,255,255,0.85);
+    --overlay-white-70: rgba(255,255,255,0.7);
+    --overlay-black-95: rgba(0,0,0,0.95);
+    --overlay-black-60: rgba(0,0,0,0.6);
+
+    /* Compatibility aliases */
+    --charcoal-color: #0f1722;
+    --color-backup: #2c5530;
 }
 
 /* Load site fonts centrally (Inter for body, Montserrat for headings) */
@@ -33,7 +52,8 @@ body {
     font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: var(--text-color);
-    background-color: var(--background-color);
+    /* use a subtle surface color for the page background so cards can sit on true white */
+    background-color: var(--surface);
 }
 
 /* Headings: use Montserrat for stronger, cleaner headings */
@@ -84,7 +104,14 @@ body.home .logo {
 }
 
 body.home .nav-links a {
-    color: rgba(255,255,255,0.95);
+    color: var(--overlay-white-95);
+}
+
+/* Keep dropdown items dark even when the header uses white links over a hero */
+body.home .nav-links .dropdown a,
+body.gallery .nav-links .dropdown a,
+body.services.has-hero .nav-links .dropdown a {
+    color: var(--text-color);
 }
 
 body.home .hamburger span {
@@ -107,7 +134,7 @@ body.gallery .logo {
 }
 
 body.gallery .nav-links a {
-    color: rgba(255,255,255,0.95);
+    color: var(--overlay-white-95);
 }
 
 body.gallery .hamburger span {
@@ -125,15 +152,32 @@ body.services header {
     z-index: 1000;
 }
 
+
+/* Default on services pages: dark logo and nav links (visible on white header). */
 body.services .logo {
-    color: var(--white);
+    color: var(--primary-color);
 }
 
 body.services .nav-links a {
-    color: rgba(255,255,255,0.95);
+    color: var(--text-color);
+}
+
+/* When a hero is present on the page, add the .has-hero class to the body
+   (we set this on `services.html`) to make header links white for contrast. */
+body.services.has-hero .nav-links a {
+    color: var(--overlay-white-95);
 }
 
 body.services .hamburger span {
+    background-color: var(--primary-color);
+}
+
+/* When a hero is present (header overlays hero) make logo/controls white for contrast */
+body.services.has-hero .logo {
+    color: var(--white);
+}
+
+body.services.has-hero .hamburger span {
     background-color: var(--white);
 }
 
@@ -173,6 +217,7 @@ nav {
     padding: 0.25rem 0;
     min-width: 180px;
     z-index: 1100;
+    border: 1px solid var(--border-color);
 }
 .nav-links .dropdown li { list-style: none; }
 .nav-links .dropdown a { display: block; padding: 0.5rem 1rem; color: var(--text-color); }
@@ -190,6 +235,20 @@ nav {
 .nav-links a.active {
     background-color: var(--primary-color);
     color: var(--white);
+}
+
+/* Focus styles for keyboard accessibility */
+:focus-visible {
+    outline: none;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    box-shadow: 0 0 0 4px rgba(47,67,90,0.12);
+    border-radius: 6px;
 }
 
 .hamburger {
@@ -316,7 +375,8 @@ nav {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.45) 100%);
+    /* stronger gradient for better contrast against white links */
+    background: linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.6) 100%);
     z-index: 1;
 }
 
@@ -327,7 +387,7 @@ nav {
 
 /* Accordion styles for Services page */
 .accordion { display: block; }
-.accordion-item { border-bottom: 1px solid rgba(0,0,0,0.05); padding: 0.5rem 0; }
+.accordion-item { padding: 0.5rem 0; }
 .accordion-header {
     width: 100%;
     text-align: left;
@@ -340,32 +400,32 @@ nav {
     align-items: center;
     cursor: pointer;
 }
-.accordion-header .accordion-summary { font-size: 0.95rem; color: var(--text-light); margin-left: 1rem; }
-.accordion-panel { overflow: hidden; max-height: 0; transition: max-height 320ms ease, padding 320ms ease; padding-top: 0; }
-.accordion-panel.open { max-height: 2000px; padding-top: 1rem; }
-.accordion-panel .services-grid { margin-top: 0.5rem; }
+.accordion-header .accordion-summary { font-size: 0.95rem; color: var(--text-light); margin-left: auto; margin-right: 0.5rem; padding-left: 0; }
+.accordion-panel { overflow: hidden; max-height: 0; transition: max-height 360ms ease, padding 320ms ease; padding: 0; }
+.accordion-panel.open { max-height: 2000px; padding: 0.75rem 0 1rem 0; }
+.accordion-panel .services-grid { margin-top: 0.5rem; padding: 0; }
 
 /* Accordion header indicator: use inline SVG chevron injected into the header */
 .accordion-header {
-    position: relative; /* for indicator */
-    padding-left: 2.25rem; /* leave room on the left for the icon */
+    /* inline layout: chevron + title + (summary auto-pushed right) */
+    position: relative;
+    padding-left: 1rem;
 }
 
-/* SVG chevron placed inside the header (injected via script) */
 .accordion-header .chev {
-    position: absolute;
-    left: 8px;
-    top: 50%;
-    transform: translateY(-50%) rotate(0deg);
+    display: inline-block; /* allow chevron to flow with title */
+    vertical-align: middle;
+    margin-right: 0.6rem;
     width: 18px;
     height: 18px;
-    color: var(--text-light);
+    color: var(--text-color);
     transition: transform 220ms ease, color 220ms ease;
     pointer-events: none;
+    transform: rotate(0deg);
 }
 .accordion-header[aria-expanded="true"] .chev {
-    transform: translateY(-50%) rotate(90deg);
-    color: var(--primary-color);
+    transform: rotate(90deg);
+    color: var(--white); /* will be visible on expanded header */
 }
 
 @media (min-width: 900px) {
@@ -429,12 +489,12 @@ nav {
 }
 
 .btn-primary {
-    background-color: var(--secondary-color);
+    background-color: var(--secondary-dark);
     color: var(--white);
 }
 
 .btn-primary:hover {
-    background-color: #c49a4a;
+    background-color: var(--secondary-color);
     transform: translateY(-2px);
 }
 
@@ -455,8 +515,9 @@ section {
 }
 
 .section-title {
-    text-align: center;
-    margin-bottom: 3rem;
+    text-align: left;
+    padding: 2rem;
+    margin-bottom: 0rem;
 }
 
 .section-title h2 {
@@ -472,7 +533,8 @@ section {
 
 /* Make accordion headers orange and use the heading font */
 .accordion-header {
-    color: var(--accent);
+    color: var(--primary-color);
+    font-weight: 600;
     font-family: 'Montserrat', 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
 }
 
@@ -481,17 +543,124 @@ section {
     font-size: 1.1rem;
 }
 
+/* Intro text above the services accordion to guide users */
+.services-intro {
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    padding: 1rem 1.25rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow);
+}
+.services-intro p {
+    margin: 0;
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+/* Make accordion headers look like clickable cards and provide a visual gallery cue */
+.accordion-item { margin-bottom: 0rem; }
+.accordion-item {
+    /* default to full width so panels span the container */
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    transition: max-width 320ms ease, margin 320ms ease;
+}
+.accordion-header {
+    background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(16,24,40,0.03);
+    align-items: center;
+    gap: 0.5rem;
+    transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+    display: flex;
+    color: var(--white);
+}
+.accordion-header:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+.accordion-header .accordion-summary { color: rgba(255,255,255,0.9); font-size: 0.95rem; margin-left: auto; margin-right: 0.5rem; padding-left: 0; border-left: none; }
+.accordion-header[aria-expanded="true"] { background: linear-gradient(90deg, var(--primary-dark), rgba(19,55,55,0.92)); color: var(--white); }
+.accordion-header[aria-expanded="true"] .accordion-summary { color: rgba(255,255,255,0.95); }
+.gallery-pill { margin-left: 0.75rem; background: var(--secondary-color); color: var(--white); padding: 0.25rem 0.6rem; border-radius: 999px; font-size: 0.9rem; font-weight: 600; opacity: 0.95; }
+.accordion-header .gallery-pill { display: none; }
+.accordion-header:hover .gallery-pill,
+.accordion-header[aria-expanded="true"] .gallery-pill { display: inline-block; }
+
+/* When a specific item is opened, let it expand to the page width.
+   Use :has() when supported, otherwise a JS fallback toggles .expanded on the item. */
+.accordion-item:has(.accordion-header[aria-expanded="true"]),
+.accordion-item.expanded {
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/* Title inside the header (separate from the chevron) */
+.accordion-title {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1.1rem;
+    color: inherit;
+    font-weight: 600;
+}
+
+/* Make the opened panel visually connected to the header */
+.accordion-panel {
+    background: var(--white);
+    border-radius: 0 0 10px 10px;
+    border-top: 1px solid rgba(0,0,0,0.03);
+    margin-bottom: 1.25rem;
+}
+
+/* When a panel is open, give it a tinted background and white text to stand out */
+.accordion-panel.open {
+    /* keep the expanded panel white so galleries and cards remain prominent */
+    background: var(--white);
+    color: var(--text-color);
+}
+.accordion-panel.open .section-title h2 {
+    color: var(--primary-color);
+}
+.accordion-panel.open .section-title p,
+.accordion-panel.open p,
+.accordion-panel.open .service-card {
+    background: var(--white);
+}
+
+/* Make the zoom btn more obvious with a small label on hover */
+.zoom-btn { transition: transform .12s ease, background .12s ease; }
+.zoom-btn:hover { transform: scale(1.06); background: rgba(0,0,0,0.72); }
+.zoom-btn::after {
+    content: '';
+    position: absolute;
+    right: 46px;
+    top: 8px;
+    background: rgba(0,0,0,0.75);
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-4px);
+    transition: opacity 160ms ease, transform 160ms ease;
+}
+.zoom-btn:hover::after { content: 'View gallery'; opacity: 1; transform: translateY(0); }
+
 /* Services Grid */
 .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1rem;
+    gap: 2rem;
+    padding: 2rem;
 }
 
 /* Force two larger tiles per row on the Services page for better image visibility */
 .services .services-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    gap: 2rem;
+    padding: 2rem;
 }
 
 @media (max-width: 900px) {
@@ -511,7 +680,8 @@ section {
     width: 100%;
     height: 340px; 
     overflow: hidden;
-    border-radius: 0;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
 }
 
@@ -526,7 +696,33 @@ section {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
     flex-shrink: 0;
+}
+
+/* Caption overlay pill on the bottom-left of the carousel image
+   Straight (square) left edge, rounded right edge. */
+.caption-overlay {
+    position: absolute;
+    left: 0;
+    bottom: 12px;
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    padding: 8px 12px 8px 10px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: 0 12px 12px 0; /* square left, rounded right */
+    box-shadow: 0 6px 18px rgba(16,24,40,0.24);
+    max-width: 72%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    pointer-events: none; /* decorative only */
+    z-index: 4; /* sit above images but below other controls */
+}
+
+@media (max-width: 600px) {
+    .caption-overlay { bottom: 8px; padding: 6px 10px 6px 8px; font-size: 0.9rem; }
 }
 
 .carousel-btn {
@@ -548,12 +744,55 @@ section {
 .carousel-btn.prev { left: 10px; }
 .carousel-btn.next { right: 10px; }
 
+.service-card {
+  background: var(--white);
+ /* subtle frame */
+    border-radius: 5px;
+  overflow: hidden;            /* ensures images respect card corners */
+  padding: 0;                  /* make image full-bleed; content area below can have padding */
+  box-shadow: var(--shadow);
+  transition: transform .22s ease, box-shadow .22s ease;
+}
+
+/* image area (keeps current carousel sizing) */
+.service-carousel {
+  width: 100%;
+  height: 340px; /* existing sizes are fine; can be responsive */
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* ensure images fill the carousel and keep aspect */
+.service-carousel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* content below the image */
 .service-content {
-    padding: 1rem;
-    background: var(--charcoal-color);
-    border-radius: 0; 
-    box-shadow: var(--shadow);
-    flex: 1 1 auto;
+  padding: 0.75rem 1rem; /* caption and small copy live here */
+  background: transparent;
+}
+
+/* caption */
+.service-caption {
+  margin-top: 0.5rem;
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+/* optional stronger frame on hover */
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* responsive tweak */
+@media (max-width: 900px) {
+  .service-carousel { height: 220px; }
+  .service-content { padding: 0.6rem 0.75rem; }
 }
 
 @media (max-width: 1100px) {
@@ -564,13 +803,12 @@ section {
     .service-carousel { height: 220px; }
 }
 
-
 .service-card {
-    background-color: var(--charcoal-color);
-    border-radius: 8px;
-    padding: 2rem;
+    background-color: var(--white);
+    border-radius: 5px;
+    padding-bottom: 0rem;
     box-shadow: var(--shadow);
-    text-align: center;
+    text-align: left;
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
@@ -585,9 +823,9 @@ section {
     right: 10px;
     width: 36px;
     height: 36px;
-    background: var(--charcoal-color);
+    background: rgba(0,0,0,0.6);
     color: var(--white);
-    border-radius: 10%;
+    border-radius: 8px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -613,7 +851,7 @@ section {
 }
 
 .service-card.service-tile {
-    padding: 1rem;
+    padding-bottom: 0rem;
     overflow: hidden;
 }
 
@@ -631,6 +869,19 @@ section {
     color: var(--accent);
     margin-bottom: 0.5rem;
     font-size: 1.25rem;
+}
+
+.service-caption {
+    margin-top: 0.5rem;
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: 1rem;
+    text-align: left;
+    padding: 0 0.25rem;
+}
+
+@media (max-width: 900px) {
+    .service-caption { font-size: 0.95rem; }
 }
 
 .service-card p {
@@ -701,184 +952,6 @@ section {
     justify-content: center;
     color: var(--white);
     font-size: 1.25rem;
-}
-
-/* Project Showcase / Zillow Links */
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
-}
-
-.project-card {
-    background-color: var(--white);
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-hover);
-}
-
-.project-image {
-    height: 220px;
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--white);
-    position: relative;
-    overflow: hidden;
-}
-
-.project-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.project-image-placeholder {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.project-image-placeholder span {
-    font-size: 3rem;
-}
-
-.project-content {
-    padding: 1.5rem;
-}
-
-.project-content h3 {
-    color: var(--primary-color);
-    margin-bottom: 0.5rem;
-    font-size: 1.2rem;
-}
-
-.project-content p {
-    color: var(--text-light);
-    margin-bottom: 1rem;
-    font-size: 0.95rem;
-}
-
-.project-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--primary-color);
-    font-weight: 600;
-    transition: color 0.3s;
-}
-
-.project-link:hover {
-    color: var(--secondary-color);
-}
-
-/* Coming Soon Badge */
-.coming-soon-badge {
-    display: inline-block;
-    background-color: var(--background-color);
-    color: var(--text-light);
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    font-size: 0.875rem;
-    font-weight: 500;
-    border: 1px dashed var(--border-color);
-}
-
-/* Photo Gallery Section */
-.photo-gallery-section {
-    margin-bottom: 3rem;
-}
-
-.gallery-title {
-    color: var(--primary-color);
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-}
-
-.gallery-subtitle {
-    color: var(--text-light);
-    margin-bottom: 1.5rem;
-}
-
-.gallery-subtitle a {
-    color: var(--primary-color);
-    text-decoration: underline;
-}
-
-.gallery-subtitle a:hover {
-    color: var(--secondary-color);
-}
-
-.photo-gallery {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-}
-
-.gallery-item {
-    aspect-ratio: 4/3;
-    border-radius: 8px;
-    overflow: hidden;
-    cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s;
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
-}
-
-.gallery-item:hover {
-    transform: scale(1.03);
-    box-shadow: var(--shadow-hover);
-}
-
-.gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.gallery-placeholder {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: var(--white);
-    gap: 0.5rem;
-}
-
-.gallery-placeholder span {
-    font-size: 2.5rem;
-}
-
-.gallery-placeholder small {
-    font-size: 0.75rem;
-    opacity: 0.9;
-}
-
-.gallery-placeholder.more {
-    background-color: rgba(0, 0, 0, 0.3);
-}
-
-.gallery-placeholder.more span {
-    font-size: 2rem;
-    font-weight: 700;
-}
-
-.gallery-more {
-    background: linear-gradient(135deg, var(--secondary-color) 0%, #c49a4a 100%);
-}
-
-.gallery-cta {
-    text-align: center;
 }
 
 /* Lightbox */
