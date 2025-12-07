@@ -3,6 +3,7 @@
     --primary-color: #B46E3A;
     --primary-dark: #ab5c21;
     --secondary-color: #B46E3A;
+    --accent: #F28C28; /* services/header accent color */
     --text-color: #333333;
     --text-light: #666666;
     --background-color: #fdfaf6df;
@@ -13,6 +14,9 @@
     --shadow-hover: 0 4px 20px rgba(0, 0, 0, 0.15);
     --color-backup: #2c5530; 
 }
+
+/* Load site fonts centrally (Inter for body, Montserrat for headings) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@600;700&display=swap');
 
 /* Reset and Base Styles */
 * {
@@ -26,10 +30,16 @@ html {
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: var(--text-color);
     background-color: var(--background-color);
+}
+
+/* Headings: use Montserrat for stronger, cleaner headings */
+h1,h2,h3,h4,h5 {
+    font-family: 'Montserrat', 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    font-weight: 600;
 }
 
 a {
@@ -101,6 +111,29 @@ body.gallery .nav-links a {
 }
 
 body.gallery .hamburger span {
+    background-color: var(--white);
+}
+
+/* Services pages: allow header overlay on the services hero */
+body.services header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: transparent;
+    box-shadow: none;
+    z-index: 1000;
+}
+
+body.services .logo {
+    color: var(--white);
+}
+
+body.services .nav-links a {
+    color: rgba(255,255,255,0.95);
+}
+
+body.services .hamburger span {
     background-color: var(--white);
 }
 
@@ -249,6 +282,44 @@ nav {
     transition: opacity 320ms ease, backdrop-filter 320ms ease;
 }
 
+/* Page hero used on interior pages such as Services */
+.page-hero {
+    position: relative;
+    color: var(--white);
+    min-height: 64vh;
+    display: flex;
+    align-items: center;
+    padding: 3rem 0;
+    text-align: left;
+    overflow: hidden;
+}
+
+.page-hero::after {
+  background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.55) 100%);
+}
+
+.services-photo-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../zillow_images/zillow_images_1812/image-12.jpg');
+    background-repeat: no-repeat;
+    background-position: center 20%;
+    background-size: cover;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.page-hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.45) 100%);
+    z-index: 1;
+}
+
 .hero > .container {
     position: relative;
     z-index: 2;
@@ -394,6 +465,17 @@ section {
     margin-bottom: 0.5rem;
 }
 
+/* Make the page header text a brighter orange */
+.page-header h1 {
+    color: var(--accent); /* bright orange accent */
+}
+
+/* Make accordion headers orange and use the heading font */
+.accordion-header {
+    color: var(--accent);
+    font-family: 'Montserrat', 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
 .section-title p {
     color: var(--text-light);
     font-size: 1.1rem;
@@ -518,7 +600,7 @@ section {
 .zoom-btn svg {
     width: 18px;
     height: 18px;
-    stroke: var(--charcoal-color);
+    stroke: var(--white);
     stroke-width: 1.6;
     fill: none;
 }
@@ -546,7 +628,7 @@ section {
 }
 
 .service-card h3 {
-    color: var(--primary-color);
+    color: var(--accent);
     margin-bottom: 0.5rem;
     font-size: 1.25rem;
 }
@@ -594,16 +676,25 @@ section {
 
 .about-image {
     position: relative;
+    /* allow the image to size naturally instead of forcing a fixed height */
+    overflow: visible;
 }
 
 .about-image img {
+    display: block;
+    width: 100%;
+    height: auto; /* preserve natural aspect ratio, do not crop */
     border-radius: 8px;
     box-shadow: var(--shadow);
+    max-width: 100%;
 }
 
 .about-image-placeholder {
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
-    height: 400px;
+     /* use a consistent aspect ratio instead of a fixed height so the box matches images
+         and doesn't crop. This matches your image size 1280x853 (≈ 1.5006). */
+     aspect-ratio: 3/2;
+    width: 100%;
     border-radius: 8px;
     display: flex;
     align-items: center;

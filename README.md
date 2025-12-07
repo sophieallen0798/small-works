@@ -1,6 +1,6 @@
-# Small Works Boise
+# SmallWorks Boise
 
-A professional website for Small Works Boise, a construction company specializing in home renovations and remodeling services in Boise, Idaho.
+A professional website for SmallWorks Boise, a construction company specializing in home renovations and remodeling services in Boise, Idaho.
 
 ## Features
 
@@ -96,4 +96,4 @@ The color scheme can be customized in `css/styles.css` by modifying the CSS vari
 
 ## License
 
-© 2024 Small Works Boise. All rights reserved.
+© 2024 SmallWorks Boise. All rights reserved.
