@@ -1,33 +1,42 @@
 /* CSS Variables for consistent theming */
 :root {
     /* Primary colors */
-    --primary-color: #1F4B4B;    /* deep teal */
-    --primary-dark: #133737;    /* darker teal for hover/accents */
+    --primary-color: #1F4B4B;
+    /* deep teal */
+    --primary-dark: #133737;
+    /* darker teal for hover/accents */
 
     /* Secondary / supporting colors */
-    --secondary-color: #C77D2E; /* warm amber */
-    --secondary-dark: #9A5B20;  /* darker warm shade */
+    --secondary-color: #C77D2E;
+    /* warm amber */
+    --secondary-dark: #9A5B20;
+    /* darker warm shade */
 
     /* Accent */
-    --accent: #E07A5F; /* soft coral accent */
+    --accent: #E07A5F;
+    /* soft coral accent */
 
     /* Text / surface */
-    --text-color: #0F1722; /* primary text */
-    --text-light: #6B7280; /* secondary text */
-    --background-color: #FFFFFF; /* page background (alias) */
-    --surface: #F7F4EF; /* subtle off-white surface for sections/cards */
+    --text-color: #0F1722;
+    /* primary text */
+    --text-light: #6B7280;
+    /* secondary text */
+    --background-color: #FFFFFF;
+    /* page background (alias) */
+    --surface: #F7F4EF;
+    /* subtle off-white surface for sections/cards */
     --white: #FFFFFF;
 
     /* Borders and shadows */
     --border-color: #ECE8E1;
-    --shadow: 0 2px 10px rgba(16,24,40,0.06);
+    --shadow: 0 2px 10px rgba(16, 24, 40, 0.06);
     --shadow-hover: 0 6px 30px rgba(16, 24, 40, 0.08);
     /* overlay colors for hero/header overlays */
-    --overlay-white-95: rgba(255,255,255,0.95);
-    --overlay-white-85: rgba(255,255,255,0.85);
-    --overlay-white-70: rgba(255,255,255,0.7);
-    --overlay-black-95: rgba(0,0,0,0.95);
-    --overlay-black-60: rgba(0,0,0,0.6);
+    --overlay-white-95: rgba(255, 255, 255, 0.95);
+    --overlay-white-85: rgba(255, 255, 255, 0.85);
+    --overlay-white-70: rgba(255, 255, 255, 0.7);
+    --overlay-black-95: rgba(0, 0, 0, 0.95);
+    --overlay-black-60: rgba(0, 0, 0, 0.6);
 
     /* Compatibility aliases */
     --charcoal-color: #0f1722;
@@ -57,7 +66,11 @@ body {
 }
 
 /* Headings: use Montserrat for stronger, cleaner headings */
-h1,h2,h3,h4,h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
     font-family: 'Montserrat', 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
     font-weight: 600;
 }
@@ -205,7 +218,10 @@ nav {
 }
 
 /* Dropdown menu for desktop */
-.nav-links li { position: relative; }
+.nav-links li {
+    position: relative;
+}
+
 .nav-links .dropdown {
     display: none;
     position: absolute;
@@ -219,10 +235,26 @@ nav {
     z-index: 1100;
     border: 1px solid var(--border-color);
 }
-.nav-links .dropdown li { list-style: none; }
-.nav-links .dropdown a { display: block; padding: 0.5rem 1rem; color: var(--text-color); }
-.nav-links li.has-dropdown:hover > .dropdown { display: block; }
-.nav-links li.has-dropdown > a::after { content: '▾'; margin-left: 0.4rem; font-size: 0.8rem; }
+
+.nav-links .dropdown li {
+    list-style: none;
+}
+
+.nav-links .dropdown a {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: var(--text-color);
+}
+
+.nav-links li.has-dropdown:hover>.dropdown {
+    display: block;
+}
+
+.nav-links li.has-dropdown>a::after {
+    content: '▾';
+    margin-left: 0.4rem;
+    font-size: 0.8rem;
+}
 
 .nav-links a {
     font-weight: 500;
@@ -247,7 +279,7 @@ a:focus-visible,
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
-    box-shadow: 0 0 0 4px rgba(47,67,90,0.12);
+    box-shadow: 0 0 0 4px rgba(47, 67, 90, 0.12);
     border-radius: 6px;
 }
 
@@ -313,7 +345,8 @@ textarea:focus-visible {
     .home-photo-background {
         background-position: center top;
         background-size: contain;
-        background-color: #000; /* fallback behind letterbox */
+        background-color: #000;
+        /* fallback behind letterbox */
     }
 }
 
@@ -337,7 +370,8 @@ textarea:focus-visible {
     height: 100%;
     background: rgba(30, 58, 33, 0.3);
     z-index: 1;
-    opacity: 0; /* start transparent, fade in on scroll */
+    opacity: 0;
+    /* start transparent, fade in on scroll */
     transition: opacity 320ms ease, backdrop-filter 320ms ease;
 }
 
@@ -354,7 +388,7 @@ textarea:focus-visible {
 }
 
 .page-hero::after {
-  background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.55) 100%);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.55) 100%);
 }
 
 .services-photo-background {
@@ -376,60 +410,13 @@ textarea:focus-visible {
     position: absolute;
     inset: 0;
     /* stronger gradient for better contrast against white links */
-    background: linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.6) 100%);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.6) 100%);
     z-index: 1;
 }
 
-.hero > .container {
+.hero>.container {
     position: relative;
     z-index: 2;
-}
-
-/* Accordion styles for Services page */
-.accordion { display: block; }
-.accordion-item { padding: 0.5rem 0; }
-.accordion-header {
-    width: 100%;
-    text-align: left;
-    background: transparent;
-    border: none;
-    font-size: 1.25rem;
-    padding: 0.75rem 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-}
-.accordion-header .accordion-summary { font-size: 0.95rem; color: var(--text-light); margin-left: auto; margin-right: 0.5rem; padding-left: 0; }
-.accordion-panel { overflow: hidden; max-height: 0; transition: max-height 360ms ease, padding 320ms ease; padding: 0; }
-.accordion-panel.open { max-height: 2000px; padding: 0.75rem 0 1rem 0; }
-.accordion-panel .services-grid { margin-top: 0.5rem; padding: 0; }
-
-/* Accordion header indicator: use inline SVG chevron injected into the header */
-.accordion-header {
-    /* inline layout: chevron + title + (summary auto-pushed right) */
-    position: relative;
-    padding-left: 1rem;
-}
-
-.accordion-header .chev {
-    display: inline-block; /* allow chevron to flow with title */
-    vertical-align: middle;
-    margin-right: 0.6rem;
-    width: 18px;
-    height: 18px;
-    color: var(--text-color);
-    transition: transform 220ms ease, color 220ms ease;
-    pointer-events: none;
-    transform: rotate(0deg);
-}
-.accordion-header[aria-expanded="true"] .chev {
-    transform: rotate(90deg);
-    color: var(--white); /* will be visible on expanded header */
-}
-
-@media (min-width: 900px) {
-    .accordion-header { font-size: 1.5rem; }
 }
 
 /* Fade hero image and pull the about section up when scrolling on the homepage */
@@ -451,7 +438,8 @@ textarea:focus-visible {
 }
 
 .home.scrolled .about {
-    padding-top: 2rem; /* reduced spacing when header has faded */
+    padding-top: 2rem;
+    /* reduced spacing when header has faded */
 }
 
 .hero h1 {
@@ -528,7 +516,8 @@ section {
 
 /* Make the page header text a brighter orange */
 .page-header h1 {
-    color: var(--accent); /* bright orange accent */
+    color: var(--accent);
+    /* bright orange accent */
 }
 
 /* Make accordion headers orange and use the heading font */
@@ -543,134 +532,92 @@ section {
     font-size: 1.1rem;
 }
 
-/* Intro text above the services accordion to guide users */
-.services-intro {
-    background: var(--white);
-    border: 1px solid var(--border-color);
-    padding: 1rem 1.25rem;
-    border-radius: 8px;
-    margin-bottom: 1.5rem;
-    box-shadow: var(--shadow);
-}
-.services-intro p {
-    margin: 0;
-    color: var(--text-color);
-    font-size: 1rem;
+
+
+.service-tabs {
+    margin-top: 1rem;
+    padding: 2rem;
 }
 
-/* Make accordion headers look like clickable cards and provide a visual gallery cue */
-.accordion-item { margin-bottom: 0rem; }
-.accordion-item {
-    /* default to full width so panels span the container */
-    max-width: 100%;
-    margin-left: 0;
-    margin-right: 0;
-    transition: max-width 320ms ease, margin 320ms ease;
-}
-.accordion-header {
-    background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
-    padding: 1rem;
-    border-radius: 10px;
-    box-shadow: 0 6px 18px rgba(16,24,40,0.03);
-    align-items: center;
-    gap: 0.5rem;
-    transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
-    display: flex;
-    color: var(--white);
-}
-.accordion-header:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
-.accordion-header .accordion-summary { color: rgba(255,255,255,0.9); font-size: 0.95rem; margin-left: auto; margin-right: 0.5rem; padding-left: 0; border-left: none; }
-.accordion-header[aria-expanded="true"] { background: linear-gradient(90deg, var(--primary-dark), rgba(19,55,55,0.92)); color: var(--white); }
-.accordion-header[aria-expanded="true"] .accordion-summary { color: rgba(255,255,255,0.95); }
-.gallery-pill { margin-left: 0.75rem; background: var(--secondary-color); color: var(--white); padding: 0.25rem 0.6rem; border-radius: 999px; font-size: 0.9rem; font-weight: 600; opacity: 0.95; }
-.accordion-header .gallery-pill { display: none; }
-.accordion-header:hover .gallery-pill,
-.accordion-header[aria-expanded="true"] .gallery-pill { display: inline-block; }
-
-/* When a specific item is opened, let it expand to the page width.
-   Use :has() when supported, otherwise a JS fallback toggles .expanded on the item. */
-.accordion-item:has(.accordion-header[aria-expanded="true"]),
-.accordion-item.expanded {
-    max-width: 100%;
-    margin-left: 0;
-    margin-right: 0;
-}
-
-/* Title inside the header (separate from the chevron) */
-.accordion-title {
-    display: inline-block;
-    vertical-align: middle;
-    font-size: 1.1rem;
-    color: inherit;
-    font-weight: 600;
-}
-
-/* Make the opened panel visually connected to the header */
-.accordion-panel {
-    background: var(--white);
-    border-radius: 0 0 10px 10px;
-    border-top: 1px solid rgba(0,0,0,0.03);
-    margin-bottom: 1.25rem;
-}
-
-/* When a panel is open, give it a tinted background and white text to stand out */
-.accordion-panel.open {
-    /* keep the expanded panel white so galleries and cards remain prominent */
-    background: var(--white);
-    color: var(--text-color);
-}
-.accordion-panel.open .section-title h2 {
-    color: var(--primary-color);
-}
-.service-tabs { margin-top: 1rem; }
 .tabs-bar {
     display: flex;
     gap: 0.5rem;
     background: var(--white);
-    padding: 0.5rem 0.5rem 0;
     border-radius: 10px;
     box-shadow: var(--shadow);
     margin-bottom: 1rem;
 }
+
 .tab-btn {
     background: transparent;
     border: none;
-    padding: 1rem;
+    padding: 1rem 1rem 1.5rem 1rem;
     border-radius: 8px 8px 0 0;
     font-weight: 700;
+    font-size: 1.1rem;
     color: var(--text-color);
     cursor: pointer;
     transition: background 180ms ease, color 180ms ease, transform 120ms ease;
 }
-.tab-btn:hover { transform: translateY(-2px); }
+
+.tab-btn:hover {
+    transform: translateY(-2px);
+}
+
 .tab-btn.active,
 .tab-btn[aria-selected="true"] {
     background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
     color: var(--white);
 }
-.tabs-panels { background: transparent; }
-.tab-panel { display: block; }
-.tab-panel[hidden] { display: none; }
+
+.tabs-panels {
+    background: transparent;
+}
+
+.tab-panel {
+    display: block;
+    opacity: 0;
+    /* Start with hidden opacity */
+    transition: opacity 0.5s ease-in;
+}
+
+.tab-panel.active {
+    opacity: 1;
+    /* Fade to full visibility */
+}
+
+.tab-panel[hidden] {
+    display: none;
+}
+
+
 
 @media (max-width: 700px) {
-    .tabs-bar { flex-wrap: wrap; }
-    .tab-btn { flex: 1 1 calc(50% - 8px); }
-}
-.accordion-panel.open .section-title p,
-.accordion-panel.open p,
-.accordion-panel.open .service-card {
-    background: var(--white);
+    .tabs-bar {
+        flex-wrap: wrap;
+    }
+
+    .tab-btn {
+        flex: 1 1 calc(50% - 8px);
+    }
 }
 
 /* Make the zoom btn more obvious with a small label on hover */
-.zoom-btn { transition: transform .12s ease, background .12s ease; }
-.zoom-btn:hover { transform: scale(1.06); background: rgba(0,0,0,0.72); }
+.zoom-btn {
+    transition: transform .12s ease, background .12s ease;
+}
+
+.zoom-btn:hover {
+    transform: scale(1.06);
+    background: rgba(0, 0, 0, 0.72);
+}
+
 .zoom-btn::after {
     content: '';
     position: absolute;
     right: 46px;
     top: 8px;
-    background: rgba(0,0,0,0.75);
+    background: rgba(0, 0, 0, 0.75);
     color: #fff;
     padding: 4px 8px;
     border-radius: 6px;
@@ -680,7 +627,12 @@ section {
     transform: translateY(-4px);
     transition: opacity 160ms ease, transform 160ms ease;
 }
-.zoom-btn:hover::after { content: 'View gallery'; opacity: 1; transform: translateY(0); }
+
+.zoom-btn:hover::after {
+    content: 'View gallery';
+    opacity: 1;
+    transform: translateY(0);
+}
 
 /* Services Grid */
 .services-grid {
@@ -695,12 +647,6 @@ section {
     grid-template-columns: repeat(2, 1fr);
 }
 
-@media (max-width: 900px) {
-    .services .services-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
 /* Service tile carousel styles */
 .service-tile {
     display: flex;
@@ -710,7 +656,7 @@ section {
 .service-carousel {
     position: relative;
     width: 100%;
-    height: 340px; 
+    height: 340px;
     overflow: hidden;
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
@@ -761,13 +707,14 @@ section {
     margin-right: -50vw;
     width: 100vw;
     box-sizing: border-box;
-    padding: 0 20px; /* keep a small gutter on very narrow screens */
+    /* keep a small gutter on very narrow screens */
 }
 
 .tabs-bar .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0; /* rely on parent for gutters */
+    padding: 0.5rem 0.5rem 0 0.5rem;
+    /* rely on parent for gutters */
     display: flex;
     gap: 0.5rem;
     align-items: center;
@@ -776,7 +723,24 @@ section {
 .services-intro .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0.75rem 0; /* keep vertical spacing inside the full-bleed box */
+    padding: 1rem;
+    /* keep vertical spacing inside the full-bleed box */
+}
+
+/* Intro text above the services accordion to guide users */
+.services-intro {
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    padding: 1rem 1.25rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow);
+}
+
+.services-intro p {
+    margin: 0;
+    color: var(--text-color);
+    font-size: 1rem;
 }
 
 /* Caption overlay pill on the bottom-left of the carousel image
@@ -785,30 +749,37 @@ section {
     position: absolute;
     left: 0;
     bottom: 12px;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.5);
     color: #fff;
     padding: 8px 12px 8px 10px;
     font-weight: 600;
     font-size: 0.95rem;
-    border-radius: 0 12px 12px 0; /* square left, rounded right */
-    box-shadow: 0 6px 18px rgba(16,24,40,0.24);
+    border-radius: 0 12px 12px 0;
+    /* square left, rounded right */
+    box-shadow: 0 6px 18px rgba(16, 24, 40, 0.24);
     max-width: 72%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    pointer-events: none; /* decorative only */
-    z-index: 4; /* sit above images but below other controls */
+    pointer-events: none;
+    /* decorative only */
+    z-index: 4;
+    /* sit above images but below other controls */
 }
 
 @media (max-width: 600px) {
-    .caption-overlay { bottom: 8px; padding: 6px 10px 6px 8px; font-size: 0.9rem; }
+    .caption-overlay {
+        bottom: 8px;
+        padding: 6px 10px 6px 8px;
+        font-size: 0.9rem;
+    }
 }
 
 .carousel-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(255,255,255,0.85);
+    background: rgba(255, 255, 255, 0.85);
     border: none;
     width: 36px;
     height: 36px;
@@ -820,66 +791,84 @@ section {
     z-index: 5;
 }
 
-.carousel-btn.prev { left: 10px; }
-.carousel-btn.next { right: 10px; }
+.carousel-btn.prev {
+    left: 10px;
+}
+
+.carousel-btn.next {
+    right: 10px;
+}
 
 .service-card {
-  background: var(--white);
- /* subtle frame */
+    background: var(--white);
+    /* subtle frame */
     border-radius: 5px;
-  overflow: hidden;            /* ensures images respect card corners */
-  padding: 0;                  /* make image full-bleed; content area below can have padding */
-  box-shadow: var(--shadow);
-  transition: transform .22s ease, box-shadow .22s ease;
+    overflow: hidden;
+    /* ensures images respect card corners */
+    padding: 0;
+    /* make image full-bleed; content area below can have padding */
+    box-shadow: var(--shadow);
+    transition: transform .22s ease, box-shadow .22s ease;
 }
 
 /* image area (keeps current carousel sizing) */
 .service-carousel {
-  width: 100%;
-  height: 340px; /* existing sizes are fine; can be responsive */
+    width: 100%;
+    height: 340px;
+    /* existing sizes are fine; can be responsive */
     border-radius: 8px;
     overflow: hidden;
 }
 
 /* ensure images fill the carousel and keep aspect */
 .service-carousel img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 /* content below the image */
 .service-content {
-  padding: 0.75rem 1rem; /* caption and small copy live here */
-  background: transparent;
+    padding: 0.75rem 1rem;
+    /* caption and small copy live here */
+    background: transparent;
 }
 
 /* caption */
 .service-caption {
-  margin-top: 0.5rem;
-  color: var(--text-color);
-  font-weight: 600;
+    margin-top: 0.5rem;
+    color: var(--text-color);
+    font-weight: 600;
 }
 
 /* optional stronger frame on hover */
 .service-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-hover);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
 }
 
 /* responsive tweak */
 @media (max-width: 900px) {
-  .service-carousel { height: 220px; }
-  .service-content { padding: 0.6rem 0.75rem; }
+    .service-carousel {
+        height: 220px;
+    }
+
+    .service-content {
+        padding: 0.6rem 0.75rem;
+    }
 }
 
 @media (max-width: 1100px) {
-    .service-carousel { height: 300px; }
+    .service-carousel {
+        height: 300px;
+    }
 }
 
 @media (max-width: 800px) {
-    .service-carousel { height: 220px; }
+    .service-carousel {
+        height: 220px;
+    }
 }
 
 .service-card {
@@ -893,7 +882,8 @@ section {
 
 /* Zoom/enlarge icon placed in the top-right of service tiles */
 .service-card {
-    position: relative; /* enable absolute positioning for the zoom button */
+    position: relative;
+    /* enable absolute positioning for the zoom button */
 }
 
 .zoom-btn {
@@ -902,7 +892,7 @@ section {
     right: 10px;
     width: 36px;
     height: 36px;
-    background: rgba(0,0,0,0.6);
+    background: rgba(0, 0, 0, 0.6);
     color: var(--white);
     border-radius: 8px;
     display: inline-flex;
@@ -922,11 +912,22 @@ section {
     fill: none;
 }
 
-.zoom-btn:hover { transform: scale(1.06); }
+.zoom-btn:hover {
+    transform: scale(1.06);
+}
 
 @media (max-width: 600px) {
-    .zoom-btn { top: 8px; right: 8px; width: 32px; height: 32px; }
-    .zoom-btn svg { width: 16px; height: 16px; }
+    .zoom-btn {
+        top: 8px;
+        right: 8px;
+        width: 32px;
+        height: 32px;
+    }
+
+    .zoom-btn svg {
+        width: 16px;
+        height: 16px;
+    }
 }
 
 .service-card.service-tile {
@@ -960,7 +961,9 @@ section {
 }
 
 @media (max-width: 900px) {
-    .service-caption { font-size: 0.95rem; }
+    .service-caption {
+        font-size: 0.95rem;
+    }
 }
 
 .service-card p {
@@ -1013,7 +1016,8 @@ section {
 .about-image img {
     display: block;
     width: 100%;
-    height: auto; /* preserve natural aspect ratio, do not crop */
+    height: auto;
+    /* preserve natural aspect ratio, do not crop */
     border-radius: 8px;
     box-shadow: var(--shadow);
     max-width: 100%;
@@ -1021,9 +1025,9 @@ section {
 
 .about-image-placeholder {
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
-     /* use a consistent aspect ratio instead of a fixed height so the box matches images
+    /* use a consistent aspect ratio instead of a fixed height so the box matches images
          and doesn't crop. This matches your image size 1280x853 (≈ 1.5006). */
-     aspect-ratio: 3/2;
+    aspect-ratio: 3/2;
     width: 100%;
     border-radius: 8px;
     display: flex;
@@ -1150,7 +1154,7 @@ section {
         grid-template-columns: repeat(2, 1fr);
         gap: 0.5rem;
     }
-    
+
     .gallery-placeholder span {
         font-size: 1.5rem;
     }
@@ -1465,26 +1469,32 @@ footer {
     animation: fadeInUp 0.8s ease 0.4s both;
 }
 
+
+
 /* Animations */
 @keyframes fadeInUp {
     from {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
+/* (removed panelIn keyframes) */
+
 /* Responsive Design */
 @media (max-width: 992px) {
+
     .about-content,
     .contact-wrapper {
         grid-template-columns: 1fr;
         gap: 2rem;
     }
-    
+
     .about-image {
         order: -1;
     }
@@ -1494,7 +1504,7 @@ footer {
     .hamburger {
         display: flex;
     }
-    
+
     .nav-links {
         position: fixed;
         top: 70px;
@@ -1511,7 +1521,7 @@ footer {
         transition: all 0.3s;
         box-shadow: var(--shadow);
     }
-    
+
     .nav-links.active {
         transform: translateY(0);
         opacity: 1;
@@ -1534,23 +1544,23 @@ footer {
     .nav-links .dropdown a {
         padding-left: 2rem;
     }
-    
+
     .hero h1 {
         font-size: 2rem;
     }
-    
+
     .hero p {
         font-size: 1rem;
     }
-    
+
     .section-title h2 {
         font-size: 2rem;
     }
-    
+
     .projects-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .cta h2 {
         font-size: 1.75rem;
     }
@@ -1561,13 +1571,13 @@ footer {
         flex-direction: column;
         align-items: center;
     }
-    
+
     .btn {
         width: 100%;
         max-width: 280px;
         text-align: center;
     }
-    
+
     .contact-form {
         padding: 1.5rem;
     }

@@ -109,8 +109,7 @@
         <div class="services-child-container">
             <div class="services-intro">
                 <div class="container">
-                    <p>Explore recent projects — use the tabs below to switch between New Builds, Full Home Renovations,
-                        Kitchens, and Bathrooms. Click the magnifying-glass on a tile to open the full gallery.</p>
+                    <p>We provide a range of remodelling and renovation services. See the examples of our work below to see if our style fits what you're looking for.</p>
                 </div>
             </div>
 
@@ -129,7 +128,7 @@
                 </div>
 
                 <div class="tabs-panels">
-                    <div id="panel-new-builds" class="tab-panel" role="tabpanel" aria-labelledby="tab-new-builds">
+                    <div id="panel-new-builds" class="tab-panel" role="tabpanel" aria-labelledby="tab-new-builds" hidden>
                         <div class="section-title">
                             <p>New homes built around Boise. We design and construct homes that combine long-lasting
                                 craftsmanship with modern details and energy-smart systems.</p>
@@ -335,17 +334,59 @@
                     t.classList.toggle('active', isActive);
                     t.setAttribute('aria-selected', isActive ? 'true' : 'false');
                 });
+                // stabilize the panels container height during the transition to avoid layout jumps
+                var panelsContainer = document.querySelector('.tabs-panels');
+                var currentActive = Array.from(panels).find(function (x) { return x.classList.contains('active'); });
+                var lockHeight = 0;
+                if (currentActive) lockHeight = currentActive.offsetHeight;
+                if (panelsContainer) {
+                    panelsContainer.style.minHeight = lockHeight + 'px';
+                }
                 panels.forEach(function (p) {
                     if (p.id === panelId) {
-                        p.hidden = false;
+                        // ensure this panel is visible first so the transition can run
+                        if (p.hidden) p.hidden = false;
+                        // clear any previous hide handler/timeout
+                        if (p._hideHandler) { p.removeEventListener('transitionend', p._hideHandler); p._hideHandler = null; }
+                        if (p._hideTimeout) { clearTimeout(p._hideTimeout); p._hideTimeout = null; }
+                        // force reflow
+                        void p.offsetHeight;
                         p.classList.add('active');
                     } else {
-                        p.hidden = true;
-                        p.classList.remove('active');
+                        // if panel is currently active, remove active so it fades out,
+                        // then set hidden after the transition finishes (with a fallback)
+                        if (p.classList.contains('active')) {
+                            p.classList.remove('active');
+                            // create a one-time handler to set hidden once opacity transition ends
+                            p._hideHandler = function (e) {
+                                if (e && e.propertyName !== 'opacity') return;
+                                p.hidden = true;
+                                p.removeEventListener('transitionend', p._hideHandler);
+                                p._hideHandler = null;
+                                if (p._hideTimeout) { clearTimeout(p._hideTimeout); p._hideTimeout = null; }
+                            };
+                            p.addEventListener('transitionend', p._hideHandler);
+                            // fallback: if transitionend doesn't fire, hide after 420ms
+                            p._hideTimeout = setTimeout(function () {
+                                if (!p.hidden) p.hidden = true;
+                                if (p._hideHandler) { p.removeEventListener('transitionend', p._hideHandler); p._hideHandler = null; }
+                                p._hideTimeout = null;
+                            }, 420);
+                        } else {
+                            // already hidden/hidden-state: ensure it's hidden
+                            p.hidden = true;
+                        }
                     }
                 });
                 var panelEl = document.getElementById(panelId);
                 if (panelEl) panelEl.focus({ preventScroll: true });
+                // clear the temporary minHeight after the transitions complete
+                if (panelsContainer) {
+                    // use a timeout slightly longer than the CSS transition as a safe cleanup
+                    setTimeout(function () {
+                        panelsContainer.style.minHeight = '';
+                    }, 460);
+                }
             }
 
             tabs.forEach(function (btn, idx) {
