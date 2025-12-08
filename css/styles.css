@@ -732,6 +732,53 @@ section {
     flex-shrink: 0;
 }
 
+.services-container {
+    position: relative;
+    color: var(--white);
+    min-height: 64vh;
+    display: flex;
+    align-items: center;
+    padding: 3rem 0;
+    text-align: left;
+    overflow: hidden;
+}
+
+.services-child-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Make specific boxes span the full viewport width (full-bleed) while keeping their inner
+   content constrained by the existing `.container`. This lets the background/box stretch
+   to the edges while preserving the tab/photo layout inside. */
+.tabs-bar,
+.services-intro {
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    width: 100vw;
+    box-sizing: border-box;
+    padding: 0 20px; /* keep a small gutter on very narrow screens */
+}
+
+.tabs-bar .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0; /* rely on parent for gutters */
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.services-intro .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.75rem 0; /* keep vertical spacing inside the full-bleed box */
+}
+
 /* Caption overlay pill on the bottom-left of the carousel image
    Straight (square) left edge, rounded right edge. */
 .caption-overlay {

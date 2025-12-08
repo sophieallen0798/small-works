@@ -94,7 +94,7 @@
     </script>
 </head>
 
-<body class="services has-hero">
+<body class="services-page has-hero">
     <header></header>
 
     <section class="page-hero">
@@ -105,24 +105,34 @@
         </div>
     </section>
 
-    <section class="services">
-        <div class="container">
+    <section class="services-container">
+        <div class="services-child-container">
             <div class="services-intro">
-                <p>Explore recent projects — use the tabs below to switch between New Builds, Full Home Renovations, Kitchens, and Bathrooms. Click the magnifying-glass on a tile to open the full gallery.</p>
+                <div class="container">
+                    <p>Explore recent projects — use the tabs below to switch between New Builds, Full Home Renovations,
+                        Kitchens, and Bathrooms. Click the magnifying-glass on a tile to open the full gallery.</p>
+                </div>
             </div>
 
             <div class="service-tabs">
                 <div class="tabs-bar" role="tablist" aria-label="Services tabs">
-                    <button id="tab-new-builds" class="tab-btn active" role="tab" aria-selected="true" aria-controls="panel-new-builds">New Builds</button>
-                    <button id="tab-full-home" class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-full-home">Full Home Renovations</button>
-                    <button id="tab-kitchens" class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-kitchens">Kitchens</button>
-                    <button id="tab-bathrooms" class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-bathrooms">Bathrooms</button>
+                    <div class="container">
+                        <button id="tab-new-builds" class="tab-btn active" role="tab" aria-selected="true"
+                            aria-controls="panel-new-builds">New Builds</button>
+                        <button id="tab-full-home" class="tab-btn" role="tab" aria-selected="false"
+                            aria-controls="panel-full-home">Full Home Renovations</button>
+                        <button id="tab-kitchens" class="tab-btn" role="tab" aria-selected="false"
+                            aria-controls="panel-kitchens">Kitchens</button>
+                        <button id="tab-bathrooms" class="tab-btn" role="tab" aria-selected="false"
+                            aria-controls="panel-bathrooms">Bathrooms</button>
+                    </div>
                 </div>
 
                 <div class="tabs-panels">
                     <div id="panel-new-builds" class="tab-panel" role="tabpanel" aria-labelledby="tab-new-builds">
                         <div class="section-title">
-                            <p>New homes built around Boise. We design and construct homes that combine long-lasting craftsmanship with modern details and energy-smart systems.</p>
+                            <p>New homes built around Boise. We design and construct homes that combine long-lasting
+                                craftsmanship with modern details and energy-smart systems.</p>
                         </div>
                         <div class="services-grid" id="new-builds-grid">
                             <!-- New Builds carousel tiles will be injected here by script -->
@@ -131,7 +141,8 @@
 
                     <div id="panel-full-home" class="tab-panel" role="tabpanel" aria-labelledby="tab-full-home" hidden>
                         <div class="section-title">
-                            <p>We renovate historic and older homes with care. We balance preserving original features and updating for a cleaner, more modern look.</p>
+                            <p>We renovate historic and older homes with care. We balance preserving original features
+                                and updating for a cleaner, more modern look.</p>
                         </div>
                         <div class="services-grid" id="full-home-grid">
                             <!-- Full Home carousel tiles will be injected here -->
@@ -140,7 +151,8 @@
 
                     <div id="panel-kitchens" class="tab-panel" role="tabpanel" aria-labelledby="tab-kitchens" hidden>
                         <div class="section-title">
-                            <p>From layout planning to custom cabinetry and finish selections, our kitchens balance beauty and function tailored to how you live.</p>
+                            <p>From layout planning to custom cabinetry and finish selections, our kitchens balance
+                                beauty and function tailored to how you live.</p>
                         </div>
                         <div class="services-grid" id="kitchens-grid">
                             <!-- Kitchens carousel tiles will be injected here -->
@@ -149,7 +161,8 @@
 
                     <div id="panel-bathrooms" class="tab-panel" role="tabpanel" aria-labelledby="tab-bathrooms" hidden>
                         <div class="section-title">
-                            <p>We craft serene, durable bathrooms with quality tilework, smart layouts, and efficient fixtures that elevate your daily routine.</p>
+                            <p>We craft serene, durable bathrooms with quality tilework, smart layouts, and efficient
+                                fixtures that elevate your daily routine.</p>
                         </div>
                         <div class="services-grid" id="bathrooms-grid">
                             <!-- Bathrooms carousel tiles will be injected here -->
@@ -291,10 +304,10 @@
             function injectSets(gridId, sets) {
                 var gridEl = document.getElementById(gridId);
                 if (!gridEl) return;
-                    sets.forEach(function (set) {
-                        // pass the per-set title into the carousel so the overlay pill can be shown
-                        var captionText = set.altBase || '';
-                        var el = createCarouselElement(set.dir, set.images, 0, captionText);
+                sets.forEach(function (set) {
+                    // pass the per-set title into the carousel so the overlay pill can be shown
+                    var captionText = set.altBase || '';
+                    var el = createCarouselElement(set.dir, set.images, 0, captionText);
                     gridEl.appendChild(el);
                 });
             }
