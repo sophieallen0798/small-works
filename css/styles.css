@@ -38,6 +38,10 @@
     --overlay-black-95: rgba(0, 0, 0, 0.95);
     --overlay-black-60: rgba(0, 0, 0, 0.6);
 
+    /* Header defaults */
+    --header-bg: rgba(247, 244, 239, 0.98);
+    --header-fade-duration: 240ms;
+
     /* Compatibility aliases */
     --charcoal-color: #0f1722;
     --color-backup: #2c5530;
@@ -94,11 +98,12 @@ img {
 
 /* Header and Navigation */
 header {
-    background-color: var(--white);
+    background-color: var(--header-bg);
     box-shadow: var(--shadow);
     position: sticky;
     top: 0;
     z-index: 1000;
+    transition: background-color var(--header-fade-duration) ease, box-shadow var(--header-fade-duration) ease, color var(--header-fade-duration) ease;
 }
 
 /* Homepage: overlay header over hero for a true full-viewport hero */
@@ -107,7 +112,7 @@ body.home header {
     top: 0;
     left: 0;
     right: 0;
-    background: transparent;
+    background-color: transparent;
     box-shadow: none;
     z-index: 1000;
 }
@@ -160,7 +165,7 @@ body.services header {
     top: 0;
     left: 0;
     right: 0;
-    background: transparent;
+    background-color: transparent;
     box-shadow: none;
     z-index: 1000;
 }
@@ -261,6 +266,13 @@ nav {
     padding: 0.5rem 1rem;
     border-radius: 4px;
     transition: background-color 0.3s, color 0.3s;
+}
+
+/* Smooth color transitions to avoid flashing between pages */
+.logo,
+.nav-links a,
+.hamburger span {
+    transition: color var(--header-fade-duration) ease, background-color var(--header-fade-duration) ease, opacity var(--header-fade-duration) ease;
 }
 
 .nav-links a:hover,
@@ -1571,6 +1583,123 @@ footer {
         flex-direction: column;
         align-items: center;
     }
+
+
+/* Contact form styles */
+.contact {
+    padding: 3.5rem 0;
+    background: linear-gradient(180deg, rgba(247,244,239,0.4), rgba(255,255,255,0));
+}
+.contact .contact-form {
+    max-width: 820px;
+    margin: 0 auto;
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(16,24,40,0.06);
+    padding: 2.25rem;
+    border: 1px solid var(--border-color);
+}
+.contact-info {
+    text-align: center;
+    padding: 2rem;
+}
+.contact-container {
+    padding: 3rem;
+}
+.contact .contact-form form {
+    display: grid;
+    gap: 0.75rem;
+    grid-template-columns: 1fr;
+}
+.contact .contact-form .form-row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 0.75rem;
+    align-items: center;
+}
+.contact-info-section {
+    padding: 2rem;
+}
+
+/* Full-width rows (textarea, submit) span both columns */
+.contact .contact-form .form-row.full {
+    grid-template-columns: 1fr;
+    align-items: start;
+}
+.contact .contact-form .form-row.full label {
+    grid-column: 1 / -1;
+}
+.contact .contact-form .form-row.full textarea,
+.contact .contact-form .form-row.full .btn {
+    grid-column: 1 / -1;
+}
+.contact .contact-form label {
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 0.4rem;
+    color: var(--text-color);
+}
+.contact .contact-form input[type="text"],
+.contact .contact-form input[type="email"],
+.contact .contact-form input[type="tel"],
+.contact .contact-form textarea {
+    padding: 0.75rem 0.9rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    color: var(--text-color);
+    background: #fff;
+    transition: box-shadow 150ms ease, border-color 150ms ease;
+}
+.contact .contact-form textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+.contact .contact-form input:focus,
+.contact .contact-form textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 6px 18px rgba(31,75,75,0.08);
+}
+.contact .contact-form .btn {
+    grid-column: 1 / -1;
+    justify-self: start;
+    padding: 0.9rem 1.4rem;
+    border-radius: 8px;
+    background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
+    color: var(--white);
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    box-shadow: var(--shadow-hover);
+    transition: transform 120ms ease, box-shadow 120ms ease, opacity 120ms ease;
+}
+.contact .contact-form .btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.98;
+}
+
+@media (max-width: 780px) {
+    .contact .contact-form form {
+        grid-template-columns: 1fr;
+    }
+    .contact .contact-form textarea { min-height: 140px; }
+    .contact { padding: 2rem 0; }
+}
+
+/* Increase readable line length / side spacing for the contact info block */
+.contact-container .contact-info {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+}
+
+@media (min-width: 900px) {
+    .contact-container .contact-info {
+        padding-left: 3rem;
+        padding-right: 3rem;
+        max-width: 840px;
+    }
+}
 
     .btn {
         width: 100%;
