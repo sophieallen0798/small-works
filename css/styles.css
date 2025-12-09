@@ -431,17 +431,29 @@ textarea:focus-visible {
     z-index: 2;
 }
 
+/* Mild overlay for homepage hero to improve text contrast */
+body.home .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.14) 0%, rgba(0,0,0,0.08) 50%, rgba(0,0,0,0.18) 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
 /* Fade hero image and pull the about section up when scrolling on the homepage */
 .home.scrolled .home-photo-background::after {
-    opacity: 1;
+    /* soften the overlay when scrolled to keep image visible */
+    opacity: 0.45;
 }
 
 .home .home-photo-background {
-    transition: filter 320ms ease;
+    transition: filter 360ms ease, opacity 360ms ease;
 }
 
 .home.scrolled .home-photo-background {
-    filter: brightness(0.6) saturate(0.9);
+    /* milder darkening on scroll */
+    filter: brightness(0.86) saturate(0.95);
 }
 
 /* Bring the about section closer when scrolled */
