@@ -460,6 +460,11 @@ textarea:focus-visible {
     animation: fadeInUp 0.8s ease;
 }
 
+/* Add subtle text shadow for legibility on the homepage hero */
+body.home .hero h1 {
+    text-shadow: 0 6px 18px rgba(0,0,0,0.45), 0 2px 6px rgba(0,0,0,0.35);
+}
+
 .hero p {
     font-size: 1.25rem;
     max-width: 600px;
