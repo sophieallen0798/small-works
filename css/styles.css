@@ -533,7 +533,8 @@ section {
 
 .section-title {
     text-align: left;
-    padding: 2rem;
+    padding-left: 2rem;
+    padding-top: 1rem;
     margin-bottom: 0rem;
 }
 
@@ -549,19 +550,10 @@ section {
     /* bright orange accent */
 }
 
-/* Make accordion headers orange and use the heading font */
-.accordion-header {
-    color: var(--primary-color);
-    font-weight: 600;
-    font-family: 'Montserrat', 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-}
-
 .section-title p {
     color: var(--text-light);
     font-size: 1.1rem;
 }
-
-
 
 .service-tabs {
     margin-top: 1rem;
@@ -574,7 +566,6 @@ section {
     background: var(--white);
     border-radius: 10px;
     box-shadow: var(--shadow);
-    margin-bottom: 1rem;
 }
 
 .tab-btn {
@@ -723,7 +714,12 @@ section {
     margin: 0 auto;
     padding: 0 20px;
 }
-
+.contact-header-container h4 {
+    color: var(--secondary-color);
+}
+.contact-header-container {
+    color: var(--secondary-color);
+}
 /* Make specific boxes span the full viewport width (full-bleed) while keeping their inner
    content constrained by the existing `.container`. This lets the background/box stretch
    to the edges while preserving the tab/photo layout inside. */
@@ -737,6 +733,12 @@ section {
     width: 100vw;
     box-sizing: border-box;
     /* keep a small gutter on very narrow screens */
+}
+.service-intro-text {
+    color: var(--text-color);
+    font-size: 1.1rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
 }
 
 .tabs-bar .container {
@@ -1583,7 +1585,7 @@ footer {
     }
 
     .section-title h2 {
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
 
     .projects-grid {
@@ -1636,6 +1638,7 @@ footer {
 }
 .contact-info-section {
     padding: 2rem;
+    margin: 4rem;
 }
 
 /* Full-width rows (textarea, submit) span both columns */
