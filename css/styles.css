@@ -337,23 +337,14 @@ textarea:focus-visible {
     pointer-events: none;
 }
 
-/* On very narrow screens show full image (may letterbox) so top isn't cropped */
-@media (max-width: 600px) {
-    .home-photo-background {
-        background-position: center top;
-        background-size: contain;
-        background-color: #000;
-        /* fallback behind letterbox */
-    }
-}
 
 /* Gallery page: make the header photo taller */
-.gallery .hero {
+.hero {
     min-height: 120vh;
 }
 
 @media (max-width: 900px) {
-    .gallery .hero {
+    .hero {
         min-height: 60vh;
     }
 }
@@ -595,18 +586,6 @@ section {
     display: none;
 }
 
-
-
-@media (max-width: 700px) {
-    .tabs-bar {
-        flex-wrap: wrap;
-    }
-
-    .tab-btn {
-        flex: 1 1 calc(50% - 8px);
-    }
-}
-
 /* Make the zoom btn more obvious with a small label on hover */
 .zoom-btn {
     transition: transform .12s ease, background .12s ease;
@@ -769,6 +748,25 @@ section {
         padding: 6px 10px 6px 8px;
         font-size: 0.9rem;
     }
+
+    .zoom-btn {
+        top: 8px;
+        right: 8px;
+        width: 32px;
+        height: 32px;
+    }
+
+    .zoom-btn svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .home-photo-background {
+        background-position: center top;
+        background-size: contain;
+        background-color: #000;
+        /* fallback behind letterbox */
+    }
 }
 
 .carousel-btn {
@@ -835,17 +833,11 @@ section {
     .service-carousel {
         height: 220px;
     }
-}
 
-@media (max-width: 1100px) {
-    .service-carousel {
-        height: 300px;
-    }
-}
-
-@media (max-width: 800px) {
-    .service-carousel {
-        height: 220px;
+    .contact-container .contact-info {
+        padding-left: 3rem;
+        padding-right: 3rem;
+        max-width: 840px;
     }
 }
 
@@ -892,20 +884,6 @@ section {
 
 .zoom-btn:hover {
     transform: scale(1.06);
-}
-
-@media (max-width: 600px) {
-    .zoom-btn {
-        top: 8px;
-        right: 8px;
-        width: 32px;
-        height: 32px;
-    }
-
-    .zoom-btn svg {
-        width: 16px;
-        height: 16px;
-    }
 }
 
 .service-card.service-tile {
@@ -1042,6 +1020,14 @@ section {
     font-size: 1.5rem;
 }
 
+/* Reduce vertical spacing specifically for contact pages so the info
+   block sits closer to the contact form (overrides generic section padding) */
+.contact-info-section,
+.contact {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
 /* Footer */
 footer {
     background-color: var(--primary-dark);
@@ -1103,21 +1089,35 @@ footer {
     padding-right: 1.25rem;
 }
 
-@media (min-width: 780px) {
-
-    .page-header .container.contact-header-container,
-    .contact-info-section .container.contact-container {
-        padding-left: 3.5rem;
-        padding-right: 3.5rem;
-    }
-}
 
 @media (min-width: 1200px) {
+    .service-carousel {
+        height: 300px;
+    }
 
     .page-header .container.contact-header-container,
     .contact-info-section .container.contact-container {
         padding-left: 0;
         /* rely on centered .container at wide widths */
+        padding-right: 0;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    .contact {
+        padding-left: 2rem;
+        /* rely on centered container at larger widths */
+        padding-right: 2rem;
+    }
+
+    .contact-container .contact-info {
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
+
+    .page-header .container.contact-header-container,
+    .contact-info-section .container.contact-container {
+        padding-left: 0;
         padding-right: 0;
         max-width: 1100px;
         margin: 0 auto;
@@ -1151,15 +1151,41 @@ footer {
     }
 }
 
-/* Responsive Design */
-@media (max-width: 992px) {
+@media (max-width: 768px) {
+    .tabs-bar {
+        flex-wrap: wrap;
+    }
+
+    .tab-btn {
+        flex: 1 1 calc(50% - 8px);
+    }
+
+    .service-carousel {
+        height: 220px;
+    }
+
+    .page-header .container.contact-header-container,
+    .contact-info-section .container.contact-container {
+        padding-left: 3.5rem;
+        padding-right: 3.5rem;
+    }
+
+    .contact .contact-form form {
+        grid-template-columns: 1fr;
+    }
+
+    .contact .contact-form textarea {
+        min-height: 140px;
+    }
+
+    .contact {
+        padding: 2rem 0;
+    }
 
     .about-image {
         order: -1;
     }
-}
 
-@media (max-width: 768px) {
     .hamburger {
         display: flex;
     }
@@ -1334,19 +1360,6 @@ footer {
     opacity: 0.98;
 }
 
-@media (max-width: 780px) {
-    .contact .contact-form form {
-        grid-template-columns: 1fr;
-    }
-
-    .contact .contact-form textarea {
-        min-height: 140px;
-    }
-
-    .contact {
-        padding: 2rem 0;
-    }
-}
 
 /* Increase readable line length / side spacing for the contact info block */
 .contact-container .contact-info {
@@ -1354,34 +1367,6 @@ footer {
     padding-right: 1.25rem;
 }
 
-@media (min-width: 900px) {
-    .contact-container .contact-info {
-        padding-left: 3rem;
-        padding-right: 3rem;
-        max-width: 840px;
-    }
-}
-
-/* Add more horizontal breathing room for contact sections on medium screens */
-@media (min-width: 780px) {
-    .contact {
-        padding-left: 2.5rem;
-        padding-right: 2.5rem;
-    }
-}
-
-@media (min-width: 1200px) {
-    .contact {
-        padding-left: 2rem;
-        /* rely on centered container at larger widths */
-        padding-right: 2rem;
-    }
-
-    .contact-container .contact-info {
-        padding-left: 4rem;
-        padding-right: 4rem;
-    }
-}
 
 /* Reduce vertical gap when the contact-info section follows the page header */
 .page-header+.contact-info-section .contact-container {
@@ -1391,16 +1376,6 @@ footer {
 
 .page-header+.contact-info-section .contact-info {
     padding-top: 0.5rem;
-}
-
-@media (min-width: 780px) {
-    .page-header+.contact-info-section .contact-container {
-        padding-top: 1.5rem;
-    }
-
-    .page-header+.contact-info-section .contact-info {
-        padding-top: 0.75rem;
-    }
 }
 
 .btn {
@@ -1433,23 +1408,57 @@ footer {
     padding-bottom: 0.5rem;
 }
 
-@media (min-width: 780px) {
+/*
+ Tighten vertical spacing between the page header and the contact-info block.
+ This override is scoped and reversible; it reduces the top padding on
+ the contact section and the bottom padding on the header so the two
+ blocks sit closer together. Use `!important` to ensure it takes
+ precedence over earlier generic `section` rules while testing.
+*/
+.page-header {
+    padding-bottom: 1rem !important;
+}
 
+.page-header h1 {
+    margin-bottom: 0.25rem !important;
+}
+
+.contact-info-section {
+    /* reduce the default section spacing which was adding a large gap */
+    padding-top: 0.75rem !important;
+    padding-bottom: 1rem !important;
+}
+
+.page-header+.contact-info-section .contact-container {
+    padding-top: 0.5rem !important;
+}
+
+@media (min-width: 780px) {
     .page-header .container.contact-header-container,
     .contact-info-section .container.contact-container,
     .contact {
         padding-left: 2.5rem;
         padding-right: 2.5rem;
     }
-}
 
-@media (min-width: 1200px) {
+    .page-header {
+        padding-bottom: 1.5rem !important;
+    }
 
-    .page-header .container.contact-header-container,
-    .contact-info-section .container.contact-container {
-        padding-left: 0;
-        padding-right: 0;
-        max-width: 1100px;
-        margin: 0 auto;
+    .contact-info-section {
+        padding-top: 1rem !important;
+    }
+
+    .contact {
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
+    }
+
+    .page-header+.contact-info-section .contact-container {
+        padding-top: 1.5rem;
+    }
+
+    .page-header+.contact-info-section .contact-info {
+        padding-top: 0.75rem;
     }
 }
