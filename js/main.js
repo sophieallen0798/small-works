@@ -98,16 +98,17 @@ const galleryImages = [
 let currentImageIndex = 0;
 let currentGallery = null; // array of {src, caption}
 let lightbox = null;
+let _prevFocus = null;
 
 // Create lightbox element (single instance)
 function createLightbox() {
     if (document.querySelector('.lightbox')) return;
 
     const lightboxHTML = `
-        <div class="lightbox" id="lightbox">
-            <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-            <span class="lightbox-nav lightbox-prev" onclick="prevImage()">&#10094;</span>
-            <span class="lightbox-nav lightbox-next" onclick="nextImage()">&#10095;</span>
+        <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+            <button class="lightbox-close" aria-label="Close" onclick="closeLightbox()">&times;</button>
+            <button class="lightbox-nav lightbox-prev" aria-label="Previous image" onclick="prevImage()">&#10094;</button>
+            <button class="lightbox-nav lightbox-next" aria-label="Next image" onclick="nextImage()">&#10095;</button>
             <div class="lightbox-content">
                 <img id="lightbox-img" src="" alt="" />
             </div>
@@ -129,9 +130,12 @@ function createLightbox() {
         if (e.key === 'ArrowRight') nextImage();
     });
 
-    // Close on background click
+    // Close when clicking outside the image (but not on controls such as prev/next/close)
     lightbox.addEventListener('click', function(e) {
-        if (e.target === lightbox) closeLightbox();
+        // If the click occurred inside the main image/content area or on controls, ignore
+        if (e.target.closest('.lightbox-content') || e.target.closest('.lightbox-nav') || e.target.closest('.lightbox-close')) return;
+        // otherwise, treat as background click
+        closeLightbox();
     });
 }
 
@@ -143,13 +147,22 @@ function openLightbox(imagesArray, startIndex = 0) {
     createLightbox();
     updateLightboxImage();
     lightbox.classList.add('active');
+    lightbox.setAttribute('aria-hidden', 'false');
+    // store previously focused element so we can return focus on close
+    _prevFocus = document.activeElement;
+    // move keyboard focus to the close button for screen readers
+    const closeBtn = lightbox.querySelector('.lightbox-close');
+    if (closeBtn) closeBtn.focus();
     document.body.style.overflow = 'hidden';
 }
 
 function closeLightbox() {
     if (lightbox) {
         lightbox.classList.remove('active');
+        lightbox.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
+        // return focus
+        try { if (_prevFocus && typeof _prevFocus.focus === 'function') _prevFocus.focus(); } catch (e) {}
     }
 }
 
@@ -234,6 +247,7 @@ function initServiceCarousels() {
         // Click on image opens lightbox for this tile's gallery
         slides.forEach((img, i) => {
             img.addEventListener('click', function(e) {
+                e.stopPropagation();
                 const imgs = Array.from(slides).map(s => ({ src: s.src, caption: s.getAttribute('data-caption') || s.alt || '' }));
                 if (typeof openLightbox === 'function') openLightbox(imgs, i);
             });
@@ -337,3 +351,9 @@ function openGalleryForSection(sectionId) {
 }
 
 window.openGalleryForSection = openGalleryForSection;
+
+// If any code tried to open a pending lightbox before this script loaded, open it now
+if (window._pendingLightbox && typeof openLightbox === 'function') {
+    openLightbox(window._pendingLightbox.imgs, window._pendingLightbox.index || 0);
+    window._pendingLightbox = null;
+}

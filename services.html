@@ -194,11 +194,13 @@
                 var track = document.createElement('div');
                 track.className = 'carousel-track';
 
-                images.forEach(function (img) {
+                images.forEach(function (img, idx) {
                     var im = document.createElement('img');
                     im.loading = 'lazy';
                     im.src = dir + '/' + img;
-                    im.alt = altBase ? (altBase) : '';
+                    var captionText = altBase ? (altBase + ' — ' + (idx + 1)) : '';
+                    im.alt = captionText || '';
+                    im.setAttribute('data-caption', captionText);
                     track.appendChild(im);
                 });
 
@@ -224,7 +226,8 @@
                 // click handler: collect full image URLs and open shared lightbox
                 zoom.addEventListener('click', function (e) {
                     e.preventDefault();
-                    var imgs = images.map(function (i) { return dir + '/' + i; });
+                    // pass objects with captions for a better lightbox experience
+                    var imgs = images.map(function (i, idx) { return { src: dir + '/' + i, caption: (altBase ? (altBase + ' — ' + (idx + 1)) : '') }; });
                     if (window.openLightbox) {
                         window.openLightbox(imgs, 0);
                     } else {

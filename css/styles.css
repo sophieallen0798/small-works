@@ -128,7 +128,7 @@ body.home .nav-links a {
 /* Keep dropdown items dark even when the header uses white links over a hero */
 body.home .nav-links .dropdown a,
 body.gallery .nav-links .dropdown a,
-body.services.has-hero .nav-links .dropdown a {
+body.services-page.has-hero .nav-links .dropdown a {
     color: var(--text-color);
 }
 
@@ -160,7 +160,7 @@ body.gallery .hamburger span {
 }
 
 /* Services pages: allow header overlay on the services hero */
-body.services header {
+body.services-page header {
     position: absolute;
     top: 0;
     left: 0;
@@ -172,30 +172,30 @@ body.services header {
 
 
 /* Default on services pages: dark logo and nav links (visible on white header). */
-body.services .logo {
+body.services-page .logo {
     color: var(--primary-color);
 }
 
-body.services .nav-links a {
+body.services-page .nav-links a {
     color: var(--text-color);
 }
 
 /* When a hero is present on the page, add the .has-hero class to the body
    (we set this on `services.html`) to make header links white for contrast. */
-body.services.has-hero .nav-links a {
+body.services-page.has-hero .nav-links a {
     color: var(--overlay-white-95);
 }
 
-body.services .hamburger span {
+body.services-page .hamburger span {
     background-color: var(--primary-color);
 }
 
-/* When a hero is present (header overlays hero) make logo/controls white for contrast */
-body.services.has-hero .logo {
+/* When a hero is present, make logo/controls white for contrast */
+body.services-page.has-hero .logo {
     color: var(--white);
 }
 
-body.services.has-hero .hamburger span {
+body.services-page.has-hero .hamburger span {
     background-color: var(--white);
 }
 
@@ -340,13 +340,7 @@ textarea:focus-visible {
 
 /* Gallery page: make the header photo taller */
 .hero {
-    min-height: 120vh;
-}
-
-@media (max-width: 900px) {
-    .hero {
-        min-height: 60vh;
-    }
+    min-height: 110vh;
 }
 
 .home-photo-background::after {
@@ -375,10 +369,6 @@ textarea:focus-visible {
     overflow: hidden;
 }
 
-.page-hero::after {
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.55) 100%);
-}
-
 .services-photo-background {
     position: absolute;
     top: 0;
@@ -391,6 +381,10 @@ textarea:focus-visible {
     background-size: cover;
     z-index: 0;
     pointer-events: none;
+}
+
+.services-photo-background::after {
+    transition: opacity 320ms ease, backdrop-filter 320ms ease;
 }
 
 .page-hero::after {
@@ -412,7 +406,7 @@ body.home .hero::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.14) 0%, rgba(0, 0, 0, 0.08) 50%, rgba(0, 0, 0, 0.18) 100%);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.08) 50%, rgba(0, 0, 0, 0.18) 100%);
     z-index: 1;
     pointer-events: none;
 }
@@ -448,9 +442,21 @@ body.home .hero::before {
     animation: fadeInUp 0.8s ease;
 }
 
-/* Add subtle text shadow for legibility on the homepage hero */
+/* Add subtle text shadow for legibility on hero headings and body text across hero types */
+.hero h1,
+.page-hero h1 {
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.28);
+}
+
+/* Slight shadow for hero paragraph text for contrast without overpowering */
+.hero p,
+.page-hero p {
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+/* Homepage-specific tweak: keep a slightly stronger shadow on the homepage hero but still subtle */
 body.home .hero h1 {
-    text-shadow: 0 6px 18px rgba(0, 0, 0, 0.45), 0 2px 6px rgba(0, 0, 0, 0.35);
+    text-shadow: 0 5px 14px rgba(0, 0, 0, 0.32);
 }
 
 .hero p {
@@ -662,6 +668,15 @@ section {
     flex-shrink: 0;
 }
 
+/* Improve affordance: show pointer for clickable images; keep zoom cursor for zoom control */
+.service-carousel img {
+    cursor: pointer;
+}
+
+.zoom-btn {
+    cursor: zoom-in;
+}
+
 .services-container {
     position: relative;
     color: var(--white);
@@ -698,7 +713,6 @@ section {
     margin-right: -50vw;
     width: 100vw;
     box-sizing: border-box;
-    /* keep a small gutter on very narrow screens */
 }
 
 .service-intro-text {
@@ -718,8 +732,6 @@ section {
     align-items: center;
 }
 
-/* Caption overlay pill on the bottom-left of the carousel image
-   Straight (square) left edge, rounded right edge. */
 .caption-overlay {
     position: absolute;
     left: 0;
@@ -742,32 +754,7 @@ section {
     /* sit above images but below other controls */
 }
 
-@media (max-width: 600px) {
-    .caption-overlay {
-        bottom: 8px;
-        padding: 6px 10px 6px 8px;
-        font-size: 0.9rem;
-    }
 
-    .zoom-btn {
-        top: 8px;
-        right: 8px;
-        width: 32px;
-        height: 32px;
-    }
-
-    .zoom-btn svg {
-        width: 16px;
-        height: 16px;
-    }
-
-    .home-photo-background {
-        background-position: center top;
-        background-size: contain;
-        background-color: #000;
-        /* fallback behind letterbox */
-    }
-}
 
 .carousel-btn {
     position: absolute;
@@ -795,12 +782,9 @@ section {
 
 .service-card {
     background: var(--white);
-    /* subtle frame */
     border-radius: 5px;
     overflow: hidden;
-    /* ensures images respect card corners */
     padding: 0;
-    /* make image full-bleed; content area below can have padding */
     box-shadow: var(--shadow);
     transition: transform .22s ease, box-shadow .22s ease;
 }
@@ -830,6 +814,10 @@ section {
 
 /* responsive tweak */
 @media (max-width: 900px) {
+    .hero {
+        min-height: 60vh;
+    }
+
     .service-carousel {
         height: 220px;
     }
@@ -1082,7 +1070,7 @@ footer {
     text-align: center;
 }
 
-/* Add horizontal gutters to specific header/contact containers so content doesn't touch the viewport edges */
+/* Add horizontal gutters to specific header/contact containers */
 .page-header .container.contact-header-container,
 .contact-info-section .container.contact-container {
     padding-left: 1.25rem;
@@ -1090,6 +1078,7 @@ footer {
 }
 
 
+/* Desktop (1200px and above) */
 @media (min-width: 1200px) {
     .service-carousel {
         height: 300px;
@@ -1098,7 +1087,6 @@ footer {
     .page-header .container.contact-header-container,
     .contact-info-section .container.contact-container {
         padding-left: 0;
-        /* rely on centered .container at wide widths */
         padding-right: 0;
         max-width: 1100px;
         margin: 0 auto;
@@ -1106,21 +1094,12 @@ footer {
 
     .contact {
         padding-left: 2rem;
-        /* rely on centered container at larger widths */
         padding-right: 2rem;
     }
 
     .contact-container .contact-info {
         padding-left: 4rem;
         padding-right: 4rem;
-    }
-
-    .page-header .container.contact-header-container,
-    .contact-info-section .container.contact-container {
-        padding-left: 0;
-        padding-right: 0;
-        max-width: 1100px;
-        margin: 0 auto;
     }
 }
 
@@ -1151,41 +1130,14 @@ footer {
     }
 }
 
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+
+/* Tablet and below (768px) */
 @media (max-width: 768px) {
-    .tabs-bar {
-        flex-wrap: wrap;
-    }
 
-    .tab-btn {
-        flex: 1 1 calc(50% - 8px);
-    }
-
-    .service-carousel {
-        height: 220px;
-    }
-
-    .page-header .container.contact-header-container,
-    .contact-info-section .container.contact-container {
-        padding-left: 3.5rem;
-        padding-right: 3.5rem;
-    }
-
-    .contact .contact-form form {
-        grid-template-columns: 1fr;
-    }
-
-    .contact .contact-form textarea {
-        min-height: 140px;
-    }
-
-    .contact {
-        padding: 2rem 0;
-    }
-
-    .about-image {
-        order: -1;
-    }
-
+    /* Navigation */
     .hamburger {
         display: flex;
     }
@@ -1213,7 +1165,6 @@ footer {
         visibility: visible;
     }
 
-    /* Mobile: show dropdowns within the expanded nav panel */
     .nav-links .dropdown {
         position: static;
         display: none;
@@ -1230,6 +1181,7 @@ footer {
         padding-left: 2rem;
     }
 
+    /* Typography */
     .hero h1 {
         font-size: 2rem;
     }
@@ -1242,15 +1194,128 @@ footer {
         font-size: 1.5rem;
     }
 
+    /* Tabs */
+    .tabs-bar {
+        flex-wrap: wrap;
+    }
 
+    .tab-btn {
+        flex: 1 1 calc(50% - 8px);
+    }
+
+    /* Services */
+    .service-carousel {
+        height: 220px;
+    }
+
+    /* About */
+    .about-image {
+        order: -1;
+    }
+
+    /* Contact */
+    .page-header .container.contact-header-container,
+    .contact-info-section .container.contact-container {
+        padding-left: 3.5rem;
+        padding-right: 3.5rem;
+    }
+
+    .contact {
+        padding: 2rem 0;
+    }
+
+    .contact .contact-form form {
+        grid-template-columns: 1fr;
+    }
+
+    .contact .contact-form textarea {
+        min-height: 140px;
+    }
 }
 
-@media (max-width: 480px) {
+/* Mobile (600px and below) */
+@media (max-width: 600px) {
+    .caption-overlay {
+        bottom: 8px;
+        padding: 6px 10px 6px 8px;
+        font-size: 0.9rem;
+    }
+
+    .zoom-btn {
+        top: 8px;
+        right: 8px;
+        width: 32px;
+        height: 32px;
+    }
+
+    .zoom-btn svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .home-photo-background {
+        background-position: center top;
+        /* Use cover on small screens to avoid letterboxed/pillarboxed black areas
+           while still keeping focal area centered */
+        background-size: cover;
+        background-color: transparent;
+    }
+
+    /* Make the About block single-column on small phones for the Homepage only
+       so paragraph appears above the image. This overrides the 768px rule that
+       orders the image first. */
+    body.home .about-content {
+        grid-template-columns: 1fr;
+    }
+
+    body.home .about-text {
+        order: 0;
+    }
+
+    body.home .about-image {
+        order: 1;
+    }
+
+    .hero {
+        min-height: 48vh;
+    }
+
+    .page-hero {
+        min-height: 38vh;
+    }
+
+    /* interior page hero can be slightly shorter */
+
+    /* Keep the background filling the area; this avoids a black box */
+    .home-photo-background,
+    .services-photo-background {
+        background-size: cover;
+        /* expand to fill, avoid gaps */
+        background-position: center top;
+        /* favor top/center for many images */
+    }
+
     .hero-buttons {
         flex-direction: column;
         align-items: center;
     }
 
+    /* On the smallest screens make hero titles smaller and tighten spacing
+       so the header remains visually balanced and readable. */
+    .hero h1,
+    .page-hero h1 {
+        font-size: 1.6rem;
+        /* reduce from 2rem at <=768 and 3rem default */
+        line-height: 1.15;
+        margin-bottom: 0.6rem;
+    }
+
+    .hero p,
+    .page-hero p {
+        font-size: 0.95rem;
+        max-width: 100%;
+        margin-bottom: 1rem;
+    }
 }
 
 /* Contact form styles */
@@ -1384,56 +1449,27 @@ footer {
     text-align: center;
 }
 
-.contact-form {
-    padding: 1.5rem;
-}
-
-.contact-form {
-    padding: 1.5rem;
-}
-
-/* Ensure contact/header gutters apply at all sizes (override accidental nesting) */
-.page-header .container.contact-header-container,
-.contact-info-section .container.contact-container,
-.contact {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-}
-
-.contact-info {
-    max-width: 920px;
-    margin: 0 auto;
-    text-align: left;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-}
-
-/*
- Tighten vertical spacing between the page header and the contact-info block.
- This override is scoped and reversible; it reduces the top padding on
- the contact section and the bottom padding on the header so the two
- blocks sit closer together. Use `!important` to ensure it takes
- precedence over earlier generic `section` rules while testing.
-*/
+/* Contact page spacing adjustments */
 .page-header {
-    padding-bottom: 1rem !important;
+    padding-bottom: 1rem;
 }
 
 .page-header h1 {
-    margin-bottom: 0.25rem !important;
+    margin-bottom: 0.25rem;
 }
 
 .contact-info-section {
-    /* reduce the default section spacing which was adding a large gap */
-    padding-top: 0.75rem !important;
-    padding-bottom: 1rem !important;
+    padding-top: 0.75rem;
+    padding-bottom: 1rem;
 }
 
 .page-header+.contact-info-section .contact-container {
-    padding-top: 0.5rem !important;
+    padding-top: 0.5rem;
 }
 
+/* Tablet landscape and above (780px) */
 @media (min-width: 780px) {
+
     .page-header .container.contact-header-container,
     .contact-info-section .container.contact-container,
     .contact {
@@ -1442,16 +1478,11 @@ footer {
     }
 
     .page-header {
-        padding-bottom: 1.5rem !important;
+        padding-bottom: 1.5rem;
     }
 
     .contact-info-section {
-        padding-top: 1rem !important;
-    }
-
-    .contact {
-        padding-left: 2.5rem;
-        padding-right: 2.5rem;
+        padding-top: 1rem;
     }
 
     .page-header+.contact-info-section .contact-container {
@@ -1461,4 +1492,115 @@ footer {
     .page-header+.contact-info-section .contact-info {
         padding-top: 0.75rem;
     }
+}
+
+
+/* Lightbox */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.lightbox.active {
+    display: flex;
+}
+
+.lightbox-content {
+    max-width: 90%;
+    max-height: 80%;
+    position: relative;
+}
+
+.lightbox-content img {
+    max-width: 100%;
+    max-height: 80vh;
+    border-radius: 8px;
+}
+
+.lightbox-placeholder {
+    width: 80vw;
+    max-width: 800px;
+    height: 60vh;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    gap: 1rem;
+}
+
+.lightbox-placeholder span {
+    font-size: 5rem;
+}
+
+.lightbox-placeholder p {
+    font-size: 1.25rem;
+    opacity: 0.9;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 2.5rem;
+    color: var(--white);
+    background: transparent;
+    border: transparent;
+    cursor: pointer;
+    z-index: 2001;
+    transition: color 0.3s;
+}
+
+.lightbox-close:hover {
+    color: var(--secondary-color);
+}
+
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 3rem;
+    background: transparent;
+    border: transparent;
+    color: var(--white);
+    cursor: pointer;
+    padding: 1rem;
+    z-index: 2001;
+    transition: color 0.3s;
+}
+
+.lightbox-nav:hover {
+    color: var(--secondary-color);
+}
+
+.lightbox-prev {
+    left: 20px;
+}
+
+.lightbox-next {
+    right: 20px;
+}
+
+/* .lightbox-caption {
+    color: var(--white);
+    text-align: center;
+    padding: 1rem;
+    font-size: 1rem;
+} */
+
+.lightbox-counter {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
 }
