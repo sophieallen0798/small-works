@@ -165,7 +165,7 @@ body.services-page header {
     top: 0;
     left: 0;
     right: 0;
-    background-color: transparent;
+    /* background-color: transparent; */
     box-shadow: none;
     z-index: 1000;
 }
@@ -1020,7 +1020,7 @@ section {
 footer {
     background-color: var(--primary-dark);
     color: var(--white);
-    padding: 3rem 0 1.5rem;
+    padding: 2rem 0 1.5rem;
 }
 
 .footer-content {
@@ -1068,6 +1068,10 @@ footer {
     color: var(--white);
     padding: 3rem 0;
     text-align: center;
+    display: flex;
+    align-items: center;
+    /* vertically center the content within the header */
+    justify-content: center;
 }
 
 /* Add horizontal gutters to specific header/contact containers */
@@ -1098,14 +1102,13 @@ footer {
     }
 
     .contact-container .contact-info {
-        padding-left: 4rem;
-        padding-right: 4rem;
+        max-width: 1100px;
+        margin: 0 auto;
     }
 }
 
 .page-header h1 {
     font-size: 2.5rem;
-    margin-bottom: 0.5rem;
     animation: fadeInUp 0.8s ease 0.4s both;
 }
 
@@ -1221,7 +1224,8 @@ footer {
     }
 
     .contact {
-        padding: 2rem 0;
+        padding: 1.25rem 0;
+        /* reduced for small screens to reduce spacing above form */
     }
 
     .contact .contact-form form {
@@ -1320,8 +1324,9 @@ footer {
 
 /* Contact form styles */
 .contact {
-    /* vertical padding + small horizontal gutter so the box doesn't touch the viewport edges */
-    padding: 3.5rem 1.25rem;
+    /* vertical padding + small horizontal gutter so the box doesn't touch the viewport edges
+       reduced top padding to decrease the gap above the contact form */
+    padding: 1.5rem 1.25rem;
     background: linear-gradient(180deg, rgba(247, 244, 239, 0.4), rgba(255, 255, 255, 0));
 }
 
@@ -1331,7 +1336,7 @@ footer {
     background: var(--white);
     border-radius: 12px;
     box-shadow: 0 8px 30px rgba(16, 24, 40, 0.06);
-    padding: 2.25rem;
+    /* padding: 2.25rem; */
     border: 1px solid var(--border-color);
 }
 
@@ -1343,7 +1348,7 @@ footer {
 }
 
 .contact-container {
-    padding: 1.5rem 0;
+    /* padding: 1.5rem 0; */
 }
 
 .contact .contact-form form {
@@ -1377,7 +1382,7 @@ footer {
 .contact .contact-form label {
     font-weight: 600;
     font-size: 0.95rem;
-    margin-bottom: 0.4rem;
+    /* margin-bottom: 0.4rem; */
     color: var(--text-color);
 }
 
@@ -1434,14 +1439,13 @@ footer {
 
 
 /* Reduce vertical gap when the contact-info section follows the page header */
-.page-header+.contact-info-section .contact-container {
+/* .page-header+.contact-info-section .contact-container {
     padding-top: 1rem;
-    /* smaller top padding to tighten the gap */
-}
+} */
 
-.page-header+.contact-info-section .contact-info {
+/* .page-header+.contact-info-section .contact-info {
     padding-top: 0.5rem;
-}
+} */
 
 .btn {
     width: 100%;
@@ -1449,23 +1453,6 @@ footer {
     text-align: center;
 }
 
-/* Contact page spacing adjustments */
-.page-header {
-    padding-bottom: 1rem;
-}
-
-.page-header h1 {
-    margin-bottom: 0.25rem;
-}
-
-.contact-info-section {
-    padding-top: 0.75rem;
-    padding-bottom: 1rem;
-}
-
-.page-header+.contact-info-section .contact-container {
-    padding-top: 0.5rem;
-}
 
 /* Tablet landscape and above (780px) */
 @media (min-width: 780px) {
@@ -1475,10 +1462,6 @@ footer {
     .contact {
         padding-left: 2.5rem;
         padding-right: 2.5rem;
-    }
-
-    .page-header {
-        padding-bottom: 1.5rem;
     }
 
     .contact-info-section {
@@ -1591,13 +1574,6 @@ footer {
 .lightbox-next {
     right: 20px;
 }
-
-/* .lightbox-caption {
-    color: var(--white);
-    text-align: center;
-    padding: 1rem;
-    font-size: 1rem;
-} */
 
 .lightbox-counter {
     color: rgba(255, 255, 255, 0.7);
