@@ -1330,6 +1330,41 @@ footer {
         color: var(--white);
     }
 
+    /* Also cover :active and focus states so taps on mobile show white-on-primary */
+    .nav-links a:active,
+    .nav-links a:focus,
+    .nav-links a:focus-visible,
+    .nav-links .dropdown a:active,
+    .nav-links .dropdown a:focus {
+        background-color: var(--primary-color);
+        color: var(--white);
+    }
+
+    /* Highly specific overrides for overlay pages when the mobile menu is open.
+       This ensures the open mobile menu on the home/gallery/services pages
+       shows the same highlighted (white-on-primary) appearance as other pages. */
+    body.home .nav-links.active a:hover,
+    body.home .nav-links.active a.active,
+    body.home .nav-links.active a:focus,
+    body.home .nav-links.active .dropdown a:hover,
+    body.home .nav-links.active .dropdown a.active,
+    body.home .nav-links.active .dropdown a:focus,
+    body.gallery .nav-links.active a:hover,
+    body.gallery .nav-links.active a.active,
+    body.gallery .nav-links.active a:focus,
+    body.gallery .nav-links.active .dropdown a:hover,
+    body.gallery .nav-links.active .dropdown a.active,
+    body.gallery .nav-links.active .dropdown a:focus,
+    body.services-page.has-hero .nav-links.active a:hover,
+    body.services-page.has-hero .nav-links.active a.active,
+    body.services-page.has-hero .nav-links.active a:focus,
+    body.services-page.has-hero .nav-links.active .dropdown a:hover,
+    body.services-page.has-hero .nav-links.active .dropdown a.active,
+    body.services-page.has-hero .nav-links.active .dropdown a:focus {
+        background-color: var(--primary-color) !important;
+        color: var(--white) !important;
+    }
+
     .hero h1 {
         font-size: 2rem;
     }
