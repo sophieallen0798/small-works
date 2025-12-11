@@ -1,4 +1,10 @@
 /* ==========================================================================
+   IMPORTS
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@600;700&display=swap');
+
+/* ==========================================================================
    CSS CUSTOM PROPERTIES (VARIABLES)
    ========================================================================== */
 
@@ -47,11 +53,6 @@
     --header-bg: rgba(247, 244, 239, 0.98);
 }
 
-/* ==========================================================================
-   IMPORTS
-   ========================================================================== */
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@600;700&display=swap');
 
 /* ==========================================================================
    RESET & BASE STYLES
@@ -556,8 +557,8 @@ body.home .hero::before {
 
 .page-header .container.contact-header-container,
 .contact-info-section .container.contact-container {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
 }
 
 .contact-header-container h4,
@@ -1359,8 +1360,9 @@ footer {
 
     .page-header .container.contact-header-container,
     .contact-info-section .container.contact-container {
-        padding-left: 3.5rem;
-        padding-right: 3.5rem;
+        /* Reduce side padding on small screens so paragraphs have more readable width */
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
 
     .contact {
@@ -1420,6 +1422,26 @@ footer {
         margin-right: 0;
         width: 100%;
         box-sizing: border-box;
+    }
+
+    /* Ensure contact details (email/phone) wrap cleanly on small screens */
+    .contact-details li {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .contact-details li strong {
+        /* make the label sit above the value on small screens */
+        flex: 0 0 100%;
+        margin-bottom: 0.2rem;
+    }
+
+    .contact-details li a {
+        flex: 0 0 100%;
+        word-break: break-word;
+        overflow-wrap: anywhere;
     }
 }
 
