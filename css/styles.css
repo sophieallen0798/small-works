@@ -1348,6 +1348,21 @@ footer {
 
     .tab-btn {
         flex: 1 1 calc(50% - 8px);
+        /* Keep the tab row height consistent on small screens */
+        height: 48px;
+        max-height: 48px;
+        line-height: 1.1;
+        padding: 0.5rem 0.6rem;
+        /* Reduce font size slightly on smaller screens */
+        font-size: clamp(0.85rem, 3.2vw, 1rem);
+        /* Allow wrapping at spaces only (don't break words) */
+        white-space: normal;
+        word-break: normal;
+        overflow: hidden;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
     }
 
     .service-carousel {
@@ -1413,16 +1428,41 @@ footer {
         overflow-x: hidden;
     }
 
-    /* Avoid full-bleed/tab bar techniques on small screens that can produce
-       horizontal overflow (100vw + negative margins). Use normal flow instead. */
+    /* Mobile: make tabs bar visually full-bleed and centered in the viewport.
+       Use left:50% + transform to avoid layout issues from container padding, and
+       reduce inner container padding so the tabs meet the screen edge. */
     .tabs-bar {
-        left: 0;
-        right: 0;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100vw;
         margin-left: 0;
         margin-right: 0;
-        width: 100%;
         box-sizing: border-box;
+        border-radius: 0; /* flush edges on mobile */
+        padding-left: 0;
+        padding-right: 0;
+        overflow: hidden;
     }
+
+    /* Remove extra horizontal padding from the inner container so content aligns
+       with the full-bleed edges while keeping a little breathing room for tabs */
+    .tabs-bar .container {
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: 0;
+        margin-right: 0;
+        display: flex;
+        gap: 0.25rem;
+        align-items: center;
+        /* allow scrolling as a fallback if buttons can't shrink enough */
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Mobile tab sizing: keep the simpler two-column layout defined earlier
+       (see the `.tab-btn { flex: 1 1 calc(50% - 8px); }` above) to avoid complex
+       wrapping behaviors that caused layout issues on some devices. */
 
     /* Ensure contact details (email/phone) wrap cleanly on small screens */
     .contact-details li {
