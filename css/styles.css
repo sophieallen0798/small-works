@@ -1374,6 +1374,54 @@ footer {
     .contact-form textarea {
         min-height: 140px;
     }
+
+    /* Mobile-specific contact form fixes:
+       - Stack label above the input by forcing a single column on each form-row
+       - Make inputs and textarea full-width and use box-sizing to avoid overflow
+       - Reduce contact-form padding to prevent the form from exceeding viewport
+       - Prevent horizontal swiping caused by small-overflowing elements
+    */
+    .contact-form {
+        width: 100%;
+        max-width: 100%;
+        padding: 1.25rem;
+        box-sizing: border-box;
+    }
+
+    .contact-form .form-row {
+        grid-template-columns: 1fr;
+        align-items: start;
+    }
+
+    .contact-form label {
+        display: block;
+        margin-bottom: 0.4rem;
+    }
+
+    .contact-form input[type="text"],
+    .contact-form input[type="email"],
+    .contact-form input[type="tel"],
+    .contact-form textarea {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Prevent horizontal overflow / swipe on small screens */
+    html, body {
+        overflow-x: hidden;
+    }
+
+    /* Avoid full-bleed/tab bar techniques on small screens that can produce
+       horizontal overflow (100vw + negative margins). Use normal flow instead. */
+    .tabs-bar {
+        left: 0;
+        right: 0;
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+        border-radius: 8px;
+        box-sizing: border-box;
+    }
 }
 
 /* Tablet Landscape (780px and above) */
