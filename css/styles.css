@@ -209,13 +209,22 @@ nav {
     display: block;
     padding: 0.5rem 1rem;
     color: var(--text-color);
-    transition: background-color var(--transition-base), 
-                color var(--transition-base);
+    transition: background-color var(--transition-base), color var(--transition-base);
 }
 
 .nav-links .dropdown a:hover {
     background-color: var(--primary-color);
     color: var(--white);
+}
+
+/* When menu is open, links should be readable on the white background */
+.nav-links.active a {
+    color: var(--text-color);
+}
+
+/* Only open dropdowns when their parent has been toggled open */
+.nav-links li.has-dropdown.open > .dropdown {
+    display: block;
 }
 
 .nav-links li.has-dropdown:hover > .dropdown {
@@ -249,8 +258,7 @@ nav {
    ========================================================================== */
 
 /* Overlay Header (Homepage & Gallery) */
-body.home header,
-body.gallery header {
+body.home header {
     position: absolute;
     top: 0;
     left: 0;
@@ -280,6 +288,15 @@ body.home .nav-links .dropdown a,
 body.gallery .nav-links .dropdown a,
 body.services-page.has-hero .nav-links .dropdown a {
     color: var(--text-color);
+}
+
+/* When header is overlayed (homepage/gallery/services with hero),
+   ensure hovered dropdown items use the same hover treatment as main nav */
+body.home .nav-links .dropdown a:hover,
+body.gallery .nav-links .dropdown a:hover,
+body.services-page.has-hero .nav-links .dropdown a:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
 }
 
 /* Services Page Header */
@@ -1281,6 +1298,16 @@ footer {
         visibility: visible;
     }
 
+    /* When the mobile menu is open, hovered/selected items should match
+       the desktop hover state (white text on primary background). */
+    .nav-links.active a:hover,
+    .nav-links.active a.active,
+    .nav-links.active .dropdown a:hover,
+    .nav-links.active .dropdown a.active {
+        background-color: var(--primary-color);
+        color: var(--white);
+    }
+
     .nav-links .dropdown {
         position: static;
         display: none;
@@ -1289,12 +1316,22 @@ footer {
         padding: 0;
     }
 
-    .nav-links.active li.has-dropdown .dropdown {
+    /* On mobile, only show a dropdown when its parent li has the `.open` class.
+       Avoid automatically expanding every dropdown when the menu opens. */
+    .nav-links li.has-dropdown.open > .dropdown {
         display: block;
     }
 
     .nav-links .dropdown a {
         padding-left: 2rem;
+    }
+
+    /* If the header is overlayed (homepage/gallery/services hero), keep
+       the mobile open menu links in the overlay (white) style by default. */
+    body.home .nav-links.active a,
+    body.gallery .nav-links.active a,
+    body.services-page.has-hero .nav-links.active a {
+        color: var(--overlay-white-95);
     }
 
     .hero h1 {
