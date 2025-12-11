@@ -167,12 +167,94 @@ if (window.location.pathname.includes('services.html')) {
 // Form submission handling for Formspree
 const contactForm = document.querySelector('.contact-form form');
 if (contactForm) {
+    // (No runtime normalization for `_next` required when submitting via fetch)
     contactForm.addEventListener('submit', function(e) {
-        const submitBtn = this.querySelector('.btn-submit');
+        e.preventDefault();
+
+        // Ensure the form uses POST
+        try {
+            this.setAttribute('method', 'POST');
+            this.method = 'POST';
+        } catch (err) {
+            // ignore
+        }
+
+        const submitBtn = this.querySelector('.btn-submit') || this.querySelector('.btn');
         if (submitBtn) {
             submitBtn.textContent = 'Sending...';
             submitBtn.disabled = true;
         }
+
+        // Submit via fetch so we can stay on the page and show an inline message
+        if (!window.fetch) {
+            // If fetch isn't available, fall back to native submit
+            this.submit();
+            return;
+        }
+
+        const action = this.getAttribute('action') || window.location.href;
+        const formData = new FormData(this);
+
+        fetch(action, {
+            method: 'POST',
+            body: formData,
+            mode: 'cors'
+        }).then(res => {
+            // Treat 2xx and 204 as success
+            if (!res.ok && res.status !== 204) throw new Error('Network response was not ok');
+
+            // Clear form fields
+            try { this.reset(); } catch (err) {}
+
+            // Show inline thank-you message (create element if missing)
+            let statusEl = this.querySelector('.form-status');
+            if (!statusEl) {
+                statusEl = document.createElement('div');
+                statusEl.className = 'form-status';
+                statusEl.setAttribute('role', 'status');
+                statusEl.setAttribute('aria-live', 'polite');
+                statusEl.style.marginTop = '1rem';
+                statusEl.style.color = '#1F4B4B';
+                statusEl.style.fontWeight = '600';
+                // Insert the status message above the submit button row if present
+                const submitBtnEl = this.querySelector('.form-row.full .btn, .form-row.full .btn-submit');
+                const submitRow = submitBtnEl ? submitBtnEl.closest('.form-row') : null;
+                if (submitRow && submitRow.parentNode) {
+                    submitRow.parentNode.insertBefore(statusEl, submitRow);
+                } else {
+                    // fallback to appending at end
+                    this.appendChild(statusEl);
+                }
+            }
+            statusEl.textContent = 'Thank you! We received your message.';
+
+        }).catch(err => {
+            console.error('Form submission error', err);
+            // show error inline
+            let statusEl = this.querySelector('.form-status');
+            if (!statusEl) {
+                statusEl = document.createElement('div');
+                statusEl.className = 'form-status';
+                statusEl.setAttribute('role', 'alert');
+                statusEl.style.marginTop = '1rem';
+                statusEl.style.color = '#b91c1c';
+                statusEl.style.fontWeight = '600';
+                // Insert the error message above the submit button row if present
+                const submitBtnEl = this.querySelector('.form-row.full .btn, .form-row.full .btn-submit');
+                const submitRow = submitBtnEl ? submitBtnEl.closest('.form-row') : null;
+                if (submitRow && submitRow.parentNode) {
+                    submitRow.parentNode.insertBefore(statusEl, submitRow);
+                } else {
+                    this.appendChild(statusEl);
+                }
+            }
+            statusEl.textContent = 'There was a problem sending the form. Please try again.';
+        }).finally(() => {
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Send Message';
+            }
+        });
     });
 }
 
