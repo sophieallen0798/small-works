@@ -209,6 +209,13 @@ nav {
     display: block;
     padding: 0.5rem 1rem;
     color: var(--text-color);
+    transition: background-color var(--transition-base), 
+                color var(--transition-base);
+}
+
+.nav-links .dropdown a:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
 }
 
 .nav-links li.has-dropdown:hover > .dropdown {

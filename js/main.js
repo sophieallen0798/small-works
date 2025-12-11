@@ -61,6 +61,48 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// Handle tab opening from hash on services page
+function openTabFromHash() {
+    const hash = window.location.hash;
+    if (!hash) return;
+    
+    // Map hash to tab IDs
+    const hashToTab = {
+        '#new-builds': 'tab-new-builds',
+        '#full-home': 'tab-full-home',
+        '#kitchens': 'tab-kitchens',
+        '#bathrooms': 'tab-bathrooms'
+    };
+    
+    const tabId = hashToTab[hash];
+    if (tabId) {
+        // Wait for DOM to be ready and tabs to be initialized
+        setTimeout(() => {
+            const tabButton = document.getElementById(tabId);
+            if (tabButton) {
+                tabButton.click();
+                // Scroll to the tabs section smoothly
+                const tabsSection = document.querySelector('.service-tabs');
+                if (tabsSection) {
+                    setTimeout(() => {
+                        const header = document.querySelector('header');
+                        const headerOffset = header ? (header.offsetHeight + 12) : 80;
+                        const top = window.scrollY + tabsSection.getBoundingClientRect().top - headerOffset;
+                        window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+                    }, 100);
+                }
+            }
+        }, 300);
+    }
+}
+
+// Run on page load
+if (window.location.pathname.includes('services.html')) {
+    document.addEventListener('DOMContentLoaded', openTabFromHash);
+    // Also handle hash changes (if user clicks back/forward)
+    window.addEventListener('hashchange', openTabFromHash);
+}
+
 // Form submission handling for Formspree
 const contactForm = document.querySelector('.contact-form form');
 if (contactForm) {
