@@ -1,57 +1,65 @@
-/* CSS Variables for consistent theming */
+/* ==========================================================================
+   CSS CUSTOM PROPERTIES (VARIABLES)
+   ========================================================================== */
+
 :root {
-    /* Primary colors */
+    /* Colors - Primary Palette */
     --primary-color: #1F4B4B;
-    /* deep teal */
     --primary-dark: #133737;
-    /* darker teal for hover/accents */
-
-    /* Secondary / supporting colors */
     --secondary-color: #C77D2E;
-    /* warm amber */
     --secondary-dark: #9A5B20;
-    /* darker warm shade */
-
-    /* Accent */
     --accent: #E07A5F;
-    /* soft coral accent */
 
-    /* Text / surface */
+    /* Colors - Text & Background */
     --text-color: #0F1722;
-    /* primary text */
     --text-light: #6B7280;
-    /* secondary text */
     --background-color: #FFFFFF;
-    /* page background (alias) */
     --surface: #F7F4EF;
-    /* subtle off-white surface for sections/cards */
     --white: #FFFFFF;
 
-    /* Borders and shadows */
+    /* Colors - Borders & Shadows */
     --border-color: #ECE8E1;
     --shadow: 0 2px 10px rgba(16, 24, 40, 0.06);
     --shadow-hover: 0 6px 30px rgba(16, 24, 40, 0.08);
-    /* overlay colors for hero/header overlays */
+
+    /* Colors - Overlays */
     --overlay-white-95: rgba(255, 255, 255, 0.95);
     --overlay-white-85: rgba(255, 255, 255, 0.85);
     --overlay-white-70: rgba(255, 255, 255, 0.7);
     --overlay-black-95: rgba(0, 0, 0, 0.95);
     --overlay-black-60: rgba(0, 0, 0, 0.6);
 
-    /* Header defaults */
-    --header-bg: rgba(247, 244, 239, 0.98);
+    /* Spacing */
+    --section-padding: 3rem 0;
+    --container-max-width: 1200px;
+    --container-padding: 0 20px;
+
+    /* Typography */
+    --font-family-body: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-family-heading: 'Montserrat', 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+
+    /* Transitions */
+    --transition-base: 0.3s ease;
+    --transition-fast: 0.15s ease;
     --header-fade-duration: 240ms;
 
-    /* Compatibility aliases */
-    --charcoal-color: #0f1722;
-    --color-backup: #2c5530;
+    /* Header */
+    --header-bg: rgba(247, 244, 239, 0.98);
 }
 
-/* Load site fonts centrally (Inter for body, Montserrat for headings) */
+/* ==========================================================================
+   IMPORTS
+   ========================================================================== */
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@600;700&display=swap');
 
-/* Reset and Base Styles */
-* {
+/* ==========================================================================
+   RESET & BASE STYLES
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -62,20 +70,18 @@ html {
 }
 
 body {
-    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: var(--font-family-body);
     line-height: 1.6;
     color: var(--text-color);
-    /* use a subtle surface color for the page background so cards can sit on true white */
     background-color: var(--surface);
 }
 
-/* Headings: use Montserrat for stronger, cleaner headings */
-h1,
-h2,
-h3,
-h4,
-h5 {
-    font-family: 'Montserrat', 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+/* ==========================================================================
+   TYPOGRAPHY
+   ========================================================================== */
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-family-heading);
     font-weight: 600;
 }
 
@@ -87,116 +93,53 @@ a {
 img {
     max-width: 100%;
     height: auto;
+    display: block;
 }
 
-/* Container */
+/* ==========================================================================
+   LAYOUT
+   ========================================================================== */
+
 .container {
-    max-width: 1200px;
+    max-width: var(--container-max-width);
     margin: 0 auto;
-    padding: 0 20px;
+    padding: var(--container-padding);
 }
 
-/* Header and Navigation */
+section {
+    padding: var(--section-padding);
+}
+
+/* ==========================================================================
+   ACCESSIBILITY
+   ========================================================================== */
+
+:focus-visible {
+    outline: none;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    box-shadow: 0 0 0 4px rgba(47, 67, 90, 0.12);
+    border-radius: 6px;
+}
+
+/* ==========================================================================
+   HEADER & NAVIGATION
+   ========================================================================== */
+
 header {
     background-color: var(--header-bg);
     box-shadow: var(--shadow);
     position: sticky;
     top: 0;
     z-index: 1000;
-    transition: background-color var(--header-fade-duration) ease, box-shadow var(--header-fade-duration) ease, color var(--header-fade-duration) ease;
-}
-
-/* Homepage: overlay header over hero for a true full-viewport hero */
-body.home header {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    background-color: transparent;
-    box-shadow: none;
-    z-index: 1000;
-}
-
-body.home .logo {
-    color: var(--white);
-}
-
-body.home .nav-links a {
-    color: var(--overlay-white-95);
-}
-
-/* Keep dropdown items dark even when the header uses white links over a hero */
-body.home .nav-links .dropdown a,
-body.gallery .nav-links .dropdown a,
-body.services-page.has-hero .nav-links .dropdown a {
-    color: var(--text-color);
-}
-
-body.home .hamburger span {
-    background-color: var(--white);
-}
-
-/* Gallery: make header overlay the hero like the homepage */
-body.gallery header {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    background: transparent;
-    box-shadow: none;
-    z-index: 1000;
-}
-
-body.gallery .logo {
-    color: var(--white);
-}
-
-body.gallery .nav-links a {
-    color: var(--overlay-white-95);
-}
-
-body.gallery .hamburger span {
-    background-color: var(--white);
-}
-
-/* Services pages: allow header overlay on the services hero */
-body.services-page header {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    /* background-color: transparent; */
-    box-shadow: none;
-    z-index: 1000;
-}
-
-
-/* Default on services pages: dark logo and nav links (visible on white header). */
-body.services-page .logo {
-    color: var(--primary-color);
-}
-
-body.services-page .nav-links a {
-    color: var(--text-color);
-}
-
-/* When a hero is present on the page, add the .has-hero class to the body
-   (we set this on `services.html`) to make header links white for contrast. */
-body.services-page.has-hero .nav-links a {
-    color: var(--overlay-white-95);
-}
-
-body.services-page .hamburger span {
-    background-color: var(--primary-color);
-}
-
-/* When a hero is present, make logo/controls white for contrast */
-body.services-page.has-hero .logo {
-    color: var(--white);
-}
-
-body.services-page.has-hero .hamburger span {
-    background-color: var(--white);
+    transition: background-color var(--header-fade-duration) ease, 
+                box-shadow var(--header-fade-duration) ease, 
+                color var(--header-fade-duration) ease;
 }
 
 nav {
@@ -206,27 +149,44 @@ nav {
     padding: 1rem 0;
 }
 
+/* Logo */
 .logo {
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--primary-color);
+    transition: color var(--header-fade-duration) ease;
 }
 
 .logo span {
     color: var(--secondary-color);
 }
 
+/* Navigation Links */
 .nav-links {
     display: flex;
     list-style: none;
     gap: 2rem;
 }
 
-/* Dropdown menu for desktop */
 .nav-links li {
     position: relative;
 }
 
+.nav-links a {
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color var(--transition-base), 
+                color var(--transition-base);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+/* Dropdown Menu */
 .nav-links .dropdown {
     display: none;
     position: absolute;
@@ -251,50 +211,17 @@ nav {
     color: var(--text-color);
 }
 
-.nav-links li.has-dropdown:hover>.dropdown {
+.nav-links li.has-dropdown:hover > .dropdown {
     display: block;
 }
 
-.nav-links li.has-dropdown>a::after {
+.nav-links li.has-dropdown > a::after {
     content: '▾';
     margin-left: 0.4rem;
     font-size: 0.8rem;
 }
 
-.nav-links a {
-    font-weight: 500;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-/* Smooth color transitions to avoid flashing between pages */
-.logo,
-.nav-links a,
-.hamburger span {
-    transition: color var(--header-fade-duration) ease, background-color var(--header-fade-duration) ease, opacity var(--header-fade-duration) ease;
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-    background-color: var(--primary-color);
-    color: var(--white);
-}
-
-/* Focus styles for keyboard accessibility */
-:focus-visible {
-    outline: none;
-}
-
-button:focus-visible,
-a:focus-visible,
-input:focus-visible,
-select:focus-visible,
-textarea:focus-visible {
-    box-shadow: 0 0 0 4px rgba(47, 67, 90, 0.12);
-    border-radius: 6px;
-}
-
+/* Hamburger Menu */
 .hamburger {
     display: none;
     flex-direction: column;
@@ -306,30 +233,150 @@ textarea:focus-visible {
     width: 25px;
     height: 3px;
     background-color: var(--primary-color);
-    transition: all 0.3s;
+    transition: all var(--transition-base), 
+                background-color var(--header-fade-duration) ease;
 }
 
-/* Hero Section */
-.hero {
+/* ==========================================================================
+   HEADER VARIANTS (Page-Specific Styles)
+   ========================================================================== */
+
+/* Overlay Header (Homepage & Gallery) */
+body.home header,
+body.gallery header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: transparent;
+    box-shadow: none;
+    z-index: 1000;
+}
+
+body.home .logo,
+body.gallery .logo {
+    color: var(--white);
+}
+
+body.home .nav-links a,
+body.gallery .nav-links a {
+    color: var(--overlay-white-95);
+}
+
+body.home .hamburger span,
+body.gallery .hamburger span {
+    background-color: var(--white);
+}
+
+/* Dropdown Override for Overlay Headers */
+body.home .nav-links .dropdown a,
+body.gallery .nav-links .dropdown a,
+body.services-page.has-hero .nav-links .dropdown a {
+    color: var(--text-color);
+}
+
+/* Services Page Header */
+body.services-page header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    box-shadow: none;
+    z-index: 1000;
+}
+
+body.services-page .logo {
+    color: var(--primary-color);
+}
+
+body.services-page .nav-links a {
+    color: var(--text-color);
+}
+
+body.services-page .hamburger span {
+    background-color: var(--primary-color);
+}
+
+/* Services Page with Hero */
+body.services-page.has-hero .nav-links a {
+    color: var(--overlay-white-95);
+}
+
+body.services-page.has-hero .logo {
+    color: var(--white);
+}
+
+body.services-page.has-hero .hamburger span {
+    background-color: var(--white);
+}
+
+/* ==========================================================================
+   HERO SECTIONS
+   ========================================================================== */
+
+/* Base Hero Styles */
+.hero,
+.page-hero {
     position: relative;
     color: var(--white);
-    min-height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: center;
     padding: 0;
     text-align: center;
-    background: none;
     overflow: hidden;
 }
 
-.home-photo-background {
+.hero {
+    min-height: 110vh;
+    justify-content: center;
+}
+
+.page-hero {
+    min-height: 64vh;
+    padding: 3rem 0;
+    text-align: left;
+}
+
+.hero > .container,
+.page-hero > .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Hero Typography */
+.hero h1,
+.page-hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.28);
+    animation: fadeInUp 0.8s ease;
+}
+
+body.home .hero h1 {
+    text-shadow: 0 5px 14px rgba(0, 0, 0, 0.32);
+}
+
+.hero p,
+.page-hero p {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.hero p {
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    animation: fadeInUp 0.8s ease 0.2s both;
+}
+
+/* Hero Backgrounds */
+.home-photo-background,
+.services-photo-background {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('../zillow_images/zillow_images_1812/image-1_front.jpg');
     background-repeat: no-repeat;
     background-position: center top;
     background-size: cover;
@@ -337,71 +384,16 @@ textarea:focus-visible {
     pointer-events: none;
 }
 
-
-/* Gallery page: make the header photo taller */
-.hero {
-    min-height: 110vh;
-}
-
-.home-photo-background::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(30, 58, 33, 0.3);
-    z-index: 1;
-    opacity: 0;
-    /* start transparent, fade in on scroll */
-    transition: opacity 320ms ease, backdrop-filter 320ms ease;
-}
-
-/* Page hero used on interior pages such as Services */
-.page-hero {
-    position: relative;
-    color: var(--white);
-    min-height: 64vh;
-    display: flex;
-    align-items: center;
-    padding: 3rem 0;
-    text-align: left;
-    overflow: hidden;
+.home-photo-background {
+    background-image: url('../zillow_images/zillow_images_1812/image-1_front.jpg');
 }
 
 .services-photo-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
     background-image: url('../zillow_images/zillow_images_1812/image-12.jpg');
-    background-repeat: no-repeat;
     background-position: center 20%;
-    background-size: cover;
-    z-index: 0;
-    pointer-events: none;
 }
 
-.services-photo-background::after {
-    transition: opacity 320ms ease, backdrop-filter 320ms ease;
-}
-
-.page-hero::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    /* stronger gradient for better contrast against white links */
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.6) 100%);
-    z-index: 1;
-}
-
-.hero>.container {
-    position: relative;
-    z-index: 2;
-}
-
-/* Mild overlay for homepage hero to improve text contrast */
+/* Hero Overlays */
 body.home .hero::before {
     content: '';
     position: absolute;
@@ -411,62 +403,50 @@ body.home .hero::before {
     pointer-events: none;
 }
 
-/* Fade hero image and pull the about section up when scrolling on the homepage */
-.home.scrolled .home-photo-background::after {
-    /* soften the overlay when scrolled to keep image visible */
-    opacity: 0.45;
+.page-hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.6) 100%);
+    z-index: 1;
 }
 
+.home-photo-background::after,
+.services-photo-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(30, 58, 33, 0.3);
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 320ms ease, backdrop-filter 320ms ease;
+}
+
+/* Scroll Effects */
 .home .home-photo-background {
     transition: filter 360ms ease, opacity 360ms ease;
 }
 
 .home.scrolled .home-photo-background {
-    /* milder darkening on scroll */
     filter: brightness(0.86) saturate(0.95);
 }
 
-/* Bring the about section closer when scrolled */
+.home.scrolled .home-photo-background::after {
+    opacity: 0.45;
+}
+
 .home .about {
     transition: padding-top 320ms ease, transform 320ms ease;
 }
 
 .home.scrolled .about {
     padding-top: 2rem;
-    /* reduced spacing when header has faded */
 }
 
-.hero h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    animation: fadeInUp 0.8s ease;
-}
-
-/* Add subtle text shadow for legibility on hero headings and body text across hero types */
-.hero h1,
-.page-hero h1 {
-    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.28);
-}
-
-/* Slight shadow for hero paragraph text for contrast without overpowering */
-.hero p,
-.page-hero p {
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
-}
-
-/* Homepage-specific tweak: keep a slightly stronger shadow on the homepage hero but still subtle */
-body.home .hero h1 {
-    text-shadow: 0 5px 14px rgba(0, 0, 0, 0.32);
-}
-
-.hero p {
-    font-size: 1.25rem;
-    max-width: 600px;
-    margin: 0 auto 2rem;
-    opacity: 0.9;
-    animation: fadeInUp 0.8s ease 0.2s both;
-}
-
+/* Hero Buttons */
 .hero-buttons {
     display: flex;
     gap: 1rem;
@@ -475,21 +455,28 @@ body.home .hero h1 {
     animation: fadeInUp 0.8s ease 0.4s both;
 }
 
-/* Buttons */
+/* ==========================================================================
+   BUTTONS
+   ========================================================================== */
+
 .btn {
     display: inline-block;
     padding: 0.875rem 2rem;
     border-radius: 4px;
     font-weight: 600;
     font-size: 1rem;
-    transition: all 0.3s;
-    cursor: pointer;
     border: none;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
 }
 
 .btn-primary {
     background-color: var(--secondary-dark);
     color: var(--white);
+    margin-top: 1.5rem;
 }
 
 .btn-primary:hover {
@@ -508,16 +495,15 @@ body.home .hero h1 {
     color: var(--primary-color);
 }
 
-/* Sections */
-section {
-    padding: 5rem 0;
-}
+/* ==========================================================================
+   SECTIONS
+   ========================================================================== */
 
 .section-title {
     text-align: left;
     padding-left: 2rem;
     padding-top: 1rem;
-    margin-bottom: 0rem;
+    margin-bottom: 0;
 }
 
 .section-title h2 {
@@ -526,17 +512,50 @@ section {
     margin-bottom: 0.5rem;
 }
 
-/* Make the page header text a brighter orange */
-.page-header h1 {
-    color: var(--accent);
-    /* bright orange accent */
-}
-
 .section-title p {
     color: var(--text-light);
     font-size: 1.1rem;
 }
 
+/* Page Header */
+.page-header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    color: var(--white);
+    padding: 3rem 0;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-header h1 {
+    color: var(--accent);
+    font-size: 2.5rem;
+    animation: fadeInUp 0.8s ease 0.4s both;
+}
+
+.page-header p {
+    opacity: 0.9;
+    font-size: 1.1rem;
+    animation: fadeInUp 0.8s ease 0.4s both;
+}
+
+.page-header .container.contact-header-container,
+.contact-info-section .container.contact-container {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+}
+
+.contact-header-container h4,
+.contact-header-container {
+    color: var(--secondary-color);
+}
+
+/* ==========================================================================
+   SERVICE SECTIONS
+   ========================================================================== */
+
+/* Service Tabs */
 .service-tabs {
     margin-top: 1rem;
     padding: 2rem;
@@ -548,6 +567,22 @@ section {
     background: var(--white);
     border-radius: 10px;
     box-shadow: var(--shadow);
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    width: 100vw;
+    box-sizing: border-box;
+}
+
+.tabs-bar .container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0.5rem 0.5rem 0 0.5rem;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
 }
 
 .tab-btn {
@@ -579,52 +614,18 @@ section {
 .tab-panel {
     display: block;
     opacity: 0;
-    /* Start with hidden opacity */
     transition: opacity 0.5s ease-in;
 }
 
 .tab-panel.active {
     opacity: 1;
-    /* Fade to full visibility */
 }
 
 .tab-panel[hidden] {
     display: none;
 }
 
-/* Make the zoom btn more obvious with a small label on hover */
-.zoom-btn {
-    transition: transform .12s ease, background .12s ease;
-}
-
-.zoom-btn:hover {
-    transform: scale(1.06);
-    background: rgba(0, 0, 0, 0.72);
-}
-
-.zoom-btn::after {
-    content: '';
-    position: absolute;
-    right: 46px;
-    top: 8px;
-    background: rgba(0, 0, 0, 0.75);
-    color: #fff;
-    padding: 4px 8px;
-    border-radius: 6px;
-    font-size: 0.85rem;
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(-4px);
-    transition: opacity 160ms ease, transform 160ms ease;
-}
-
-.zoom-btn:hover::after {
-    content: 'View gallery';
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Services Grid */
+/* Service Grid */
 .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -632,17 +633,38 @@ section {
     padding: 2rem;
 }
 
-/* Force two larger tiles per row on the Services page for better image visibility */
 .services .services-grid {
     grid-template-columns: repeat(2, 1fr);
 }
 
-/* Service tile carousel styles */
-.service-tile {
-    display: flex;
-    flex-direction: column;
+/* Service Cards */
+.service-card {
+    background: var(--white);
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    text-align: left;
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
+    position: relative;
 }
 
+.service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+}
+
+.service-card h3 {
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+}
+
+.service-card p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+/* Service Carousel */
 .service-carousel {
     position: relative;
     width: 100%;
@@ -664,98 +686,11 @@ section {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
     flex-shrink: 0;
-}
-
-/* Improve affordance: show pointer for clickable images; keep zoom cursor for zoom control */
-.service-carousel img {
     cursor: pointer;
 }
 
-.zoom-btn {
-    cursor: zoom-in;
-}
-
-.services-container {
-    position: relative;
-    color: var(--white);
-    min-height: 64vh;
-    display: flex;
-    align-items: center;
-    padding: 3rem 0;
-    text-align: left;
-    overflow: hidden;
-}
-
-.services-child-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.contact-header-container h4 {
-    color: var(--secondary-color);
-}
-
-.contact-header-container {
-    color: var(--secondary-color);
-}
-
-/* Make specific boxes span the full viewport width (full-bleed) while keeping their inner
-   content constrained by the existing `.container`. This lets the background/box stretch
-   to the edges while preserving the tab/photo layout inside. */
-.tabs-bar {
-    position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
-    width: 100vw;
-    box-sizing: border-box;
-}
-
-.service-intro-text {
-    color: var(--text-color);
-    font-size: 1.1rem;
-    padding-left: 3rem;
-    padding-right: 3rem;
-}
-
-.tabs-bar .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0.5rem 0.5rem 0 0.5rem;
-    /* rely on parent for gutters */
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
-}
-
-.caption-overlay {
-    position: absolute;
-    left: 0;
-    bottom: 12px;
-    background: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    padding: 8px 12px 8px 10px;
-    font-weight: 600;
-    font-size: 0.95rem;
-    border-radius: 0 12px 12px 0;
-    /* square left, rounded right */
-    box-shadow: 0 6px 18px rgba(16, 24, 40, 0.24);
-    max-width: 72%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    pointer-events: none;
-    /* decorative only */
-    z-index: 4;
-    /* sit above images but below other controls */
-}
-
-
-
+/* Carousel Controls */
 .carousel-btn {
     position: absolute;
     top: 50%;
@@ -780,70 +715,27 @@ section {
     right: 10px;
 }
 
-.service-card {
-    background: var(--white);
-    border-radius: 5px;
+/* Carousel Caption */
+.caption-overlay {
+    position: absolute;
+    left: 0;
+    bottom: 12px;
+    background: rgba(0, 0, 0, 0.5);
+    color: var(--white);
+    padding: 8px 12px 8px 10px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: 0 12px 12px 0;
+    box-shadow: 0 6px 18px rgba(16, 24, 40, 0.24);
+    max-width: 72%;
+    white-space: nowrap;
     overflow: hidden;
-    padding: 0;
-    box-shadow: var(--shadow);
-    transition: transform .22s ease, box-shadow .22s ease;
+    text-overflow: ellipsis;
+    pointer-events: none;
+    z-index: 4;
 }
 
-/* image area (keeps current carousel sizing) */
-.service-carousel {
-    width: 100%;
-    height: 340px;
-    /* existing sizes are fine; can be responsive */
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-/* ensure images fill the carousel and keep aspect */
-.service-carousel img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-/* optional stronger frame on hover */
-.service-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-hover);
-}
-
-/* responsive tweak */
-@media (max-width: 900px) {
-    .hero {
-        min-height: 60vh;
-    }
-
-    .service-carousel {
-        height: 220px;
-    }
-
-    .contact-container .contact-info {
-        padding-left: 3rem;
-        padding-right: 3rem;
-        max-width: 840px;
-    }
-}
-
-.service-card {
-    background-color: var(--white);
-    border-radius: 5px;
-    padding-bottom: 0rem;
-    box-shadow: var(--shadow);
-    text-align: left;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-/* Zoom/enlarge icon placed in the top-right of service tiles */
-.service-card {
-    position: relative;
-    /* enable absolute positioning for the zoom button */
-}
-
+/* Zoom Button */
 .zoom-btn {
     position: absolute;
     top: 10px;
@@ -858,8 +750,14 @@ section {
     justify-content: center;
     box-shadow: var(--shadow);
     border: none;
-    cursor: pointer;
+    cursor: zoom-in;
     z-index: 6;
+    transition: transform 0.12s ease, background 0.12s ease;
+}
+
+.zoom-btn:hover {
+    transform: scale(1.06);
+    background: rgba(0, 0, 0, 0.72);
 }
 
 .zoom-btn svg {
@@ -870,35 +768,38 @@ section {
     fill: none;
 }
 
-.zoom-btn:hover {
-    transform: scale(1.06);
+.zoom-btn::after {
+    content: '';
+    position: absolute;
+    right: 46px;
+    top: 8px;
+    background: rgba(0, 0, 0, 0.75);
+    color: var(--white);
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-4px);
+    transition: opacity 160ms ease, transform 160ms ease;
 }
 
-.service-card.service-tile {
-    padding-bottom: 0rem;
-    overflow: hidden;
+.zoom-btn:hover::after {
+    content: 'View gallery';
+    opacity: 1;
+    transform: translateY(0);
 }
 
-.service-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-hover);
+.service-intro-text {
+    color: var(--text-color);
+    font-size: 1.1rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
 }
 
-.service-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-}
-
-.service-card h3 {
-    color: var(--accent);
-    margin-bottom: 0.5rem;
-    font-size: 1.25rem;
-}
-
-.service-card p {
-    color: var(--text-light);
-    font-size: 0.95rem;
-}
+/* ==========================================================================
+   ABOUT SECTION
+   ========================================================================== */
 
 .about-content {
     display: grid;
@@ -938,24 +839,18 @@ section {
 
 .about-image {
     position: relative;
-    /* allow the image to size naturally instead of forcing a fixed height */
     overflow: visible;
 }
 
 .about-image img {
-    display: block;
     width: 100%;
     height: auto;
-    /* preserve natural aspect ratio, do not crop */
     border-radius: 8px;
     box-shadow: var(--shadow);
-    max-width: 100%;
 }
 
 .about-image-placeholder {
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
-    /* use a consistent aspect ratio instead of a fixed height so the box matches images
-         and doesn't crop. This matches your image size 1280x853 (≈ 1.5006). */
     aspect-ratio: 3/2;
     width: 100%;
     border-radius: 8px;
@@ -966,7 +861,28 @@ section {
     font-size: 1.25rem;
 }
 
-/* Contact Section */
+/* ==========================================================================
+   CONTACT SECTION
+   ========================================================================== */
+
+.contact-info-section,
+.contact {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.contact {
+    padding: 1.5rem 1.25rem;
+    background: linear-gradient(180deg, rgba(247, 244, 239, 0.4), rgba(255, 255, 255, 0));
+}
+
+.contact-info {
+    text-align: left;
+    /* padding: 2rem; */
+    max-width: 920px;
+    margin: 0 auto;
+}
+
 .contact-info h2 {
     color: var(--primary-color);
     font-size: 2rem;
@@ -993,13 +909,15 @@ section {
     border-bottom: none;
 }
 
-
 /* Contact Form */
 .contact-form {
-    background-color: var(--white);
+    max-width: 820px;
+    margin: 0 auto;
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(16, 24, 40, 0.06);
     padding: 2.5rem;
-    border-radius: 8px;
-    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
 }
 
 .contact-form h3 {
@@ -1008,15 +926,89 @@ section {
     font-size: 1.5rem;
 }
 
-/* Reduce vertical spacing specifically for contact pages so the info
-   block sits closer to the contact form (overrides generic section padding) */
-.contact-info-section,
-.contact {
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
+.contact-form form {
+    display: grid;
+    gap: 0.75rem;
+    grid-template-columns: 1fr;
 }
 
-/* Footer */
+.contact-form .form-row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.contact-form .form-row.full {
+    grid-template-columns: 1fr;
+    align-items: start;
+}
+
+.contact-form .form-row.full label,
+.contact-form .form-row.full textarea,
+.contact-form .form-row.full .btn {
+    grid-column: 1 / -1;
+}
+
+.contact-form label {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-color);
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form input[type="tel"],
+.contact-form textarea {
+    padding: 0.75rem 0.9rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    color: var(--text-color);
+    background: var(--white);
+    transition: box-shadow var(--transition-fast), border-color var(--transition-fast);
+}
+
+.contact-form textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 6px 18px rgba(31, 75, 75, 0.08);
+}
+
+.contact-form .btn {
+    grid-column: 1 / -1;
+    justify-self: start;
+    padding: 0.9rem 1.4rem;
+    border-radius: 8px;
+    background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
+    color: var(--white);
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    box-shadow: var(--shadow-hover);
+    transition: transform 120ms ease, box-shadow 120ms ease, opacity 120ms ease;
+}
+
+.contact-form .btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.98;
+}
+
+.contact-container .contact-info {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+
 footer {
     background-color: var(--primary-dark);
     color: var(--white);
@@ -1062,423 +1054,10 @@ footer {
     opacity: 0.8;
 }
 
-/* Page Header */
-.page-header {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
-    color: var(--white);
-    padding: 3rem 0;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    /* vertically center the content within the header */
-    justify-content: center;
-}
-
-/* Add horizontal gutters to specific header/contact containers */
-.page-header .container.contact-header-container,
-.contact-info-section .container.contact-container {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-}
-
-
-/* Desktop (1200px and above) */
-@media (min-width: 1200px) {
-    .service-carousel {
-        height: 300px;
-    }
-
-    .page-header .container.contact-header-container,
-    .contact-info-section .container.contact-container {
-        padding-left: 0;
-        padding-right: 0;
-        max-width: 1100px;
-        margin: 0 auto;
-    }
-
-    .contact {
-        padding-left: 2rem;
-        padding-right: 2rem;
-    }
-
-    .contact-container .contact-info {
-        max-width: 1100px;
-        margin: 0 auto;
-    }
-}
-
-.page-header h1 {
-    font-size: 2.5rem;
-    animation: fadeInUp 0.8s ease 0.4s both;
-}
-
-.page-header p {
-    opacity: 0.9;
-    font-size: 1.1rem;
-    animation: fadeInUp 0.8s ease 0.4s both;
-}
-
-
-
-/* Animations */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 /* ==========================================================================
-   Media Queries
+   LIGHTBOX
    ========================================================================== */
 
-/* Tablet and below (768px) */
-@media (max-width: 768px) {
-
-    /* Navigation */
-    .hamburger {
-        display: flex;
-    }
-
-    .nav-links {
-        position: fixed;
-        top: 70px;
-        left: 0;
-        right: 0;
-        background-color: var(--white);
-        flex-direction: column;
-        align-items: center;
-        padding: 2rem;
-        gap: 1rem;
-        transform: translateY(-100%);
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s;
-        box-shadow: var(--shadow);
-    }
-
-    .nav-links.active {
-        transform: translateY(0);
-        opacity: 1;
-        visibility: visible;
-    }
-
-    .nav-links .dropdown {
-        position: static;
-        display: none;
-        box-shadow: none;
-        background: transparent;
-        padding: 0;
-    }
-
-    .nav-links.active li.has-dropdown .dropdown {
-        display: block;
-    }
-
-    .nav-links .dropdown a {
-        padding-left: 2rem;
-    }
-
-    /* Typography */
-    .hero h1 {
-        font-size: 2rem;
-    }
-
-    .hero p {
-        font-size: 1rem;
-    }
-
-    .section-title h2 {
-        font-size: 1.5rem;
-    }
-
-    /* Tabs */
-    .tabs-bar {
-        flex-wrap: wrap;
-    }
-
-    .tab-btn {
-        flex: 1 1 calc(50% - 8px);
-    }
-
-    /* Services */
-    .service-carousel {
-        height: 220px;
-    }
-
-    /* About */
-    .about-image {
-        order: -1;
-    }
-
-    /* Contact */
-    .page-header .container.contact-header-container,
-    .contact-info-section .container.contact-container {
-        padding-left: 3.5rem;
-        padding-right: 3.5rem;
-    }
-
-    .contact {
-        padding: 1.25rem 0;
-        /* reduced for small screens to reduce spacing above form */
-    }
-
-    .contact .contact-form form {
-        grid-template-columns: 1fr;
-    }
-
-    .contact .contact-form textarea {
-        min-height: 140px;
-    }
-}
-
-/* Mobile (600px and below) */
-@media (max-width: 600px) {
-    .caption-overlay {
-        bottom: 8px;
-        padding: 6px 10px 6px 8px;
-        font-size: 0.9rem;
-    }
-
-    .zoom-btn {
-        top: 8px;
-        right: 8px;
-        width: 32px;
-        height: 32px;
-    }
-
-    .zoom-btn svg {
-        width: 16px;
-        height: 16px;
-    }
-
-    .home-photo-background {
-        background-position: center top;
-        /* Use cover on small screens to avoid letterboxed/pillarboxed black areas
-           while still keeping focal area centered */
-        background-size: cover;
-        background-color: transparent;
-    }
-
-    /* Make the About block single-column on small phones for the Homepage only
-       so paragraph appears above the image. This overrides the 768px rule that
-       orders the image first. */
-    body.home .about-content {
-        grid-template-columns: 1fr;
-    }
-
-    body.home .about-text {
-        order: 0;
-    }
-
-    body.home .about-image {
-        order: 1;
-    }
-
-    .hero {
-        min-height: 48vh;
-    }
-
-    .page-hero {
-        min-height: 38vh;
-    }
-
-    /* interior page hero can be slightly shorter */
-
-    /* Keep the background filling the area; this avoids a black box */
-    .home-photo-background,
-    .services-photo-background {
-        background-size: cover;
-        /* expand to fill, avoid gaps */
-        background-position: center top;
-        /* favor top/center for many images */
-    }
-
-    .hero-buttons {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    /* On the smallest screens make hero titles smaller and tighten spacing
-       so the header remains visually balanced and readable. */
-    .hero h1,
-    .page-hero h1 {
-        font-size: 1.6rem;
-        /* reduce from 2rem at <=768 and 3rem default */
-        line-height: 1.15;
-        margin-bottom: 0.6rem;
-    }
-
-    .hero p,
-    .page-hero p {
-        font-size: 0.95rem;
-        max-width: 100%;
-        margin-bottom: 1rem;
-    }
-}
-
-/* Contact form styles */
-.contact {
-    /* vertical padding + small horizontal gutter so the box doesn't touch the viewport edges
-       reduced top padding to decrease the gap above the contact form */
-    padding: 1.5rem 1.25rem;
-    background: linear-gradient(180deg, rgba(247, 244, 239, 0.4), rgba(255, 255, 255, 0));
-}
-
-.contact .contact-form {
-    max-width: 820px;
-    margin: 0 auto;
-    background: var(--white);
-    border-radius: 12px;
-    box-shadow: 0 8px 30px rgba(16, 24, 40, 0.06);
-    /* padding: 2.25rem; */
-    border: 1px solid var(--border-color);
-}
-
-.contact-info {
-    text-align: left;
-    padding: 2rem;
-    max-width: 920px;
-    margin: 0 auto;
-}
-
-.contact-container {
-    /* padding: 1.5rem 0; */
-}
-
-.contact .contact-form form {
-    display: grid;
-    gap: 0.75rem;
-    grid-template-columns: 1fr;
-}
-
-.contact .contact-form .form-row {
-    display: grid;
-    grid-template-columns: 160px 1fr;
-    gap: 0.75rem;
-    align-items: center;
-}
-
-/* Full-width rows (textarea, submit) span both columns */
-.contact .contact-form .form-row.full {
-    grid-template-columns: 1fr;
-    align-items: start;
-}
-
-.contact .contact-form .form-row.full label {
-    grid-column: 1 / -1;
-}
-
-.contact .contact-form .form-row.full textarea,
-.contact .contact-form .form-row.full .btn {
-    grid-column: 1 / -1;
-}
-
-.contact .contact-form label {
-    font-weight: 600;
-    font-size: 0.95rem;
-    /* margin-bottom: 0.4rem; */
-    color: var(--text-color);
-}
-
-.contact .contact-form input[type="text"],
-.contact .contact-form input[type="email"],
-.contact .contact-form input[type="tel"],
-.contact .contact-form textarea {
-    padding: 0.75rem 0.9rem;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    font-size: 1rem;
-    color: var(--text-color);
-    background: #fff;
-    transition: box-shadow 150ms ease, border-color 150ms ease;
-}
-
-.contact .contact-form textarea {
-    min-height: 150px;
-    resize: vertical;
-}
-
-.contact .contact-form input:focus,
-.contact .contact-form textarea:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 6px 18px rgba(31, 75, 75, 0.08);
-}
-
-.contact .contact-form .btn {
-    grid-column: 1 / -1;
-    justify-self: start;
-    padding: 0.9rem 1.4rem;
-    border-radius: 8px;
-    background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
-    color: var(--white);
-    border: none;
-    cursor: pointer;
-    font-weight: 700;
-    box-shadow: var(--shadow-hover);
-    transition: transform 120ms ease, box-shadow 120ms ease, opacity 120ms ease;
-}
-
-.contact .contact-form .btn:hover {
-    transform: translateY(-2px);
-    opacity: 0.98;
-}
-
-
-/* Increase readable line length / side spacing for the contact info block */
-.contact-container .contact-info {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-}
-
-
-/* Reduce vertical gap when the contact-info section follows the page header */
-/* .page-header+.contact-info-section .contact-container {
-    padding-top: 1rem;
-} */
-
-/* .page-header+.contact-info-section .contact-info {
-    padding-top: 0.5rem;
-} */
-
-.btn {
-    width: 100%;
-    max-width: 280px;
-    text-align: center;
-}
-
-
-/* Tablet landscape and above (780px) */
-@media (min-width: 780px) {
-
-    .page-header .container.contact-header-container,
-    .contact-info-section .container.contact-container,
-    .contact {
-        padding-left: 2.5rem;
-        padding-right: 2.5rem;
-    }
-
-    .contact-info-section {
-        padding-top: 1rem;
-    }
-
-    .page-header+.contact-info-section .contact-container {
-        padding-top: 1.5rem;
-    }
-
-    .page-header+.contact-info-section .contact-info {
-        padding-top: 0.75rem;
-    }
-}
-
-
-/* Lightbox */
 .lightbox {
     display: none;
     position: fixed;
@@ -1542,7 +1121,7 @@ footer {
     border: transparent;
     cursor: pointer;
     z-index: 2001;
-    transition: color 0.3s;
+    transition: color var(--transition-base);
 }
 
 .lightbox-close:hover {
@@ -1560,7 +1139,7 @@ footer {
     cursor: pointer;
     padding: 1rem;
     z-index: 2001;
-    transition: color 0.3s;
+    transition: color var(--transition-base);
 }
 
 .lightbox-nav:hover {
@@ -1579,4 +1158,245 @@ footer {
     color: rgba(255, 255, 255, 0.7);
     font-size: 0.875rem;
     margin-top: 0.5rem;
+}
+
+/* ==========================================================================
+   ANIMATIONS
+   ========================================================================== */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+
+/* Mobile (600px and below) */
+@media (max-width: 600px) {
+    .caption-overlay {
+        bottom: 8px;
+        padding: 6px 10px 6px 8px;
+        font-size: 0.9rem;
+    }
+
+    .zoom-btn {
+        top: 8px;
+        right: 8px;
+        width: 32px;
+        height: 32px;
+    }
+
+    .zoom-btn svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .home-photo-background,
+    .services-photo-background {
+        background-position: center top;
+        background-size: cover;
+    }
+
+    body.home .about-content {
+        grid-template-columns: 1fr;
+    }
+
+    body.home .about-text {
+        order: 0;
+    }
+
+    body.home .about-image {
+        order: 1;
+    }
+
+    .hero {
+        min-height: 48vh;
+    }
+
+    .page-hero {
+        min-height: 38vh;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero h1,
+    .page-hero h1 {
+        font-size: 1.6rem;
+        line-height: 1.15;
+        margin-bottom: 0.6rem;
+    }
+
+    .hero p,
+    .page-hero p {
+        font-size: 0.95rem;
+        max-width: 100%;
+        margin-bottom: 1rem;
+    }
+}
+
+/* Tablet (768px and below) */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background-color: var(--white);
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem;
+        gap: 1rem;
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all var(--transition-base);
+        box-shadow: var(--shadow);
+    }
+
+    .nav-links.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .nav-links .dropdown {
+        position: static;
+        display: none;
+        box-shadow: none;
+        background: transparent;
+        padding: 0;
+    }
+
+    .nav-links.active li.has-dropdown .dropdown {
+        display: block;
+    }
+
+    .nav-links .dropdown a {
+        padding-left: 2rem;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .section-title h2 {
+        font-size: 1.5rem;
+    }
+
+    .tabs-bar {
+        flex-wrap: wrap;
+    }
+
+    .tab-btn {
+        flex: 1 1 calc(50% - 8px);
+    }
+
+    .service-carousel {
+        height: 220px;
+    }
+
+    .about-image {
+        order: -1;
+    }
+
+    .page-header .container.contact-header-container,
+    .contact-info-section .container.contact-container {
+        padding-left: 3.5rem;
+        padding-right: 3.5rem;
+    }
+
+    .contact {
+        padding: 1.25rem 0;
+    }
+
+    .contact-form form {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-form textarea {
+        min-height: 140px;
+    }
+}
+
+/* Tablet Landscape (780px and above) */
+@media (min-width: 780px) {
+    .page-header .container.contact-header-container,
+    .contact-info-section .container.contact-container,
+    .contact {
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
+    }
+
+    .contact-info-section {
+        padding-top: 1rem;
+    }
+
+    .page-header + .contact-info-section .contact-container {
+        padding-top: 1.5rem;
+    }
+
+    .page-header + .contact-info-section .contact-info {
+        padding-top: 0.75rem;
+    }
+}
+
+/* Small Desktop (900px and below) */
+@media (max-width: 900px) {
+    .hero {
+        min-height: 60vh;
+    }
+
+    .service-carousel {
+        height: 220px;
+    }
+
+    .contact-container .contact-info {
+        padding-left: 3rem;
+        padding-right: 3rem;
+        max-width: 840px;
+    }
+}
+
+/* Desktop (1200px and above) */
+@media (min-width: 1200px) {
+    .service-carousel {
+        height: 300px;
+    }
+
+    .page-header .container.contact-header-container,
+    .contact-info-section .container.contact-container {
+        padding-left: 0;
+        padding-right: 0;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    .contact {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    .contact-container .contact-info {
+        max-width: 1100px;
+        margin: 0 auto;
+    }
 }
