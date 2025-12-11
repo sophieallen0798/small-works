@@ -178,12 +178,7 @@ nav {
     border-radius: 4px;
     transition: background-color var(--transition-base), 
                 color var(--transition-base);
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-    background-color: var(--primary-color);
-    color: var(--white);
+    color: var(--text-color);
 }
 
 /* Dropdown Menu */
@@ -292,12 +287,7 @@ body.services-page.has-hero .nav-links .dropdown a {
 
 /* When header is overlayed (homepage/gallery/services with hero),
    ensure hovered dropdown items use the same hover treatment as main nav */
-body.home .nav-links .dropdown a:hover,
-body.gallery .nav-links .dropdown a:hover,
-body.services-page.has-hero .nav-links .dropdown a:hover {
-    background-color: var(--primary-color);
-    color: var(--white);
-}
+/* Hover styling for dropdown items is handled globally below to avoid duplicates. */
 
 /* Services Page Header */
 body.services-page header {
@@ -1298,15 +1288,8 @@ footer {
         visibility: visible;
     }
 
-    /* When the mobile menu is open, hovered/selected items should match
-       the desktop hover state (white text on primary background). */
-    .nav-links.active a:hover,
-    .nav-links.active a.active,
-    .nav-links.active .dropdown a:hover,
-    .nav-links.active .dropdown a.active {
-        background-color: var(--primary-color);
-        color: var(--white);
-    }
+     /* Mobile hover/active visuals are handled by the global hover/active
+         rule further down to keep styling consistent and avoid duplication. */
 
     .nav-links .dropdown {
         position: static;
@@ -1333,6 +1316,17 @@ footer {
     body.gallery .nav-links.active a,
     body.services-page.has-hero .nav-links.active a {
         color: var(--text-color);
+    }
+
+    /* Ensure hovered or selected nav items (including dropdown children)
+       display white text on primary background everywhere. This should
+       override the default link color but not the non-hover state. */
+    .nav-links a:hover,
+    .nav-links a.active,
+    .nav-links .dropdown a:hover,
+    .nav-links .dropdown a.active {
+        background-color: var(--primary-color);
+        color: var(--white);
     }
 
     .hero h1 {
