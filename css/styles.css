@@ -1326,12 +1326,13 @@ footer {
         padding-left: 2rem;
     }
 
-    /* If the header is overlayed (homepage/gallery/services hero), keep
-       the mobile open menu links in the overlay (white) style by default. */
+    /* When the mobile menu is open, always use readable (dark) link text
+       because the mobile menu background is white. This prevents white-on-white
+       text on overlay pages (home/gallery/services with hero). */
     body.home .nav-links.active a,
     body.gallery .nav-links.active a,
     body.services-page.has-hero .nav-links.active a {
-        color: var(--overlay-white-95);
+        color: var(--text-color);
     }
 
     .hero h1 {
