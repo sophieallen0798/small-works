@@ -25,7 +25,9 @@
     <meta property="og:title" content="Home Remodeling Services in Boise, Idaho | SmallWorks Boise">
     <meta property="og:description"
         content="Full-service home remodeling company in Boise. Kitchen remodels, bathroom renovations, home additions, and more. Quality craftsmanship guaranteed.">
-    <meta property="og:image" content="https://smallworksboise.com/images/services-og.jpg">
+    <meta property="og:image" content="https://smallworksboise.com/images/favicon/android-chrome-512x512.png">
+    <meta property="og:image:alt" content="Examples of SmallWorks Boise renovations — kitchens, bathrooms and additions">
+    <meta property="og:locale" content="en_US">
     <meta property="og:site_name" content="SmallWorks Boise">
 
     <!-- Twitter Card -->
@@ -33,6 +35,8 @@
     <meta name="twitter:title" content="Home Remodeling Services | SmallWorks Boise">
     <meta name="twitter:description"
         content="Kitchen remodels, bathroom renovations, home additions, and more in Boise, Idaho.">
+    <meta name="twitter:image" content="https://smallworksboise.com/images/favicon/android-chrome-512x512.png">
+    <meta name="twitter:image:alt" content="SmallWorks Boise — kitchen, bathroom and home addition examples in Boise">
 
     <!-- Favicons -->
     <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
@@ -99,6 +103,26 @@
                 }
             ]
         }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://smallworksboise.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Services",
+          "item": "https://smallworksboise.com/services.html"
+        }
+      ]
     }
     </script>
 </head>
@@ -208,7 +232,8 @@
                     im.loading = 'lazy';
                     im.src = dir + '/' + img;
                     var captionText = altBase ? (altBase + ' — ' + (idx + 1)) : '';
-                    im.alt = captionText || '';
+                    im.alt = captionText || ('SmallWorks Boise project photo ' + (idx + 1));
+                    im.title = im.alt;
                     im.setAttribute('data-caption', captionText);
                     track.appendChild(im);
                 });

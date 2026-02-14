@@ -94,6 +94,24 @@ The color scheme can be customized in `css/styles.css` by modifying the CSS vari
 - Interior Finishing
 - General Repairs
 
+## SEO improvements
+
+- Added descriptive `h2` headings to each services section with local keywords (e.g. `Kitchen Remodeling in Boise, ID`).
+- Implemented `BreadcrumbList` JSON-LD on the services page for better SERP breadcrumbs.
+- Improved `HomeAndConstructionBusiness` JSON-LD (added `logo` + `image`).
+- Repaired Open Graph / Twitter image references and added `og:image:alt` / `twitter:image:alt` for better social sharing.
+- Added an accessible fallback `alt` + `title` for carousel images when captions are unavailable.
+
+Next steps (recommended) — do these to maximize visibility:
+1. Add a real business `telephone` and complete `sameAs` (social profiles) in the structured data.
+2. Upload high-quality `og-image` and `services-og` images to `/images/` and replace the placeholders.
+3. Claim and optimize your Google Business Profile and collect customer reviews (then add Review schema).
+4. Submit `sitemap.xml` to Google Search Console and Bing Webmaster Tools.
+5. Add FAQ/Review structured data for pages that can show real user content.
+6. Improve performance (compress images, enable caching / CDN) and run Lighthouse.
+
+---
+
 ## License
 
-© 2025 SmallWorks Boise. All rights reserved.
+© 2026 SmallWorks Boise. All rights reserved.
